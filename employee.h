@@ -1,4 +1,4 @@
-#ifndef EMPLOYEE_H
+    #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 #include <QString>
 #include <QSqlQuery>
@@ -9,9 +9,9 @@ class employee
 {
 public:
     employee();
-    employee(int,QString,int,QString,int,QString);
+    employee(QString,QString,int,QString,int,QString);
 
-    int get_cin();
+    QString get_cin();
     QString get_fullname();
     int get_age();
     QString get_email();
@@ -20,13 +20,15 @@ public:
 
     //functions
     bool add();
-    bool remove(int);
+    bool remove(QString);
     bool modify();
     QSqlQueryModel * show();
+    QSqlQueryModel * show_shifts();
+    QSqlQueryModel * search(const QString&);
 
 private:
-    QString fullname, email, address;
-    int age, cin, phone;
+    QString  cin,fullname, email, address;
+    int age, phone;
 };
 
 #endif // EMPLOYEE_H

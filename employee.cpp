@@ -6,7 +6,7 @@
 
 employee::employee()
 {
-    cin=0;
+    cin="";
     age=0;
     phone=0;
     fullname="";
@@ -14,7 +14,7 @@ employee::employee()
     address="";
 }
 
-employee::employee(int cin, QString fullname, int age, QString email, int phone, QString address)
+employee::employee(QString cin, QString fullname, int age, QString email, int phone, QString address)
 {
     this->cin=cin;
     this->fullname=fullname;
@@ -24,7 +24,7 @@ employee::employee(int cin, QString fullname, int age, QString email, int phone,
     this->address=address;
 }
 
-int employee::get_cin(){return cin;}
+QString employee::get_cin(){return cin;}
 QString employee::get_fullname(){return fullname;}
 int employee::get_age(){return age;}
 QString employee::get_email(){return email;}
@@ -56,11 +56,19 @@ QSqlQueryModel * employee::show()
     model->setHeaderData(5, Qt::Horizontal, QObject::tr("Address"));
         return model;
 }
+QSqlQueryModel * employee::show_shifts()
+{
+    QSqlQueryModel * mod= new QSqlQueryModel();
+    mod->setQuery("SELECT CIN, FULLNAME FROM EMPLOYEE");
+    mod->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
+    mod->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
+        return mod;
+}
 
-bool employee::remove(int cin)
+bool employee::remove(QString cin)
 {
 QSqlQuery query;
-QString toSearch= QString::number(cin);
+QString toSearch= cin;
 query.prepare("DELETE FROM EMPLOYEE WHERE CIN = :CIN");
 query.bindValue(":CIN", toSearch);
 return    query.exec();
@@ -76,5 +84,18 @@ bool employee::modify(){
     query.bindValue(":PHONE",phone);
     query.bindValue(":ADDRESS",address);
     return query.exec();
+}
+
+QSqlQueryModel * employee::search(const QString &fullname)
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+     model->setQuery("select * from employee where (FULLNAME LIKE '"+fullname+"%') ");
+     model->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
+     model->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("Age"));
+     model->setHeaderData(3, Qt::Horizontal, QObject::tr("Email"));
+     model->setHeaderData(4, Qt::Horizontal, QObject::tr("Phone Number"));
+     model->setHeaderData(5, Qt::Horizontal, QObject::tr("Address"));
+     return model;
 }
 

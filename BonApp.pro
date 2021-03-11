@@ -19,12 +19,14 @@ SOURCES += \
     connection.cpp \
     employee.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    shifts.cpp
 
 HEADERS += \
     connection.h \
     employee.h \
-    mainwindow.h
+    mainwindow.h \
+    shifts.h
 
 FORMS += \
     mainwindow.ui
