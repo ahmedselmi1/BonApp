@@ -19,10 +19,12 @@ public:
     QString get_address();
 
     //functions
-    bool add();
-    bool remove(QString);
+    bool add();    
     bool modify();
+    bool remove(QString);
     QSqlQueryModel * show();
+    QSqlQueryModel * show_Asc();
+    QSqlQueryModel * show_Desc();
     QSqlQueryModel * show_shifts();
     QSqlQueryModel * search(const QString&);
 

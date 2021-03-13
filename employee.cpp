@@ -44,27 +44,6 @@ bool employee::add(){
     return query.exec();
 }
 
-QSqlQueryModel * employee::show()
-{
-    QSqlQueryModel * model= new QSqlQueryModel();
-    model->setQuery("SELECT * FROM EMPLOYEE");
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Age"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Email"));
-    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Phone Number"));
-    model->setHeaderData(5, Qt::Horizontal, QObject::tr("Address"));
-        return model;
-}
-QSqlQueryModel * employee::show_shifts()
-{
-    QSqlQueryModel * mod= new QSqlQueryModel();
-    mod->setQuery("SELECT CIN, FULLNAME FROM EMPLOYEE");
-    mod->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
-    mod->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
-        return mod;
-}
-
 bool employee::remove(QString cin)
 {
 QSqlQuery query;
@@ -99,3 +78,50 @@ QSqlQueryModel * employee::search(const QString &fullname)
      return model;
 }
 
+QSqlQueryModel * employee::show_Asc()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("SELECT * FROM EMPLOYEE ORDER BY AGE ASC");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Age"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Email"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Phone Number"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("Address"));
+        return model;
+}
+
+QSqlQueryModel * employee::show_Desc()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("SELECT * FROM EMPLOYEE ORDER BY AGE DESC");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Age"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Email"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Phone Number"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("Address"));
+        return model;
+}
+
+QSqlQueryModel * employee::show()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("SELECT * FROM EMPLOYEE");
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Age"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Email"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Phone Number"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("Address"));
+        return model;
+}
+
+QSqlQueryModel * employee::show_shifts()
+{
+    QSqlQueryModel * mod= new QSqlQueryModel();
+    mod->setQuery("SELECT CIN, FULLNAME FROM EMPLOYEE");
+    mod->setHeaderData(0, Qt::Horizontal, QObject::tr("CIN"));
+    mod->setHeaderData(1, Qt::Horizontal, QObject::tr("Name"));
+        return mod;
+}

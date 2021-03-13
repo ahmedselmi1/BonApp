@@ -16,10 +16,10 @@ public:
     QString get_hdeb();
     QString get_hfin();
 
-    bool add();
-    bool remove(QString);
+    bool add();   
     bool modify();
-    QSqlQueryModel * show();    
+    bool remove(QString);
+    QSqlQueryModel * show();
 
 private:
     QString cin, jours, hdeb,hfin;

@@ -25,151 +25,64 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_goToOrders_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-void MainWindow::on_goToProducts_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-
-void MainWindow::on_goToStock_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(5);
-}
-
-void MainWindow::on_goToClient_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(6);
-}
-
-void MainWindow::on_back_1_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-void MainWindow::on_back_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-void MainWindow::on_back_3_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-void MainWindow::on_back_4_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
+//INDEXING
 
 void MainWindow::on_back_5_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-void MainWindow::on_addProduct_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(3);
-}
-
-void MainWindow::on_showProducts_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(4);
-}
-
-void MainWindow::on_back_6_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-
-void MainWindow::on_back_7_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-
-void MainWindow::on_back_8_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(7);
-}
-
-void MainWindow::on_back_9_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(7);
-}
-
-void MainWindow::on_addProduct_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(11);
-}
-
-void MainWindow::on_showProducts_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(12);
-}
-
-void MainWindow::on_back_11_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(5);
-}
-
-void MainWindow::on_back_12_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(5);
-}
-
-void MainWindow::on_toolButton_12_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(13);
-}
-
-void MainWindow::on_toolButton_17_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(14);
-}
-
-void MainWindow::on_back_13_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(11);
-}
-
-void MainWindow::on_back_14_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(12);
-}
-
-//START EMPLOYEE PART
-
 void MainWindow::on_goToEmployee_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(7);
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_toolButton_4_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(8);
+    ui->stackedWidget->setCurrentIndex(2);
 }
-
 
 void MainWindow::on_back_10_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(7);
+    ui->stackedWidget->setCurrentIndex(3);
 }
 
-//show employees
+void MainWindow::on_toolButton_5_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(5);
+}
+
+void MainWindow::on_back_8_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_back_9_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_back_15_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+//START EMPLOYEE
+
+//FUNCTIONS
+
+//show all employees
 
 void MainWindow::on_toolButton_3_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(9);
+    ui->stackedWidget->setCurrentIndex(3);
     ui->empTable->setModel(tableEmployee.show());
     QSqlQueryModel *mod= new QSqlQueryModel();
     mod->setQuery(("select CIN from EMPLOYEE"));
     ui->comboBox->setModel(mod);
 }
 
-//add employee
+//add employee + validation
 
 void MainWindow::on_toolButton_save_2_clicked()
 {
@@ -242,11 +155,11 @@ void MainWindow::on_toolButton_save_2_clicked()
     ui->lineEdit_email->clear();
     ui->lineEdit_phone->clear();
     ui->lineEdit_address->clear();
-    ui->stackedWidget->setCurrentIndex(7);
+    ui->stackedWidget->setCurrentIndex(1);
     }
 }
 
-//delete employee
+//delete employee (to change)
 
 void MainWindow::on_toolButton_10_clicked()
 {
@@ -258,7 +171,7 @@ void MainWindow::on_toolButton_10_clicked()
     ui->comboBox->setModel(mod);
 }
 
-//modify employee
+//modifying employee
 
 void MainWindow::on_empTable_activated(const QModelIndex &index)
 {
@@ -269,7 +182,7 @@ void MainWindow::on_empTable_activated(const QModelIndex &index)
     {
         while (query.next())
         {
-            ui->stackedWidget->setCurrentIndex(10);
+            ui->stackedWidget->setCurrentIndex(4);
             ui->lineEdit_id_m_2->setText(query.value(0).toString());
             ui->lineEdit_fullname_m->setText(query.value(1).toString());
             ui->lineEdit_age_m->setText(query.value(2).toString());
@@ -343,63 +256,41 @@ void MainWindow::on_toolButton_modify_clicked()
     ui->lineEdit_email_m->clear();
     ui->lineEdit_phone_m->clear();
     ui->lineEdit_address_m->clear();
-    ui->stackedWidget->setCurrentIndex(7);
+    ui->stackedWidget->setCurrentIndex(3);
     }
 }
 
-//END EMPLOYEE PART
+//ADVANCED FUNCTIONS
 
-void MainWindow::on_pushButton_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(15);
-}
+//search
 
-void MainWindow::on_pushButton_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(16);
-}
-
-void MainWindow::on_backbtn_2_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(6);
-}
-
-void MainWindow::on_backbtn_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(6);
-}
-
-void MainWindow::on_ajoutercoupon_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(18);
-}
-
-void MainWindow::on_ajouterclient_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(17);
-}
-
-void MainWindow::on_backbtn_3_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(15);
-}
-
-void MainWindow::on_backbtn_4_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(16);
-}
-
-
-void MainWindow::on_pushButton_search_clicked()
+void MainWindow::on_toolButton_11_clicked()
 {
     QString fullname=ui->lineEdit_search->text();
     ui->empTable->setModel(tableEmployee.search(fullname));
 }
 
-void MainWindow::on_toolButton_5_clicked()
+//sort Desc
+
+void MainWindow::on_toolButton_12_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(19);
+    ui->empTable->setModel(tableEmployee.show_Desc());
 }
+
+//sort Asc
+
+void MainWindow::on_toolButton_13_clicked()
+{
+    ui->empTable->setModel(tableEmployee.show_Asc());
+}
+
+//END EMPLOYEE
+
+//START SHIFTS
+
+//FUNCTIONS
+
+//show employee id + add shifts
 
 void MainWindow::on_toolButton_7_clicked()
 {
@@ -432,3 +323,6 @@ void MainWindow::on_emptable_2_activated(const QModelIndex &index)
         }
     }
 }
+
+//show employee + shifts
+
