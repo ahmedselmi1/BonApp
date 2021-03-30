@@ -48,8 +48,6 @@ private slots:
 
     void on_toolButton_save_3_clicked();
 
-    void on_emptable_2_activated(const QModelIndex &index);
-
     void on_back_15_clicked();
 
     void on_toolButton_11_clicked();
@@ -58,10 +56,39 @@ private slots:
 
     void on_toolButton_13_clicked();
 
+    void on_back_16_clicked();
+
+    void on_back_17_clicked();
+
+    void on_toolButton_6_clicked();
+
+    void on_empTable_clicked(const QModelIndex &index);
+
+    void on_emptable_2_clicked(const QModelIndex &index);
+
+    void on_shiftsTab_clicked(const QModelIndex &index);
+
+    void on_toolButton_delete_4_clicked();
+
+    void on_back_18_clicked();
+
+    void on_shiftsTab_doubleClicked(const QModelIndex &index);
+
+    void on_toolButton_edit_6_clicked();
+
+    void on_toolButton_delete_5_clicked();
+
+    void on_toolButton_delete_6_clicked();
+
+    void on_toolButton_delete_7_clicked();
+
+    void on_toolButton_pdf_2_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     //louay doc
     employee tableEmployee, tableEmployee1;
+    shifts tableShifts, tableShifts1;
 };
 #endif // MAINWINDOW_H

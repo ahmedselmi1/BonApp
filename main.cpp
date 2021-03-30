@@ -12,11 +12,11 @@ int main(int argc, char *argv[])
     if(test)
     {
         QMessageBox::information(nullptr, QObject::tr("database is open"),
-                    QObject::tr("connection successful"), QMessageBox::Cancel);
+                    QObject::tr("connection successful"), QMessageBox::Ok);
         w.show();
 }
     else
         QMessageBox::critical(nullptr, QObject::tr("database is not open"),
-                    QObject::tr("connection failed"), QMessageBox::Cancel);
+                    QObject::tr("connection failed"), QMessageBox::Ok);
     return a.exec();
 }

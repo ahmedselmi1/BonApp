@@ -5,24 +5,29 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 
+
 class shifts
 {
 public:
     shifts();
-    shifts(QString,QString,QString,QString);
+    shifts(QString,QString,QString,QString,QString);
 
     QString get_cin();
-    QString get_jours();
-    QString get_hdeb();
-    QString get_hfin();
+    QString get_startday();
+    QString get_endday();
+    QString get_hstart();
+    QString get_hend();
 
     bool add();   
     bool modify();
     bool remove(QString);
     QSqlQueryModel * show();
-
+    QSqlQueryModel * show_Asc();
+    QSqlQueryModel * show_Desc();
+    QSqlQueryModel * search(const QString&);
+    void show_notification(QString, QString);
 private:
-    QString cin, jours, hdeb,hfin;
+    QString cin, startday, endday,hstart,hend,titre,text;
 
 };
 
