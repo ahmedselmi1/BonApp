@@ -24,5 +24,9 @@
         <file>img/supprimer0001.png</file>
         <file>img/supprimer0002.png</file>
         <file>img/btnCoupons0002.png</file>
+        <file>img/print0001.png</file>
+        <file>img/print0002.png</file>
+        <file>img/search0001.png</file>
+        <file>img/search0002.png</file>
     </qresource>
 </RCC>

@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,20 +16,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    QrCode.cpp \
+    QrCodeGeneratorDemo.cpp \
+    QrCodeGeneratorWorker.cpp \
     clients.cpp \
     connection.cpp \
+    coupons.cpp \
     employee.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    qrcodedisplayer.cpp \
+    qrwidget.cpp
 
 HEADERS += \
+    QrCode.hpp \
     clients.h \
     connection.h \
+    coupons.h \
     employee.h \
-    mainwindow.h
+    mainwindow.h \
+    qrcodedisplayer.h \
+    qrwidget.hpp
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    qrcodedisplayer.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

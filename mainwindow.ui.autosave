@@ -2799,7 +2799,7 @@ background-color: rgb(0, 0, 0,0%);</string>
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>520</y>
+        <y>510</y>
         <width>191</width>
         <height>71</height>
        </rect>
@@ -2825,7 +2825,7 @@ background-repeat: none;
       <property name="geometry">
        <rect>
         <x>850</x>
-        <y>520</y>
+        <y>510</y>
         <width>191</width>
         <height>71</height>
        </rect>
@@ -2877,7 +2877,7 @@ background-repeat: none;
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>190</y>
+        <y>180</y>
         <width>976</width>
         <height>321</height>
        </rect>
@@ -2998,7 +2998,7 @@ background-repeat: none;
       <property name="geometry">
        <rect>
         <x>440</x>
-        <y>520</y>
+        <y>510</y>
         <width>201</width>
         <height>71</height>
        </rect>
@@ -3027,17 +3027,58 @@ background-repeat: none;
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_9">
+     <widget class="QPlainTextEdit" name="userSearch">
       <property name="geometry">
        <rect>
         <x>70</x>
         <y>140</y>
         <width>281</width>
-        <height>41</height>
+        <height>31</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="plainText">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="searchClient">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>140</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#searchClient {
+background-color: transparent;
+border-image: url(:/img/img/search0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#searchClient:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/search0002.png);
+	 border: none;
+}
+#searchClient:pressed
+{
+   border-image: url(:/img/img/search0001.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>

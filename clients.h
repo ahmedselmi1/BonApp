@@ -22,12 +22,12 @@ public:
     bool addClient();
     bool remove(QString);
     bool modify();
-    static bool addClientToDB(QString,QString,QString,QString,QString,QString);
+    static bool addClientToDB(QString,QString,QString,QString,QString);
     static void processClientTable(QTableWidget*);
-    static void processCouponTable(QTableWidget*);
     static void deleteSelectedClients(QTableWidget*);
-    static void deleteSelectedCoupons(QTableWidget*);
     static void changeSelectedClientCell(QTableWidget*,int,int);
+    static void printPDF(QTableWidget* clientsTable);
+
 
 private:
     QString nom, adresse, prenom, email, tel;

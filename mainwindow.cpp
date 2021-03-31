@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "employee.h"
+#include "coupons.h"
 #include <QDebug>
 #include <QApplication>
 #include <QSqlRecord>
@@ -10,7 +11,15 @@
 #include <algorithm>
 #include <vector>
 #include <map>
+#include "QrCode.hpp"
+#include <QPainter>
+#include <QDebug>
+#include "qrcodedisplayer.h"
+#include <QPrinter>
 
+using std::uint8_t;
+using qrcodegen::QrCode;
+using qrcodegen::QrSegment;
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -27,12 +36,47 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 
 void MainWindow::on_goToOrders_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
+
+
+
+
+
+
+
+
+void MainWindow::paintQR(QPainter &painter, const QSize sz, const QString &data, QColor fg)
+{
+    // NOTE: At this point you will use the API to get the encoding and format you want, instead of my hardcoded stuff:
+    qrcodegen::QrCode qr = qrcodegen::QrCode::encodeText(data.toUtf8().constData(), qrcodegen::QrCode::Ecc::LOW);
+    const int s=qr.getSize()>0?qr.getSize():1;
+    const double w=sz.width();
+    const double h=sz.height();
+    const double aspect=w/h;
+    const double size=((aspect>1.0)?h:w);
+    const double scale=size/(s+2);
+    // NOTE: For performance reasons my implementation only draws the foreground parts in supplied color.
+    // It expects background to be prepared already (in white or whatever is preferred).
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(fg);
+    for(int y=0; y<s; y++) {
+        for(int x=0; x<s; x++) {
+            const int color=qr.getModule(x, y);  // 0 for white, 1 for black
+            if(0!=color) {
+                const double rx1=(x+1)*scale, ry1=(y+1)*scale;
+                QRectF r(rx1, ry1, scale, scale);
+                painter.drawRects(&r,1);
+            }
+        }
+    }
+}
+
 
 void MainWindow::on_goToProducts_clicked()
 {
@@ -344,6 +388,8 @@ void MainWindow::on_toolButton_modify_clicked()
 void MainWindow::on_backbtn_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(6);
+
+
 }
 
 void MainWindow::on_backbtn_clicked()
@@ -391,8 +437,17 @@ void MainWindow::on_pushButton_2_clicked()
     ui->stackedWidget->setCurrentIndex(16);
 
 
-    clients::processClientTable(ui->couponsTable);
+    coupons::processCouponTable(ui->couponsTable);
 
+
+
+/*
+
+    qrcodedisplayer* qrDisplayer = new qrcodedisplayer;
+    qrDisplayer->show();
+
+
+    */
 }
 
 void MainWindow::on_supprimerClient_clicked()
@@ -400,24 +455,24 @@ void MainWindow::on_supprimerClient_clicked()
 
     clients::deleteSelectedClients(ui->clientsTable);
 
-
 }
 
 void MainWindow::on_supprimerCoupon_clicked()
 {
-    clients::deleteSelectedCoupons(ui->couponsTable);
-
+    coupons::deleteSelectedCoupons(ui->couponsTable);
 }
 
 void MainWindow::on_ajouterClientBtn_clicked()
 {
-    bool added = clients::addClientToDB(NULL,ui->labelClientNom->text(),ui->labelClientPrenom->text(), ui->labelClientAdresse->text(),ui->labelClientEmail->text(),ui->labelClientTel->text());
-    clients::processClientTable(ui->clientsTable);
+    bool added = clients::addClientToDB(ui->labelClientNom->text(),ui->labelClientPrenom->text(), ui->labelClientAdresse->text(),ui->labelClientEmail->text(),ui->labelClientTel->text());
+
     if(added)
     {
+        clients::processClientTable(ui->clientsTable);
         QMessageBox::information(nullptr, QObject::tr("Client Added"),QObject::tr("Client Added Successfuly"), QMessageBox::Ok);
+        ui->stackedWidget->setCurrentIndex(15);
     }
-    ui->stackedWidget->setCurrentIndex(15);
+
 
 }
 
@@ -451,4 +506,86 @@ void MainWindow::on_clientsTable_cellDoubleClicked(int row, int column)
 
     lastClientCell = make_pair(row,column);
 
+}
+
+void MainWindow::on_labelClientNom_editingFinished()
+{
+
+}
+
+void MainWindow::on_labelClientNom_textEdited(const QString &arg1)
+{
+    ui->QRCODE->setQRData(arg1);
+}
+
+void MainWindow::on_ajoutCoupon_clicked()
+{
+
+
+    bool added = coupons::addCouponToDB(ui->labelCouponCode->text(),ui->labelCouponUses->text(), ui->CouponCalendarStart->selectedDate().toString("yyyy-MM-dd") + " " + ui->CouponTimeStart->time().toString("hh:mm:ss"),ui->CouponCalendarEnd->selectedDate().toString("yyyy-MM-dd") + " " + ui->CouponTimeEnd->time().toString("hh:mm:ss"),"{}");
+
+    if(added)
+    {
+        coupons::processCouponTable(ui->couponsTable);
+        QMessageBox::information(nullptr, QObject::tr("Coupon Added"),QObject::tr("Coupon Added Successfuly"), QMessageBox::Ok);
+        ui->stackedWidget->setCurrentIndex(16);
+    }
+
+
+}
+
+void MainWindow::on_labelCouponCode_textChanged(const QString &arg1)
+{
+    ui->qrcoupon->setQRData("bonappcoupon;;"+ arg1);
+}
+
+void MainWindow::on_couponsTable_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
+{
+
+}
+
+void MainWindow::on_couponsTable_cellChanged(int row, int column)
+{
+    if(row == lastCouponsCell.first && column == lastCouponsCell.second && column != 0)
+    {
+        QSqlQuery query;
+        query.prepare("UPDATE CLIENT SET CODE= :CODE, USES= :USES, STARTDATE= :STARTDATE, ENDDATE= :ENDDATE, CONSTRAINTS= :CONSTRAINTS WHERE ID= :ID");
+
+        query.bindValue(":ID",ui->couponsTable->item(row,0)->text());
+        query.bindValue(":CODE",ui->couponsTable->item(row,1)->text());
+        query.bindValue(":USES",ui->couponsTable->item(row,2)->text());
+        query.bindValue(":STARTDATE",ui->couponsTable->item(row,3)->text());
+        query.bindValue(":ENDDATE",ui->couponsTable->item(row,4)->text());
+        query.bindValue(":CONSTRAINTS",ui->couponsTable->item(row,5)->text());
+        query.exec();
+        lastCouponsCell = make_pair(-1,-1);
+
+    }
+}
+
+void MainWindow::on_couponsTable_cellDoubleClicked(int row, int column)
+{
+    lastCouponsCell = make_pair(row,column);
+
+}
+
+void MainWindow::on_printtable1_clicked()
+{
+    coupons::printPDF(ui->couponsTable);
+    QMessageBox::information(nullptr, QObject::tr("PDF Saved"),
+                      QObject::tr("PDF file saved as coupons.pdf"), QMessageBox::Ok);
+
+}
+
+void MainWindow::on_printtable2_clicked()
+{
+    clients::printPDF(ui->clientsTable);
+    QMessageBox::information(nullptr, QObject::tr("PDF Saved"),
+                      QObject::tr("PDF file saved as clients.pdf"), QMessageBox::Ok);
+
+}
+
+void MainWindow::on_userSearch_textChanged()
+{
+    //ui->clientsTable->findItems()
 }

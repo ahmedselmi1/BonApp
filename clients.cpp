@@ -7,6 +7,17 @@
 #include <QSqlRecord>
 #include <map>
 #include <QMessageBox>
+#include "QrCode.hpp"
+#include <QPainter>
+#include <QPrinter>
+#include <QTextDocument>
+#include "qpainter.h"
+
+using std::uint8_t;
+using qrcodegen::QrCode;
+using qrcodegen::QrSegment;
+
+
 using namespace std;
 clients::clients()
 {
@@ -40,11 +51,38 @@ bool clients::addClient(){
 
 
 
-bool clients::addClientToDB(QString id, QString nom, QString prenom, QString adresse, QString email, QString tel){
+bool clients::addClientToDB(QString nom, QString prenom, QString adresse, QString email, QString tel){
+
+    QrCode qr = QrCode::encodeText("DamNNN!", QrCode::Ecc::MEDIUM);
+
+    // Read the black & white pixels
+    for (int y = 0; y < qr.getSize(); y++) {
+        for (int x = 0; x < qr.getSize(); x++) {
+            int color = qr.getModule(x, y);  // 0 for white, 1 for black
+
+            // You need to modify this part
+            qDebug() << "draw pixel into "<<x<<" and "<<y<<" color: "<<color;
+
+            //draw_pixel_onto_QT(x, y, color);
+        }
+    }
+
+
+
+    QRegExp mailREX("\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
+    mailREX.setCaseSensitivity(Qt::CaseInsensitive);
+    mailREX.setPatternSyntax(QRegExp::RegExp);
+    qDebug() << mailREX.exactMatch("me@me.com");
+
+    if(!mailREX.exactMatch(email))
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Error"),
+                    QObject::tr("Wrong Email Format"), QMessageBox::Ok);
+        return false;
+    }
     QSqlQuery query;
-    query.prepare("INSERT INTO CLIENT (ID, NOM, PRENOM, ADRESSE, EMAIL, TEL)"
-                  "VALUES(:ID, :NOM, :PRENOM, :ADRESSE, :EMAIL, :TEL)");
-    query.bindValue(":ID",id);
+    query.prepare("INSERT INTO CLIENT (NOM, PRENOM, ADRESSE, EMAIL, TEL)"
+                  "VALUES(:NOM, :PRENOM, :ADRESSE, :EMAIL, :TEL)");
     query.bindValue(":NOM",nom);
     query.bindValue(":PRENOM",prenom);
     query.bindValue(":ADRESSE",adresse);
@@ -56,6 +94,38 @@ bool clients::addClientToDB(QString id, QString nom, QString prenom, QString adr
 
 
     return result;
+}
+
+
+void clients::printPDF(QTableWidget* clientsTable)
+{
+    QPixmap pix(clientsTable->size());
+      QPainter painter(&pix);
+      clientsTable->render(&painter);
+      painter.end();
+      QPrinter printer(QPrinter::HighResolution);
+      printer.setOrientation(QPrinter::Landscape);
+      printer.setOutputFormat(QPrinter::PdfFormat);
+      printer.setPaperSize(QPrinter::A4);
+      printer.setOutputFileName("clients.pdf"); // will be in build folder
+
+      painter.begin(&printer);
+      double xscale = printer.pageRect().width() / double(pix.width());
+      double yscale = printer.pageRect().height() / double(pix.height());
+      double scale = qMin(xscale, yscale);
+      painter.translate(printer.paperRect().x() + printer.pageRect().width() / 2,
+                        printer.paperRect().y() + printer.pageRect().height() / 2);
+      painter.scale(scale, scale);
+      painter.translate(-clientsTable->width() / 2, -clientsTable->height() / 2);
+      painter.drawPixmap(0, 0, pix);
+
+    QTextDocument doc;
+
+    doc.setHtml("");
+    doc.drawContents(&painter);
+
+      painter.end();
+
 }
 
 void clients::processClientTable(QTableWidget* clientsTable)
@@ -108,32 +178,6 @@ void clients::processClientTable(QTableWidget* clientsTable)
 
 
 
-void clients::deleteSelectedCoupons(QTableWidget * couponsTable)
-{
-
-    map<QString,bool> toDelete;
-
-    foreach(QTableWidgetItem* item,  couponsTable->selectedItems())
-    {
-        toDelete[couponsTable->item(item->row(),0)->text()] = true;
-    }
-    map<QString,bool>::iterator it;
-
-    for(it=toDelete.begin(); it!=toDelete.end(); ++it){
-            QSqlQuery query;
-            query.prepare("DELETE FROM COUPON WHERE ID = :ID");
-            query.bindValue(":ID", it->first);
-            query.exec();
-          //cout << it->first << " => " << it->second << '\n';
-       }
-    processClientTable(couponsTable);
-    string aaa = std::to_string(toDelete.size()) + " Coupons deleted successfully";
-    QMessageBox::information(nullptr, QObject::tr("Coupons Deleted"),
-                      QObject::tr(aaa.c_str()), QMessageBox::Ok);
-
-
-
-}
 void clients::deleteSelectedClients(QTableWidget * clientsTable)
 {
 
@@ -159,57 +203,6 @@ void clients::deleteSelectedClients(QTableWidget * clientsTable)
 
 
 
-}
-
-void clients::processCouponTable(QTableWidget* couponsTable)
-{
-
-
-
-
-    QSqlQuery query("SELECT ID, CODE, STARTDATE, ENDDATE, CONTRAINTS, USES FROM COUPONS");
-    couponsTable->clear();
-
-
-    int numberOfRows = 0;
-    if(query.last())
-    {
-        numberOfRows =  query.at() + 1;
-        query.first();
-        query.previous();
-    }
-
-
-    couponsTable->setRowCount(numberOfRows);
-    int columns = query.record().count();
-    QSqlRecord record = query.record();
-    couponsTable->setColumnCount(columns);
-    QStringList columnsNames = QStringList();
-    for(int s=0;s<columns;s++)
-    {
-        columnsNames<<record.fieldName(s);
-    }
-    couponsTable->setHorizontalHeaderLabels(columnsNames);
-    int row = 0;
-
-    while (query.next()) {
-        for(int column = 0; column < columns; column++)
-        {
-            QTableWidgetItem* item = new QTableWidgetItem(query.value(column).toString());
-            if(column == 0)
-            {
-                auto flags = item->flags();
-
-                flags.setFlag(Qt::ItemIsEditable, false);
-                item->setFlags(flags);
-
-            }
-
-            couponsTable->setItem(row, column, item);
-        }
-        row++;
-
-     }
 }
 
 
@@ -239,6 +232,5 @@ void changeSelectedClientCell(QTableWidget* clientsTable,int row, int column)
     query.bindValue(":ADRESSE",clientsTable->item(row,3)->text());
     query.bindValue(":EMAIL",clientsTable->item(row,4)->text());
     query.bindValue(":TEL",clientsTable->item(row,5)->text());
-
     query.exec();
 }

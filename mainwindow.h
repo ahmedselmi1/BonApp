@@ -16,6 +16,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void paintQR(QPainter &painter, const QSize sz, const QString &data, QColor fg);
 
 private slots:
     void on_goToOrders_clicked();
@@ -109,6 +110,24 @@ private slots:
 
     void on_clientsTable_cellDoubleClicked(int row, int column);
 
+    void on_labelClientNom_editingFinished();
+
+    void on_labelClientNom_textEdited(const QString &arg1);
+
+    void on_ajoutCoupon_clicked();
+
+    void on_labelCouponCode_textChanged(const QString &arg1);
+
+    void on_couponsTable_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
+
+    void on_couponsTable_cellChanged(int row, int column);
+
+    void on_couponsTable_cellDoubleClicked(int row, int column);
+
+    void on_printtable1_clicked();
+
+    void on_printtable2_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -116,5 +135,6 @@ private:
     employee tableEmployee;
     clients Clients;
     pair<int,int> lastClientCell = make_pair(-1,-1);
+    pair<int,int> lastCouponsCell = make_pair(-1,-1);
 };
 #endif // MAINWINDOW_H
