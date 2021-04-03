@@ -2,6 +2,13 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QDebug>
+#include <QPrinter>
+#include <QPainter>
+#include <QPrintDialog>
+#include <QTextDocument>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QDir>
 gateauxC::gateauxC()
 {
     ID="";
@@ -74,5 +81,25 @@ bool gateauxC::modify(){
     query.bindValue(":QUANTITY",QUANTITY);
     query.bindValue(":PRICE",PRICE);
     return query.exec();
+}
+QSqlQueryModel * gateauxC::search(const QString &fullname)
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+     model->setQuery("select * from GATEAUX where (NAME LIKE '%"+fullname+"%') ");
+     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+     model->setHeaderData(1, Qt::Horizontal, QObject::tr("NAME"));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("QUANTITY"));
+     model->setHeaderData(3, Qt::Horizontal, QObject::tr("PRICE"));
+     return model;
+}
+QSqlQueryModel * gateauxC::show_Desc()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+     model->setQuery("select * from GATEAUX ORDER BY QUANTITY DESC ");
+     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
+     model->setHeaderData(1, Qt::Horizontal, QObject::tr("NAME"));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("QUANTITY"));
+     model->setHeaderData(3, Qt::Horizontal, QObject::tr("PRICE"));
+     return model;
 }
 

@@ -10,6 +10,8 @@
 #include<string>
 #include <algorithm>
 #include <vector>
+#include<QDir>
+#include<QFileDialog>
 
 using namespace std;
 
@@ -322,7 +324,21 @@ void MainWindow::on_toolButton_save_clicked()
 
 
         int x=0;
-        if (x==0)
+
+        if(QUANTITY<=0)
+        {
+            x++;
+        }
+        else if(NAME=="")
+        {
+            x++;
+        }
+        else if(PRICE<=0)
+        {
+            x++;
+        }
+
+        else if (x==0)
         {
             gateauxC g(ID,NAME,QUANTITY,PRICE);
             bool toTest=g.add_gateaux();
@@ -397,35 +413,59 @@ void MainWindow::on_GatTab_activated(const QModelIndex &index)
             }
         }
 }
-/*
+//COMMANDE
+
 void MainWindow::on_pushButton_2_clicked()
 {
     ui->stackedWidget->setCurrentIndex(16);
+    QSqlQueryModel *mod= new QSqlQueryModel();
+    mod->setQuery(("select NAME from GATEAUX"));
+    ui->comboBox_name->setModel(mod);
 }
 
 void MainWindow::on_pushButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(17);
-    tablecommande.remove(id);
-    ui->tableC->setModel(tablecommande.show());
+    int id = ui->comboBox_3->currentText().toInt();
+    ui->tableC->setModel(tablecommande.showc());
     QSqlQueryModel *mod= new QSqlQueryModel();
-    mod->setQuery(("select CIN from EMPLOYEE"));
-    ui->comboBox->setModel(mod);
+    mod->setQuery(("select ID from COMMANDE"));
+    ui->comboBox_3->setModel(mod);
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    QSqlQueryModel *mod= new QSqlQueryModel();
-    mod->setQuery(("select NAME from GATEAUX"));
-    QString ID= ui->lineEdit_idc->text();
-    ui->comboBox_name->setModel(mod);
+    QString ID= ui->lineEdit_idc->text();   
+    QString GATEAUXNAME=ui->comboBox_name->currentText();
     int SOMME= ui->lineEdit_somme->text().toInt();
+    int QUANTC= ui->lineEdit_quantc->text().toInt();
+    int q= ui->lineEdit_quantc_2->text().toInt();
+
 
 
         int x=0;
-        if (x==0)
+        if(ID=="")
         {
-            commandeC cc(ID,GATEAUXNAME,SOMME);
+            QMessageBox::critical(nullptr, QObject::tr("WARNING"),
+                        QObject::tr("please enter an ID"), QMessageBox::Ok);
+                  x++;
+        }
+        else if(QUANTC>q)
+        {
+            QMessageBox::critical(nullptr, QObject::tr("WARNING"),
+                        QObject::tr("Check the quantity"), QMessageBox::Ok);
+                  x++;
+        }
+        else if(QUANTC>q)
+        {
+            QMessageBox::critical(nullptr, QObject::tr("WARNING"),
+                        QObject::tr("Check the quantity"), QMessageBox::Ok);
+                  x++;
+        }
+
+        else if (x==0)
+        {
+            commandeC cc(ID,GATEAUXNAME,SOMME,QUANTC);
             bool toTest=cc.add_commande();
 
         if(toTest)
@@ -436,7 +476,187 @@ void MainWindow::on_pushButton_3_clicked()
         ui->lineEdit_idc->clear();
         ui->lineEdit_somme->clear();
         ui->comboBox_name->clear();
+        ui->lineEdit_quantc->clear();
         ui->stackedWidget->setCurrentIndex(1);
         }
 }
-*/
+
+void MainWindow::on_tableC_activated(const QModelIndex &index)
+{
+    QString val=ui->tableC->model()->data(index).toString();
+        QSqlQuery query;
+        query.prepare("SELECT * FROM COMMANDE WHERE ID = '"+val+"'");
+        if(query.exec())
+        {
+            while (query.next())
+            {
+                ui->stackedWidget->setCurrentIndex(18);
+                ui->lineEdit_idc_1->setText(query.value(0).toString());
+                ui->comboBox_name_1->setEditText(query.value(1).toString());
+                ui->lineEdit_total_1->setText(query.value(2).toString());
+                ui->lineEdit_quantc_1->setText(query.value(3).toString());
+                QSqlQueryModel *mod= new QSqlQueryModel();
+                mod->setQuery(("select NAME from GATEAUX"));
+                ui->comboBox_name_1->setModel(mod);
+            }
+        }
+}
+
+void MainWindow::on_pushButton_deletec_clicked()
+{
+    int id = ui->comboBox_3->currentText().toInt();
+    tablecommande.removec(id);
+    ui->tableC->setModel(tablecommande.showc());
+    QSqlQueryModel *mod= new QSqlQueryModel();
+    mod->setQuery(("select ID from COMMANDE"));
+    ui->comboBox_3->setModel(mod);
+}
+
+void MainWindow::on_comboBox_name_currentIndexChanged(const QString &arg1)
+{
+    QString val=ui->comboBox_name->currentText();
+        QSqlQuery query;
+        query.prepare("SELECT PRICE, QUANTITY FROM GATEAUX WHERE NAME = '"+val+"'");
+        if(query.exec())
+        {
+            while (query.next())
+            {
+                ui->lineEdit_setPrice->setText(query.value(0).toString());
+                ui->lineEdit_quantc_2->setText(query.value(1).toString());
+            }
+        }
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    int price = ui->lineEdit_setPrice->text().toInt();
+    int nb = ui->lineEdit_quantc->text().toInt();
+    int total = price * nb;
+    QString t = QString::number(total);
+    ui->lineEdit_somme->setText(t);
+}
+
+void MainWindow::on_pushButton_savemod_clicked()
+{
+    QString ID= ui->lineEdit_idc_1->text();
+    QString GATEAUXNAME=ui->comboBox_name_1->currentText();
+    int SOMME= ui->lineEdit_total_1->text().toInt();
+    int QUANTC= ui->lineEdit_quantc_1->text().toInt();
+    int q= ui->lineEdit_quan_1->text().toInt();
+
+    int x=0;
+    if (x==0)
+    {
+     commandeC cc(ID,GATEAUXNAME,SOMME,QUANTC);
+    bool toTest =cc.modifyc();
+    if(toTest)
+    {
+        QMessageBox::information(nullptr, QObject::tr("Editing Order"),
+                          QObject::tr("Order's info edited successfully"), QMessageBox::Ok);
+    }
+    ui->comboBox_name_1->clear();
+    ui->lineEdit_quantc_1->clear();
+    ui->lineEdit_total_1->clear();
+    ui->stackedWidget->setCurrentIndex(17);
+    ui->tableC->setModel(tablecommande.showc());
+    QSqlQueryModel *mod= new QSqlQueryModel();
+    mod->setQuery(("select ID from COMMANDE"));
+    }
+}
+
+void MainWindow::on_pushButton_calc_clicked()
+{
+    int price = ui->lineEdit_setprice_1->text().toInt();
+    int nb = ui->lineEdit_quantc_1->text().toInt();
+    int total = price * nb;
+    QString t = QString::number(total);
+    ui->lineEdit_total_1->setText(t);
+}
+
+void MainWindow::on_comboBox_name_1_currentIndexChanged(const QString &arg1)
+{
+    QString val=ui->comboBox_name_1->currentText();
+        QSqlQuery query;
+        query.prepare("SELECT PRICE, QUANTITY FROM GATEAUX WHERE NAME = '"+val+"'");
+        if(query.exec())
+        {
+            while (query.next())
+            {
+                ui->lineEdit_setprice_1->setText(query.value(0).toString());
+                ui->lineEdit_quan_1->setText(query.value(1).toString());
+            }
+        }
+}
+
+
+void MainWindow::on_pushButton_search_2_clicked()
+{
+    QString name=ui->lineEdit_search_2->text();
+        ui->tableC->setModel(tablecommande.search(name));
+}
+
+void MainWindow::on_pushButton_search_clicked()
+{
+    QString name=ui->lineEdit_search->text();
+        ui->GatTab->setModel(tabGateaux.search(name));
+}
+
+void MainWindow::on_pushButton_sort_2_clicked()
+{
+    ui->tableC->setModel(tablecommande.show_Asc());
+}
+
+void MainWindow::on_pushButton_sort_clicked()
+{
+    ui->GatTab->setModel(tabGateaux.show_Desc());
+}
+
+void MainWindow::on_pushButton_pdf_clicked()
+{
+    QString filter = "pdf (*.pdf) ";
+    QString file = QFileDialog::getSaveFileName(this, "save in", QDir::homePath(),filter);
+    /*gateauxC().pdfunction(file);*/
+}
+
+void MainWindow::on_pushButton_ex_clicked()
+{
+    QTableView *table;
+                   table = ui->GatTab;
+                   QString filters("Excel  (.xlsx);;All files (.)");
+                   QString defaultFilter("Excel (*.xlsx)");
+                   QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+                                      filters, &defaultFilter);
+                   QFile file(fileName);
+                   QAbstractItemModel *model =  table->model();
+                   if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+                       QTextStream data(&file);
+                       QStringList strList;
+                       for (int i = 0; i < model->columnCount(); i++) {
+                           if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+                               strList.append(""" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + """);
+                           else
+                               strList.append("");
+                       }
+                       data << strList.join(";") << "\n";
+                       for (int i = 0; i < model->rowCount(); i++) {
+                           strList.clear();
+                           for (int j = 0; j < model->columnCount(); j++) {
+                               if (model->data(model->index(i, j)).toString().length() > 0)
+                                   strList.append(""" + model->data(model->index(i, j)).toString() + """);
+                               else
+                                   strList.append("");
+                           }
+                           data << strList.join(";") + "\n";
+                       }
+                       file.close();
+                       QMessageBox::information(this,"Exporter To Excel","Exporter En Excel Avec Succées ");
+                   }
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    QString code = ui->lineEdit_bill->text();
+    QString filter = "pdf (*.pdf) ";
+    QString file = QFileDialog::getSaveFileName(this, "save in", QDir::homePath(),filter);
+    commandeC().pdfunction(code,file);
+}

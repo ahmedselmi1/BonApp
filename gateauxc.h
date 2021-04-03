@@ -18,6 +18,8 @@ public:
     QSqlQueryModel * show();
     bool remove(int);
     bool modify();
+    QSqlQueryModel * search(const QString&);
+    QSqlQueryModel * show_Desc();
 
 private:
     QString ID,NAME;
