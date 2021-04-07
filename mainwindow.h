@@ -128,6 +128,14 @@ private slots:
 
     void on_printtable2_clicked();
 
+    void on_userSearch_textChanged();
+
+    void on_clientsTable_cellClicked(int row, int column);
+
+    void on_toolButton_5_clicked();
+
+    void on_toolButton_6_clicked();
+
 private:
     Ui::MainWindow *ui;
 

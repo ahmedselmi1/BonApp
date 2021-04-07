@@ -12,13 +12,20 @@
 #include <QPrinter>
 #include <QTextDocument>
 #include "qpainter.h"
-
+#include <QAbstractItemModel>
 using std::uint8_t;
 using qrcodegen::QrCode;
 using qrcodegen::QrSegment;
 
 
 using namespace std;
+
+
+int clients::currentsorted = -1;
+int clients::currentsorting = -1;
+int clients::currentpage = 0;
+int clients::maxPerPage = 8;
+
 clients::clients()
 {
 
@@ -174,6 +181,8 @@ void clients::processClientTable(QTableWidget* clientsTable)
      }
 
 
+    clients::currentpage = 0;
+    clients::showPage(clientsTable);
 }
 
 
@@ -234,3 +243,117 @@ void changeSelectedClientCell(QTableWidget* clientsTable,int row, int column)
     query.bindValue(":TEL",clientsTable->item(row,5)->text());
     query.exec();
 }
+
+
+class MyTableWidgetItem : public QTableWidgetItem {
+    public:
+        bool operator <(const QTableWidgetItem &other) const
+        {
+            if(text().toInt() != NULL)
+            return text().toInt() < other.text().toInt();
+            else
+            {
+
+                return text() < other.text();
+            }
+
+        }
+};
+
+void clients::sortAccording(QTableWidget* clientsTable,int logicalIndex)
+{
+     if(clients::currentsorted != logicalIndex)
+     {
+        clients::currentsorting = -1;
+        clients::currentsorted = logicalIndex;
+     }
+     clients::currentsorting = (clients::currentsorting + 1)%2;
+
+    QString text = clientsTable->horizontalHeaderItem(logicalIndex)->text();
+   qDebug() << logicalIndex << text;
+   clientsTable->sortItems(logicalIndex,clients::currentsorting==1?Qt::AscendingOrder:Qt::DescendingOrder);
+
+}
+
+void clients::nextPage(QTableWidget* clientsTable)
+{
+
+    clients::currentpage++;
+    if(clients::currentpage > clientsTable->rowCount()/clients::maxPerPage)clients::currentpage = clientsTable->rowCount()/clients::maxPerPage;
+    clients::showPage(clientsTable);
+
+
+}
+void clients::prevPage(QTableWidget* clientsTable)
+{
+    clients::currentpage--;
+    if(clients::currentpage < 0)clients::currentpage = 0;
+
+    clients::showPage(clientsTable);
+}
+
+void clients::showPage(QTableWidget* clientsTable)
+{
+
+    for(int i=0; i<clientsTable->rowCount(); i++)
+    {
+        clientsTable->showRow(i);
+
+        if(i > clients::currentpage*clients::maxPerPage + (clients::maxPerPage-1) || i < clients::currentpage*clients::maxPerPage)
+             clientsTable->hideRow(i);
+
+    }
+
+
+}
+
+
+
+
+
+
+void clients::searchText(QTableWidget* clientsTable, QString textsearched)
+{
+    map<int,bool> rowsFound;
+
+    for (int row = 0 ; row < clientsTable->rowCount() ; ++row) {
+    for (int col = 0 ; col < clientsTable->columnCount() ; ++col) {
+        clientsTable->item(row, col)->setBackgroundColor(*new QColor(255,255,255));;
+    }
+    }
+    clients::showPage(clientsTable);
+
+    if(textsearched != "")
+    {
+        foreach(QTableWidgetItem* item, clientsTable->findItems(textsearched,Qt::MatchContains))
+        {
+            item->setBackgroundColor(*new QColor(120,120,120));
+            rowsFound[item->row()] = true;
+        }
+
+        for(int i=0; i<clientsTable->rowCount(); i++)
+        {
+            if(rowsFound[i])
+                 {
+                //clientsTable->showRow(i);
+
+            }
+            else
+            {
+                  clientsTable->hideRow(i);
+            }
+
+        }
+    }
+
+    /*
+    map<int,bool>::iterator it;
+
+    for(it=rowsFound.begin(); it!=rowsFound.end(); ++it){
+
+       }
+       */
+
+}
+
+

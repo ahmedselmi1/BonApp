@@ -16,7 +16,7 @@
 #include <QDebug>
 #include "qrcodedisplayer.h"
 #include <QPrinter>
-
+#include <QSound>
 using std::uint8_t;
 using qrcodegen::QrCode;
 using qrcodegen::QrSegment;
@@ -29,6 +29,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
+
+    auto header = ui->clientsTable->horizontalHeader();
+    connect(header, &QHeaderView::sectionClicked, [this](int logicalIndex){
+        clients::sortAccording(ui->clientsTable, logicalIndex);
+    });
+
+
 }
 
 
@@ -36,7 +43,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-
 }
 
 void MainWindow::on_goToOrders_clicked()
@@ -395,6 +401,7 @@ void MainWindow::on_backbtn_2_clicked()
 void MainWindow::on_backbtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(6);
+    ui->userSearch->clear();
 }
 
 void MainWindow::on_ajoutercoupon_clicked()
@@ -423,7 +430,7 @@ void MainWindow::on_pushButton_clicked()
 {
 
     ui->stackedWidget->setCurrentIndex(15);
-
+    //QSound::play("C:/Users/IyedBHD/Desktop/Audio/click1.wav");
 
     clients::processClientTable(ui->clientsTable);
 
@@ -587,5 +594,24 @@ void MainWindow::on_printtable2_clicked()
 
 void MainWindow::on_userSearch_textChanged()
 {
-    //ui->clientsTable->findItems()
+   // ui->clientsTable->items
+
+    clients::searchText(ui->clientsTable,ui->userSearch->toPlainText());
+
+}
+
+void MainWindow::on_clientsTable_cellClicked(int row, int column)
+{
+    qDebug()<<"i clicked "<<row<< " "<< column;
+}
+
+void MainWindow::on_toolButton_5_clicked()
+{
+    clients::nextPage(ui->clientsTable);
+}
+
+void MainWindow::on_toolButton_6_clicked()
+{
+    clients::prevPage(ui->clientsTable);
+
 }
