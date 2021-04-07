@@ -20,6 +20,7 @@ public:
     void setID(int nid){id = nid;}
 
     bool ajouter();
+    bool modifier();
     QSqlQueryModel * afficher();
     bool supprimer(int);
 };

@@ -35,6 +35,7 @@ QSqlQueryModel * recette::afficher()
     model->setHeaderData(0,Qt::Horizontal, QObject::tr("ID"));
     model->setHeaderData(1,Qt::Horizontal, QObject::tr("Nom"));
     model->setHeaderData(2,Qt::Horizontal, QObject::tr("durée"));
+
     return model;
 }
 
@@ -50,7 +51,22 @@ bool recette::supprimer(int id)
     return query.exec();
 }
 
+bool recette::modifier()
+{
+    QSqlQuery query;
 
+    QString res = QString::number(id);
+    QString res2 = QString::number(duree);
+
+
+    query.prepare("update recettes set nom=:nom, duree=:duree where id=:id");
+
+    query.bindValue(":id", res);
+    query.bindValue(":nom", nom);
+    query.bindValue(":duree", res2);
+
+    return query.exec();
+}
 
 
 
