@@ -136,7 +136,15 @@ private slots:
 
     void on_toolButton_6_clicked();
 
+    void on_prevCoupon_clicked();
+
+    void on_couponSearch_textChanged();
+
+    void on_nextCoupon_clicked();
+
 private:
+
+
     Ui::MainWindow *ui;
 
     //louay doc

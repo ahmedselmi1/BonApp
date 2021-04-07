@@ -969,6 +969,7 @@ background: none;
 border: none;
 background-repeat: none;
 }
+
 #pushButton_2:hover {
 
 	background-color: rgba(255, 255, 255, 0.4);
@@ -2812,10 +2813,21 @@ background: none;
 border: none;
 background-repeat: none;
 }
+
+
+
+
+#supprimerClient:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/supprimer0002.png);
+	 border: none;
+}
 #supprimerClient:pressed
 {
-   border-image: url(:/img/img/supprimer0002.png);
-}</string>
+   border-image: url(:/img/img/supprimer0001.png);
+}
+</string>
       </property>
       <property name="text">
        <string/>
@@ -2838,9 +2850,15 @@ background: none;
 border: none;
 background-repeat: none;
 }
+#ajouterclient:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/ajouterclient0002.png);
+	 border: none;
+}
 #ajouterclient:pressed
 {
-   border-image: url(:/img/img/ajouterclient0002.png);
+   border-image: url(:/img/img/ajouterclient0001.png);
 }</string>
       </property>
       <property name="text">
@@ -2864,9 +2882,16 @@ background: none;
 border: none;
 background-repeat: none;
 }
+
+#backbtn:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
 #backbtn:pressed
 {
-   border-image: url(:/img/img/back0002.png);
+   border-image: url(:/img/img/back0001.png);
 }</string>
       </property>
       <property name="text">
@@ -3090,8 +3115,8 @@ background-repeat: none;
      <widget class="QToolButton" name="toolButton_5">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>520</y>
+        <x>100</x>
+        <y>510</y>
         <width>25</width>
         <height>19</height>
        </rect>
@@ -3103,8 +3128,8 @@ background-repeat: none;
      <widget class="QToolButton" name="toolButton_6">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>520</y>
+        <x>70</x>
+        <y>510</y>
         <width>25</width>
         <height>19</height>
        </rect>
@@ -3125,16 +3150,24 @@ background-repeat: none;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#backbtn_2 {
+       <string notr="true">
+#backbtn_2 {
 background-color: transparent;
 border-image: url(:/img/img/back0001.png);
 background: none;
 border: none;
 background-repeat: none;
 }
+
+#backbtn_2:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
 #backbtn_2:pressed
 {
-   border-image: url(:/img/img/back0002.png);
+   border-image: url(:/img/img/back0001.png);
 }</string>
       </property>
       <property name="text">
@@ -3145,7 +3178,7 @@ background-repeat: none;
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>150</y>
+        <y>180</y>
         <width>976</width>
         <height>321</height>
        </rect>
@@ -3231,7 +3264,7 @@ background-repeat: none;
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>480</y>
+        <y>510</y>
         <width>191</width>
         <height>71</height>
        </rect>
@@ -3244,9 +3277,16 @@ background: none;
 border: none;
 background-repeat: none;
 }
+
+#supprimerCoupon:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/supprimer0002.png);
+	 border: none;
+}
 #supprimerCoupon:pressed
 {
-   border-image: url(:/img/img/supprimer0002.png);
+   border-image: url(:/img/img/supprimer0001.png);
 }</string>
       </property>
       <property name="text">
@@ -3257,7 +3297,7 @@ background-repeat: none;
       <property name="geometry">
        <rect>
         <x>850</x>
-        <y>480</y>
+        <y>510</y>
         <width>191</width>
         <height>71</height>
        </rect>
@@ -3270,20 +3310,28 @@ background: none;
 border: none;
 background-repeat: none;
 }
+
+
+#ajoutercoupon:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/ajoutercoupon0002.png);
+	 border: none;
+}
 #ajoutercoupon:pressed
 {
-   border-image: url(:/img/img/ajoutercoupon0002.png);
+   border-image: url(:/img/img/ajoutercoupon0001.png);
 }</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
-     <widget class="QToolButton" name="toolButton">
+     <widget class="QToolButton" name="nextCoupon">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>480</y>
+        <x>100</x>
+        <y>510</y>
         <width>25</width>
         <height>19</height>
        </rect>
@@ -3292,11 +3340,11 @@ background-repeat: none;
        <string>&gt;</string>
       </property>
      </widget>
-     <widget class="QToolButton" name="toolButton_2">
+     <widget class="QToolButton" name="prevCoupon">
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>480</y>
+        <y>510</y>
         <width>25</width>
         <height>19</height>
        </rect>
@@ -3305,27 +3353,11 @@ background-repeat: none;
        <string>&lt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_69">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>480</y>
-        <width>47</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>1/1</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
      <widget class="QPushButton" name="printtable1">
       <property name="geometry">
        <rect>
         <x>440</x>
-        <y>480</y>
+        <y>510</y>
         <width>201</width>
         <height>71</height>
        </rect>
@@ -3348,6 +3380,60 @@ background-repeat: none;
 #printtable1:pressed
 {
    border-image: url(:/img/img/print0001.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="couponSearch">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>140</y>
+        <width>281</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="plainText">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="searchCoupon">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>140</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#searchCoupon {
+background-color: transparent;
+border-image: url(:/img/img/search0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#searchCoupon:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/search0002.png);
+	 border: none;
+}
+#searchCoupon:pressed
+{
+   border-image: url(:/img/img/search0001.png);
 }</string>
       </property>
       <property name="text">
@@ -3702,16 +3788,24 @@ background-repeat: none;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#backbtn_3 {
+       <string notr="true">
+#backbtn_3 {
 background-color: transparent;
 border-image: url(:/img/img/back0001.png);
 background: none;
 border: none;
 background-repeat: none;
 }
+
+#backbtn_3:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
 #backbtn_3:pressed
 {
-   border-image: url(:/img/img/back0002.png);
+   border-image: url(:/img/img/back0001.png);
 }</string>
       </property>
       <property name="text">
@@ -3730,16 +3824,24 @@ background-repeat: none;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#backbtn_4 {
+       <string notr="true">
+#backbtn_4 {
 background-color: transparent;
 border-image: url(:/img/img/back0001.png);
 background: none;
 border: none;
 background-repeat: none;
 }
+
+#backbtn_4:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
 #backbtn_4:pressed
 {
-   border-image: url(:/img/img/back0002.png);
+   border-image: url(:/img/img/back0001.png);
 }</string>
       </property>
       <property name="text">
@@ -3767,19 +3869,6 @@ background-repeat: none;
       <property name="title">
        <string>Ajouter coupon</string>
       </property>
-      <widget class="QLineEdit" name="lineEdit_6">
-       <property name="geometry">
-        <rect>
-         <x>600</x>
-         <y>380</y>
-         <width>113</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color:white;</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_61">
        <property name="geometry">
         <rect>
@@ -3823,7 +3912,7 @@ background-repeat: none;
         <pixmap>../../Dropbox/My PC (DESKTOP-2246E5D)/Downloads/QTResources/qr.png</pixmap>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBox">
+      <widget class="QCheckBox" name="couponTotalSup">
        <property name="geometry">
         <rect>
          <x>510</x>
@@ -3916,7 +4005,7 @@ background-repeat: none;
         </widget>
        </widget>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_7">
+      <widget class="QLineEdit" name="couponTotalSupInput">
        <property name="geometry">
         <rect>
          <x>600</x>
@@ -3927,19 +4016,6 @@ background-repeat: none;
        </property>
        <property name="styleSheet">
         <string notr="true">background-color:white;</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_2">
-       <property name="geometry">
-        <rect>
-         <x>510</x>
-         <y>370</y>
-         <width>91</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Total Inf &lt;</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_64">
@@ -4065,32 +4141,6 @@ background-repeat: none;
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_10">
-       <property name="geometry">
-        <rect>
-         <x>600</x>
-         <y>410</y>
-         <width>113</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color:white;</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_3">
-       <property name="geometry">
-        <rect>
-         <x>510</x>
-         <y>400</y>
-         <width>101</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Date Insc</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="checkBox_4">

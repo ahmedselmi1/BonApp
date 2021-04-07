@@ -128,7 +128,7 @@ void clients::printPDF(QTableWidget* clientsTable)
 
     QTextDocument doc;
 
-    doc.setHtml("");
+doc.setHtml("");
     doc.drawContents(&painter);
 
       painter.end();
@@ -321,7 +321,6 @@ void clients::searchText(QTableWidget* clientsTable, QString textsearched)
         clientsTable->item(row, col)->setBackgroundColor(*new QColor(255,255,255));;
     }
     }
-    clients::showPage(clientsTable);
 
     if(textsearched != "")
     {
@@ -335,7 +334,7 @@ void clients::searchText(QTableWidget* clientsTable, QString textsearched)
         {
             if(rowsFound[i])
                  {
-                //clientsTable->showRow(i);
+                clientsTable->showRow(i);
 
             }
             else
@@ -344,6 +343,11 @@ void clients::searchText(QTableWidget* clientsTable, QString textsearched)
             }
 
         }
+    }
+    else
+    {
+        clients::showPage(clientsTable);
+
     }
 
     /*
@@ -355,5 +359,28 @@ void clients::searchText(QTableWidget* clientsTable, QString textsearched)
        */
 
 }
+
+
+
+
+
+
+bool clients::editClientData(QTableWidget* clientsTable, int row){
+
+
+
+    QSqlQuery query;
+    query.prepare("UPDATE CLIENT SET NOM= :NOM, PRENOM= :PRENOM, ADRESSE= :ADRESSE, TEL= :TEL WHERE ID= :ID");
+
+    query.bindValue(":ID",clientsTable->item(row,0)->text());
+    query.bindValue(":NOM",clientsTable->item(row,1)->text());
+    query.bindValue(":PRENOM",clientsTable->item(row,2)->text());
+    query.bindValue(":ADRESSE",clientsTable->item(row,3)->text());
+    query.bindValue(":EMAIL",clientsTable->item(row,4)->text());
+    query.bindValue(":TEL",clientsTable->item(row,5)->text());
+
+    return query.exec();
+}
+
 
 

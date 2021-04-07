@@ -7,14 +7,21 @@
 #include <QSqlRecord>
 #include <map>
 #include <QMessageBox>
+#include "QrCode.hpp"
+#include <QPainter>
 #include <QPrinter>
 #include <QTextDocument>
 #include "qpainter.h"
+#include <QAbstractItemModel>
 using std::uint8_t;
 
 
 using namespace std;
 
+int coupons::currentsorted = -1;
+int coupons::currentsorting = -1;
+int coupons::currentpage = 0;
+int coupons::maxPerPage = 8;
 coupons::coupons()
 {
 
@@ -129,6 +136,10 @@ void coupons::processCouponTable(QTableWidget* couponsTable)
         row++;
 
      }
+
+    coupons::currentpage = 0;
+    coupons::showPage(couponsTable);
+
 }
 
 
@@ -153,4 +164,127 @@ bool coupons::addCouponToDB(QString code, QString totalNum, QString startDate, Q
 
     return result;
 }
+
+
+
+
+bool coupons::editCouponData(QTableWidget* couponsTable, int row){
+
+
+
+    QSqlQuery query;
+    query.prepare("UPDATE COUPONS SET CODE= :CODE, STARTDATE= TO_DATE(:STARTDATE,'yyyy/mm/dd\"T\"hh24:mi:ss'), ENDDATE= TO_DATE(:ENDDATE,'yyyy/mm/dd\"T\"hh24:mi:ss'), USES= :USES, CONSTRAINTS= :CONSTRAINTS WHERE ID= :ID");
+
+    query.bindValue(":ID",couponsTable->item(row,0)->text());
+    query.bindValue(":CODE",couponsTable->item(row,1)->text());
+    query.bindValue(":USES",couponsTable->item(row,5)->text());
+    query.bindValue(":STARTDATE",couponsTable->item(row,2)->text());
+    query.bindValue(":ENDDATE",couponsTable->item(row,3)->text());
+    query.bindValue(":CONSTRAINTS",couponsTable->item(row,4)->text());
+    qDebug()<<"id:"<<couponsTable->item(row,0)->text()<<" code:"<<couponsTable->item(row,1)->text()<<" uses:"<<couponsTable->item(row,5)->text()<<" dateS:"<<couponsTable->item(row,2)->text()<<" dateE:"<<couponsTable->item(row,3)->text()<<" const:"<<couponsTable->item(row,4)->text();
+
+
+    return query.exec();
+}
+
+
+
+
+
+
+void coupons::sortAccording(QTableWidget* couponsTable,int logicalIndex)
+{
+     if(coupons::currentsorted != logicalIndex)
+     {
+        coupons::currentsorting = -1;
+        coupons::currentsorted = logicalIndex;
+     }
+     coupons::currentsorting = (coupons::currentsorting + 1)%2;
+
+    QString text = couponsTable->horizontalHeaderItem(logicalIndex)->text();
+   qDebug() << logicalIndex << text;
+   couponsTable->sortItems(logicalIndex,coupons::currentsorting==1?Qt::AscendingOrder:Qt::DescendingOrder);
+
+}
+
+void coupons::nextPage(QTableWidget* couponsTable)
+{
+    qDebug()<<"say smth";
+    coupons::currentpage++;
+    if(coupons::currentpage > couponsTable->rowCount()/coupons::maxPerPage)coupons::currentpage = couponsTable->rowCount()/coupons::maxPerPage;
+    coupons::showPage(couponsTable);
+
+
+}
+void coupons::prevPage(QTableWidget* couponsTable)
+{
+    coupons::currentpage--;
+    if(coupons::currentpage < 0)coupons::currentpage = 0;
+
+    coupons::showPage(couponsTable);
+}
+
+void coupons::showPage(QTableWidget* couponsTable)
+{
+
+    for(int i=0; i<couponsTable->rowCount(); i++)
+    {
+        couponsTable->showRow(i);
+
+        if(i > coupons::currentpage*coupons::maxPerPage + (coupons::maxPerPage-1) || i < coupons::currentpage*coupons::maxPerPage)
+             couponsTable->hideRow(i);
+
+    }
+
+
+}
+
+
+
+
+
+
+void coupons::searchText(QTableWidget* couponsTable, QString textsearched)
+{
+    qDebug()<<"eyo";
+    map<int,bool> rowsFound;
+
+    for (int row = 0 ; row < couponsTable->rowCount() ; ++row) {
+    for (int col = 0 ; col < couponsTable->columnCount() ; ++col) {
+        couponsTable->item(row, col)->setBackgroundColor(*new QColor(255,255,255));;
+    }
+    }
+
+    if(textsearched != "")
+    {
+        foreach(QTableWidgetItem* item, couponsTable->findItems(textsearched,Qt::MatchContains))
+        {
+            item->setBackgroundColor(*new QColor(120,120,120));
+            rowsFound[item->row()] = true;
+        }
+
+        for(int i=0; i<couponsTable->rowCount(); i++)
+        {
+            if(rowsFound[i])
+                 {
+                couponsTable->showRow(i);
+
+            }
+            else
+            {
+                  couponsTable->hideRow(i);
+            }
+
+        }
+    }
+    else
+    {
+        coupons::showPage(couponsTable);
+
+    }
+
+}
+
+
+
 

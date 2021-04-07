@@ -36,7 +36,7 @@ public:
     static void prevPage(QTableWidget* clientsTable);
     static void showPage(QTableWidget* clientsTable);
     static void searchText(QTableWidget* clientsTable, QString textsearched);
-
+    static bool editClientData(QTableWidget* clientsTable, int row);
 
 private:
     QString nom, adresse, prenom, email, tel;

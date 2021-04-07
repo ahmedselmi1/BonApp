@@ -97,6 +97,9 @@ void MainWindow::on_goToStock_clicked()
 void MainWindow::on_goToClient_clicked()
 {
     ui->stackedWidget->setCurrentIndex(6);
+
+    QSound::play(":/clicky.wav");
+
 }
 
 void MainWindow::on_back_1_clicked()
@@ -393,6 +396,8 @@ void MainWindow::on_toolButton_modify_clicked()
 
 void MainWindow::on_backbtn_2_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     ui->stackedWidget->setCurrentIndex(6);
 
 
@@ -400,38 +405,53 @@ void MainWindow::on_backbtn_2_clicked()
 
 void MainWindow::on_backbtn_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     ui->stackedWidget->setCurrentIndex(6);
     ui->userSearch->clear();
+
 }
 
 void MainWindow::on_ajoutercoupon_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     ui->stackedWidget->setCurrentIndex(18);
+
 }
 
 void MainWindow::on_ajouterclient_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     ui->stackedWidget->setCurrentIndex(17);
+
 }
 
 void MainWindow::on_backbtn_3_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     ui->stackedWidget->setCurrentIndex(15);
+
 }
 
 void MainWindow::on_backbtn_4_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     ui->stackedWidget->setCurrentIndex(16);
+
 }
 
 
 
 void MainWindow::on_pushButton_clicked()
 {
+    QSound::play(":/clicky.wav");
 
     ui->stackedWidget->setCurrentIndex(15);
-    //QSound::play("C:/Users/IyedBHD/Desktop/Audio/click1.wav");
-
+    lastClientCell = make_pair(-1,-1);
     clients::processClientTable(ui->clientsTable);
 
 
@@ -441,8 +461,11 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     ui->stackedWidget->setCurrentIndex(16);
 
+    lastCouponsCell = make_pair(-1,-1);
 
     coupons::processCouponTable(ui->couponsTable);
 
@@ -459,18 +482,25 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_supprimerClient_clicked()
 {
+    QSound::play(":/clicky.wav");
 
     clients::deleteSelectedClients(ui->clientsTable);
+
 
 }
 
 void MainWindow::on_supprimerCoupon_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     coupons::deleteSelectedCoupons(ui->couponsTable);
+
 }
 
 void MainWindow::on_ajouterClientBtn_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     bool added = clients::addClientToDB(ui->labelClientNom->text(),ui->labelClientPrenom->text(), ui->labelClientAdresse->text(),ui->labelClientEmail->text(),ui->labelClientTel->text());
 
     if(added)
@@ -488,19 +518,10 @@ void MainWindow::on_clientsTable_cellChanged(int row, int column)
 {
     //clients::changeSelectedClientCell(ui->clientsTable, row, column);
     //QDebug
-    qDebug() <<"Edited "<<row<<" and "<< column;
+    //qDebug() <<"Edited "<<row<<" and "<< column;
     if(row == lastClientCell.first && column == lastClientCell.second && column != 0)
     {
-        QSqlQuery query;
-        query.prepare("UPDATE CLIENT SET NOM= :NOM, PRENOM= :PRENOM, ADRESSE= :ADRESSE, TEL= :TEL WHERE ID= :ID");
-
-        query.bindValue(":ID",ui->clientsTable->item(row,0)->text());
-        query.bindValue(":NOM",ui->clientsTable->item(row,1)->text());
-        query.bindValue(":PRENOM",ui->clientsTable->item(row,2)->text());
-        query.bindValue(":ADRESSE",ui->clientsTable->item(row,3)->text());
-        query.bindValue(":EMAIL",ui->clientsTable->item(row,4)->text());
-        query.bindValue(":TEL",ui->clientsTable->item(row,5)->text());
-        query.exec();
+        clients::editClientData(ui->clientsTable,row);
         lastClientCell = make_pair(-1,-1);
 
     }
@@ -528,8 +549,9 @@ void MainWindow::on_labelClientNom_textEdited(const QString &arg1)
 void MainWindow::on_ajoutCoupon_clicked()
 {
 
+    QSound::play(":/clicky.wav");
 
-    bool added = coupons::addCouponToDB(ui->labelCouponCode->text(),ui->labelCouponUses->text(), ui->CouponCalendarStart->selectedDate().toString("yyyy-MM-dd") + " " + ui->CouponTimeStart->time().toString("hh:mm:ss"),ui->CouponCalendarEnd->selectedDate().toString("yyyy-MM-dd") + " " + ui->CouponTimeEnd->time().toString("hh:mm:ss"),"{}");
+    bool added = coupons::addCouponToDB(ui->labelCouponCode->text(),ui->labelCouponUses->text(), ui->CouponCalendarStart->selectedDate().toString("yyyy-MM-dd") + " " + ui->CouponTimeStart->time().toString("hh:mm:ss"),ui->CouponCalendarEnd->selectedDate().toString("yyyy-MM-dd") + " " + ui->CouponTimeEnd->time().toString("hh:mm:ss"),'{' + (ui->couponTotalSup->isChecked()?("\"totalSup\": " + ui->couponTotalSupInput->text()):"") +  '}');
 
     if(added)
     {
@@ -555,16 +577,7 @@ void MainWindow::on_couponsTable_cellChanged(int row, int column)
 {
     if(row == lastCouponsCell.first && column == lastCouponsCell.second && column != 0)
     {
-        QSqlQuery query;
-        query.prepare("UPDATE CLIENT SET CODE= :CODE, USES= :USES, STARTDATE= :STARTDATE, ENDDATE= :ENDDATE, CONSTRAINTS= :CONSTRAINTS WHERE ID= :ID");
-
-        query.bindValue(":ID",ui->couponsTable->item(row,0)->text());
-        query.bindValue(":CODE",ui->couponsTable->item(row,1)->text());
-        query.bindValue(":USES",ui->couponsTable->item(row,2)->text());
-        query.bindValue(":STARTDATE",ui->couponsTable->item(row,3)->text());
-        query.bindValue(":ENDDATE",ui->couponsTable->item(row,4)->text());
-        query.bindValue(":CONSTRAINTS",ui->couponsTable->item(row,5)->text());
-        query.exec();
+        coupons::editCouponData(ui->couponsTable,row);
         lastCouponsCell = make_pair(-1,-1);
 
     }
@@ -586,6 +599,8 @@ void MainWindow::on_printtable1_clicked()
 
 void MainWindow::on_printtable2_clicked()
 {
+    QSound::play(":/clicky.wav");
+
     clients::printPDF(ui->clientsTable);
     QMessageBox::information(nullptr, QObject::tr("PDF Saved"),
                       QObject::tr("PDF file saved as clients.pdf"), QMessageBox::Ok);
@@ -607,11 +622,32 @@ void MainWindow::on_clientsTable_cellClicked(int row, int column)
 
 void MainWindow::on_toolButton_5_clicked()
 {
-    clients::nextPage(ui->clientsTable);
+    if(ui->userSearch->toPlainText() == "")clients::nextPage(ui->clientsTable);
 }
 
 void MainWindow::on_toolButton_6_clicked()
 {
-    clients::prevPage(ui->clientsTable);
+    if(ui->userSearch->toPlainText() == "")clients::prevPage(ui->clientsTable);
 
+}
+
+
+void MainWindow::on_couponSearch_textChanged()
+{
+    qDebug()<<"huuijohi";
+
+    coupons::searchText(ui->couponsTable,ui->couponSearch->toPlainText());
+
+}
+
+
+void MainWindow::on_nextCoupon_clicked()
+{
+    qDebug()<<"hi";
+    if(ui->couponSearch->toPlainText() == "")coupons::nextPage(ui->couponsTable);
+}
+
+void MainWindow::on_prevCoupon_clicked()
+{
+    if(ui->couponSearch->toPlainText() == "")coupons::prevPage(ui->couponsTable);
 }
