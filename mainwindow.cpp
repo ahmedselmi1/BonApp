@@ -36,6 +36,11 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
 
+    auto header2 = ui->couponsTable->horizontalHeader();
+    connect(header2, &QHeaderView::sectionClicked, [this](int logicalIndex){
+        clients::sortAccording(ui->couponsTable, logicalIndex);
+    });
+
 }
 
 

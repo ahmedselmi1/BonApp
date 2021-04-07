@@ -63,6 +63,46 @@ void coupons::printPDF(QTableWidget* couponsTable)
       QPainter painter(&pix);
       couponsTable->render(&painter);
       painter.end();
+      QPrinter printer(QPrinter::PrinterResolution);
+      printer.setOrientation(QPrinter::Portrait);
+      printer.setOutputFormat(QPrinter::PdfFormat);
+      printer.setPaperSize(QPrinter::A4);
+      printer.setOutputFileName("coupons.pdf"); // will be in build folder
+
+
+      QTextDocument doc;
+
+      QString text("<center><img src='C:/Users/IyedBHD/Desktop/bonapp.png' width='150'><br><b>COUPONS</b><br><style>table tr td:empty { width: 80px; } table tr td { padding-top: 10px; padding-bottom: 10px; }</style><table><thead>");
+      text.append("<tr>");
+      for (int i = 0; i < couponsTable->columnCount(); i++) {
+          text.append("<th>").append(couponsTable->horizontalHeaderItem(i)->data(Qt::DisplayRole).toString()).append("</th>");
+      }
+      text.append("</tr></thead>");
+      text.append("<tbody>");
+      for (int i = 0; i < couponsTable->rowCount(); i++) {
+          text.append("<tr>");
+          for (int j = 0; j < couponsTable->columnCount(); j++) {
+              QTableWidgetItem *item = couponsTable->item(i, j);
+              if (!item || item->text().isEmpty()) {
+                  couponsTable->setItem(i, j, new QTableWidgetItem("0"));
+              }
+              text.append("<td>").append(couponsTable->item(i, j)->text()).append("</td>");
+          }
+          text.append("</tr>");
+      }
+      text.append("</tbody></table></center>");
+      doc.setHtml(text);
+      doc.setPageSize(printer.pageRect().size());
+      doc.print(&printer);
+
+}
+/*
+void coupons::printPDF(QTableWidget* couponsTable)
+{
+    QPixmap pix(couponsTable->size());
+      QPainter painter(&pix);
+      couponsTable->render(&painter);
+      painter.end();
       QPrinter printer(QPrinter::HighResolution);
       printer.setOrientation(QPrinter::Landscape);
       printer.setOutputFormat(QPrinter::PdfFormat);
@@ -86,7 +126,7 @@ void coupons::printPDF(QTableWidget* couponsTable)
 
       painter.end();
 
-}
+}*/
 void coupons::processCouponTable(QTableWidget* couponsTable)
 {
 

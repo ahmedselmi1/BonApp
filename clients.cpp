@@ -110,28 +110,37 @@ void clients::printPDF(QTableWidget* clientsTable)
       QPainter painter(&pix);
       clientsTable->render(&painter);
       painter.end();
-      QPrinter printer(QPrinter::HighResolution);
-      printer.setOrientation(QPrinter::Landscape);
+      QPrinter printer(QPrinter::PrinterResolution);
+      printer.setOrientation(QPrinter::Portrait);
       printer.setOutputFormat(QPrinter::PdfFormat);
       printer.setPaperSize(QPrinter::A4);
       printer.setOutputFileName("clients.pdf"); // will be in build folder
 
-      painter.begin(&printer);
-      double xscale = printer.pageRect().width() / double(pix.width());
-      double yscale = printer.pageRect().height() / double(pix.height());
-      double scale = qMin(xscale, yscale);
-      painter.translate(printer.paperRect().x() + printer.pageRect().width() / 2,
-                        printer.paperRect().y() + printer.pageRect().height() / 2);
-      painter.scale(scale, scale);
-      painter.translate(-clientsTable->width() / 2, -clientsTable->height() / 2);
-      painter.drawPixmap(0, 0, pix);
 
-    QTextDocument doc;
+      QTextDocument doc;
 
-doc.setHtml("");
-    doc.drawContents(&painter);
-
-      painter.end();
+      QString text("<center><img src='C:/Users/IyedBHD/Desktop/bonapp.png' width='150'><br><b>CLIENTS</b><br><style>table tr td:empty { width: 80px; } table tr td { padding-top: 10px; padding-bottom: 10px; }</style><table><thead>");
+      text.append("<tr>");
+      for (int i = 0; i < clientsTable->columnCount(); i++) {
+          text.append("<th>").append(clientsTable->horizontalHeaderItem(i)->data(Qt::DisplayRole).toString()).append("</th>");
+      }
+      text.append("</tr></thead>");
+      text.append("<tbody>");
+      for (int i = 0; i < clientsTable->rowCount(); i++) {
+          text.append("<tr>");
+          for (int j = 0; j < clientsTable->columnCount(); j++) {
+              QTableWidgetItem *item = clientsTable->item(i, j);
+              if (!item || item->text().isEmpty()) {
+                  clientsTable->setItem(i, j, new QTableWidgetItem("0"));
+              }
+              text.append("<td>").append(clientsTable->item(i, j)->text()).append("</td>");
+          }
+          text.append("</tr>");
+      }
+      text.append("</tbody></table></center>");
+      doc.setHtml(text);
+      doc.setPageSize(printer.pageRect().size());
+      doc.print(&printer);
 
 }
 
