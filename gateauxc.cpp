@@ -102,4 +102,35 @@ QSqlQueryModel * gateauxC::show_Desc()
      model->setHeaderData(3, Qt::Horizontal, QObject::tr("PRICE"));
      return model;
 }
+QSqlQuery gateauxC::stat_1(int &stat1)
+{
+    stat1=0;
+    QSqlQuery query1("SELECT COUNT(*) FROM GATEAUX WHERE PRICE<20");
+    while(query1.next())
+    {
+        stat1=query1.value(0).toInt();
+    }
+    return query1;
+}
+
+QSqlQuery gateauxC::stat_2(int &stat2)
+{
+    stat2=0;
+    QSqlQuery query1("SELECT COUNT(*) FROM GATEAUX WHERE PRICE<20");
+    while(query1.next())
+    {
+        stat2=query1.value(0).toInt();
+    }
+    return query1;
+}
+QSqlQuery gateauxC::stat_3(int &stat3)
+{
+    stat3=0;
+    QSqlQuery query1("SELECT COUNT(*) FROM GATEAUX WHERE PRICE<20");
+    while(query1.next())
+    {
+        stat3=query1.value(0).toInt();
+    }
+    return query1;
+}
 

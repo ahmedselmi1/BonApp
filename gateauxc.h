@@ -14,6 +14,9 @@ public:
     int get_quantity();
     int get_price();
     bool add_gateaux();
+    QSqlQuery stat_1(int &);
+    QSqlQuery stat_2(int &);
+    QSqlQuery stat_3(int &);
     //func
     QSqlQueryModel * show();
     bool remove(int);

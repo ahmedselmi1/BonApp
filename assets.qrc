@@ -10,19 +10,7 @@
         <file>img/logo.png</file>
         <file>img/icons8-back-80.png</file>
         <file>img/cookies.jpg</file>
-        <file>img/ajouterclient0001.png</file>
-        <file>img/ajouterclient0002.png</file>
-        <file>img/ajoutercoupon0001.png</file>
-        <file>img/ajoutercoupon0002.png</file>
-        <file>img/back0001.png</file>
-        <file>img/back0002.png</file>
-        <file>img/btnClients.png</file>
-        <file>img/btnClients2.png</file>
-        <file>img/btnCoupons0001.png</file>
-        <file>img/modifier0001.png</file>
-        <file>img/modifier0002.png</file>
-        <file>img/supprimer0001.png</file>
-        <file>img/supprimer0002.png</file>
-        <file>img/btnCoupons0002.png</file>
+        <file>img/output-onlinepngtools.png</file>
+        <file>img/click.wav</file>
     </qresource>
 </RCC>

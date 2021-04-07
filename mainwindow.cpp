@@ -12,6 +12,8 @@
 #include <vector>
 #include<QDir>
 #include<QFileDialog>
+#include<QChart>
+#include<QSound>
 
 using namespace std;
 
@@ -26,15 +28,16 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+QSound audio (":/img/img/click.wav");
 void MainWindow::on_goToOrders_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    audio.play();
 }
-
 void MainWindow::on_goToProducts_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    audio.play();
 }
 
 void MainWindow::on_goToStock_clicked()
@@ -84,6 +87,7 @@ void MainWindow::on_showProducts_clicked()
     QSqlQueryModel *mod= new QSqlQueryModel();
     mod->setQuery(("select ID from GATEAUX"));
     ui->comboBox_id->setModel(mod);
+    audio.play();
 }
 
 void MainWindow::on_back_6_clicked()
@@ -365,6 +369,7 @@ void MainWindow::on_toolButton_delete_clicked()
     QSqlQueryModel *mod= new QSqlQueryModel();
     mod->setQuery(("select ID from GATEAUX"));
     ui->comboBox_id->setModel(mod);
+    audio.play();
 }
 
 
@@ -421,16 +426,17 @@ void MainWindow::on_pushButton_2_clicked()
     QSqlQueryModel *mod= new QSqlQueryModel();
     mod->setQuery(("select NAME from GATEAUX"));
     ui->comboBox_name->setModel(mod);
+    audio.play();
 }
 
 void MainWindow::on_pushButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(17);
-    int id = ui->comboBox_3->currentText().toInt();
     ui->tableC->setModel(tablecommande.showc());
     QSqlQueryModel *mod= new QSqlQueryModel();
     mod->setQuery(("select ID from COMMANDE"));
     ui->comboBox_3->setModel(mod);
+    audio.play();
 }
 
 void MainWindow::on_pushButton_3_clicked()
@@ -510,6 +516,7 @@ void MainWindow::on_pushButton_deletec_clicked()
     QSqlQueryModel *mod= new QSqlQueryModel();
     mod->setQuery(("select ID from COMMANDE"));
     ui->comboBox_3->setModel(mod);
+    audio.play();
 }
 
 void MainWindow::on_comboBox_name_currentIndexChanged(const QString &arg1)
@@ -534,6 +541,7 @@ void MainWindow::on_pushButton_4_clicked()
     int total = price * nb;
     QString t = QString::number(total);
     ui->lineEdit_somme->setText(t);
+    audio.play();
 }
 
 void MainWindow::on_pushButton_savemod_clicked()
@@ -542,7 +550,7 @@ void MainWindow::on_pushButton_savemod_clicked()
     QString GATEAUXNAME=ui->comboBox_name_1->currentText();
     int SOMME= ui->lineEdit_total_1->text().toInt();
     int QUANTC= ui->lineEdit_quantc_1->text().toInt();
-    int q= ui->lineEdit_quan_1->text().toInt();
+    //int q= ui->lineEdit_quan_1->text().toInt();
 
     int x=0;
     if (x==0)
@@ -571,6 +579,7 @@ void MainWindow::on_pushButton_calc_clicked()
     int total = price * nb;
     QString t = QString::number(total);
     ui->lineEdit_total_1->setText(t);
+    audio.play();
 }
 
 void MainWindow::on_comboBox_name_1_currentIndexChanged(const QString &arg1)
@@ -593,22 +602,26 @@ void MainWindow::on_pushButton_search_2_clicked()
 {
     QString name=ui->lineEdit_search_2->text();
         ui->tableC->setModel(tablecommande.search(name));
+        audio.play();
 }
 
 void MainWindow::on_pushButton_search_clicked()
 {
     QString name=ui->lineEdit_search->text();
         ui->GatTab->setModel(tabGateaux.search(name));
+        audio.play();
 }
 
 void MainWindow::on_pushButton_sort_2_clicked()
 {
     ui->tableC->setModel(tablecommande.show_Asc());
+    audio.play();
 }
 
 void MainWindow::on_pushButton_sort_clicked()
 {
     ui->GatTab->setModel(tabGateaux.show_Desc());
+    audio.play();
 }
 
 void MainWindow::on_pushButton_pdf_clicked()
@@ -616,6 +629,7 @@ void MainWindow::on_pushButton_pdf_clicked()
     QString filter = "pdf (*.pdf) ";
     QString file = QFileDialog::getSaveFileName(this, "save in", QDir::homePath(),filter);
     /*gateauxC().pdfunction(file);*/
+    audio.play();
 }
 
 void MainWindow::on_pushButton_ex_clicked()
@@ -659,4 +673,71 @@ void MainWindow::on_pushButton_5_clicked()
     QString filter = "pdf (*.pdf) ";
     QString file = QFileDialog::getSaveFileName(this, "save in", QDir::homePath(),filter);
     commandeC().pdfunction(code,file);
+    audio.play();
+}
+
+void MainWindow::on_pushButton_stat_clicked()
+{   int stat1,stat2,stat3;
+
+    gateauxC().stat_1(stat1);
+    gateauxC().stat_2(stat2);
+    gateauxC().stat_3(stat3);
+    QPieSeries *series = new QPieSeries();
+
+    series->append("price lower than 20",stat1);
+    series->append("price between 20 and 50",stat2);
+    series->append("price higher than 50",stat3);
+
+    series->setHoleSize(0.5);
+    series->setPieSize(0.8);
+
+    QPieSlice *first = series->slices().at(0);
+    QPieSlice *second = series->slices().at(1);
+    QPieSlice *third = series->slices().at(2);
+
+    first->setLabelVisible(true);
+    second->setLabelVisible(true);
+    third->setLabelVisible(true);
+
+    first->setBrush(Qt::red);
+    second->setBrush(Qt::yellow);
+    third->setBrush(Qt::green);
+
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle("pie chart");
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignBottom);
+    chart->setAnimationOptions(QChart::AllAnimations);
+
+    QChartView * chartview = new QChartView(chart);
+    chartview->setParent(ui->stat_c);
+    ui->stackedWidget->setCurrentIndex(19);
+    audio.play();
+}
+
+void MainWindow::on_back_15_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(4);
+}
+
+
+void MainWindow::on_back_16_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_back_17_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_back_18_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_back_19_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(17);
 }

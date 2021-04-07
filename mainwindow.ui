@@ -89,12 +89,18 @@ background-color: rgb(0, 0, 0, 0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">
+       <string notr="true">#goToOrders {
 color: rgb(255, 255, 255);
 background-color: rgb(120, 63, 4);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
-
+}
+#goToOrders:hover {
+background-color: rgb(170, 0, 0);
+}
+#goToOrders:pressed {
+background-color: rgb(0, 85, 127);
+}
 </string>
       </property>
       <property name="text">
@@ -124,10 +130,18 @@ font: 20pt &quot;MV Boli&quot;;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(230, 145, 56);
+       <string notr="true">#goToProducts {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#goToProducts:hover {
+	background-color: rgb(255, 85, 0);
+}
+#goToProducts:pressed {
+	background-color: rgb(255, 170, 0);
+}
 </string>
       </property>
       <property name="text">
@@ -157,10 +171,18 @@ font: 20pt &quot;MV Boli&quot;;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
+       <string notr="true">#goToStock {
+color: rgb(255, 255, 255);
 background-color: rgb(120, 63, 4);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#goToStock:hover {
+background-color: rgb(170, 0, 0);
+}
+#goToStock:pressed {
+background-color: rgb(0, 85, 127);
+}
 </string>
       </property>
       <property name="text">
@@ -190,10 +212,18 @@ font: 20pt &quot;MV Boli&quot;;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
+       <string notr="true">#goToEmployee {
+color: rgb(255, 255, 255);
 background-color: rgb(120, 63, 4);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#goToEmployee:hover {
+background-color: rgb(170, 0, 0);
+}
+#goToEmployee:pressed {
+background-color: rgb(0, 85, 127);
+}
 </string>
       </property>
       <property name="text">
@@ -223,10 +253,18 @@ font: 20pt &quot;MV Boli&quot;;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(230, 145, 56);
+       <string notr="true">#goToClient {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#goToClient:hover {
+	background-color: rgb(255, 85, 0);
+}
+#goToClient:pressed {
+	background-color: rgb(255, 170, 0);
+}
 </string>
       </property>
       <property name="text">
@@ -349,10 +387,18 @@ background-color: rgb(0, 0, 0, 0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(230, 145, 56);
+       <string notr="true">#pushButton {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#pushButton:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton:pressed {
+	background-color: rgb(255, 170, 0);
+}
 </string>
       </property>
       <property name="text">
@@ -369,10 +415,18 @@ font: 20pt &quot;MV Boli&quot;;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
+       <string notr="true">#pushButton_2 {
+color: rgb(255, 255, 255);
 background-color: rgb(120, 63, 4);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#pushButton_2:hover {
+background-color: rgb(170, 0, 0);
+}
+#pushButton_2:pressed {
+background-color: rgb(0, 85, 127);
+}
 </string>
       </property>
       <property name="text">
@@ -459,10 +513,18 @@ background-color: rgb(0, 0, 0, 0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
+       <string notr="true">#addProduct {
+color: rgb(255, 255, 255);
 background-color: rgb(120, 63, 4);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#addProduct:hover {
+background-color: rgb(170, 0, 0);
+}
+#addProduct:pressed {
+background-color: rgb(0, 85, 127);
+}
 </string>
       </property>
       <property name="text">
@@ -492,10 +554,18 @@ font: 20pt &quot;MV Boli&quot;;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(230, 145, 56);
+       <string notr="true">#showProducts {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#showProducts:hover {
+	background-color: rgb(255, 85, 0);
+}
+#showProducts:pressed {
+	background-color: rgb(255, 170, 0);
+}
 </string>
       </property>
       <property name="text">
@@ -771,10 +841,19 @@ color: rgb(255, 255, 255);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(230, 145, 56);
+       <string notr="true">#toolButton_save {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
+}
+#toolButton_save:hover {
+	background-color: rgb(255, 85, 0);
+}
+#toolButton_save:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Save</string>
@@ -903,10 +982,19 @@ font: 40pt &quot;MV Boli&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(230, 145, 56);
+       <string notr="true">#toolButton_delete {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+	background-color: rgb(230, 145, 56);
+border-radius: 28px;
+font: 22pt &quot;MV Boli&quot;;
+}
+#toolButton_delete:hover {
+	background-color: rgb(255, 85, 0);
+}
+#toolButton_delete:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Delete</string>
@@ -960,10 +1048,19 @@ font: 8pt &quot;Eras Medium ITC&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(230, 145, 56);
+       <string notr="true">#pushButton_search {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+	background-color: rgb(230, 145, 56);
+border-radius: 8px;
+font: 10pt &quot;MV Boli&quot;;
+}
+#pushButton_search:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton_search:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Search</string>
@@ -979,10 +1076,19 @@ border-radius: 30px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(230, 145, 56);
+       <string notr="true">#pushButton_sort {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+	background-color: rgb(230, 145, 56);
+border-radius: 8px;
+font: 10pt &quot;MV Boli&quot;;
+}
+#pushButton_sort:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton_sort:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Sort</string>
@@ -1024,6 +1130,25 @@ border-radius: 30px;</string>
       </property>
       <property name="text">
        <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_stat">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>480</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(230, 145, 56);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;</string>
+      </property>
+      <property name="text">
+       <string>Stat</string>
       </property>
      </widget>
     </widget>
@@ -2565,10 +2690,19 @@ font: 40pt &quot;MV Boli&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(230, 145, 56);
+       <string notr="true">#toolButton_savemod {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+	background-color: rgb(230, 145, 56);
+border-radius: 28px;
+font: 20pt &quot;MV Boli&quot;;
+}
+#toolButton_savemod:hover {
+	background-color: rgb(255, 85, 0);
+}
+#toolButton_savemod:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Save</string>
@@ -2735,6 +2869,32 @@ color: rgb(255, 255, 255);</string>
         <string>Id</string>
        </property>
       </widget>
+     </widget>
+     <widget class="QToolButton" name="back_15">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>540</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="AddOrder">
@@ -2950,13 +3110,48 @@ color: rgb(255, 255, 255);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(230, 145, 56);
+       <string notr="true">#pushButton_3 {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+	background-color: rgb(230, 145, 56);
+border-radius: 18px;
+font: 15pt &quot;MV Boli&quot;;
+}
+#pushButton_3:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton_3:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Save</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="back_16">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>530</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
       </property>
      </widget>
     </widget>
@@ -3003,10 +3198,19 @@ color: rgb(255, 255, 255);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(230, 145, 56);
+       <string notr="true">#pushButton_deletec {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+	background-color: rgb(230, 145, 56);
+border-radius: 20px;
+font: 20pt &quot;MV Boli&quot;;
+}
+#pushButton_deletec:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton_deletec:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Delete</string>
@@ -3035,10 +3239,19 @@ border-radius: 30px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(230, 145, 56);
+       <string notr="true">#pushButton_search_2 {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+	background-color: rgb(230, 145, 56);
+border-radius: 8px;
+font: 10pt &quot;MV Boli&quot;;
+}
+#pushButton_search_2:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton_search_2:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Search</string>
@@ -3069,6 +3282,21 @@ font: 8pt &quot;Eras Medium ITC&quot;;</string>
         <height>23</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">#pushButton_sort_2 {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 8px;
+font: 10pt &quot;MV Boli&quot;;
+}
+#pushButton_sort_2:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton_sort_2:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
+      </property>
       <property name="text">
        <string>Sort</string>
       </property>
@@ -3083,10 +3311,19 @@ font: 8pt &quot;Eras Medium ITC&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(230, 145, 56);
+       <string notr="true">#pushButton_5 {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+	background-color: rgb(230, 145, 56);
+border-radius: 8px;
+font: 12pt &quot;MV Boli&quot;;
+}
+#pushButton_5:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton_5:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Bill</string>
@@ -3106,6 +3343,32 @@ border-radius: 30px;</string>
 border-color: rgb(230, 145, 56);
 color: rgb(255, 255, 255);
 font: 8pt &quot;Eras Medium ITC&quot;;</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="back_17">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>530</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
       </property>
      </widget>
     </widget>
@@ -3197,8 +3460,19 @@ color: rgb(255, 255, 255);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(120, 63, 4);
-color: rgb(255, 255, 255);</string>
+        <string notr="true">#pushButton_calc {
+color: rgb(255, 255, 255);
+background-color: rgb(120, 63, 4);
+border-radius: 8px;
+font: 10pt &quot;MV Boli&quot;;
+}
+#pushButton_calc:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton_calc:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
        </property>
        <property name="text">
         <string>Total cal</string>
@@ -3298,8 +3572,19 @@ color: rgb(255, 255, 255);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(120, 63, 4);
-color: rgb(255, 255, 255);</string>
+       <string notr="true">#pushButton_savemod {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 15px;
+font: 15pt &quot;MV Boli&quot;;
+}
+#pushButton_savemod:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButton_savemod:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Save</string>
@@ -3321,6 +3606,74 @@ font: 40pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
        <string>Edit The Order</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="back_18">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>530</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page">
+     <widget class="QFrame" name="stat_c">
+      <property name="geometry">
+       <rect>
+        <x>149</x>
+        <y>50</y>
+        <width>651</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255,20%);</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout"/>
+     </widget>
+     <widget class="QToolButton" name="back_19">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>530</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
       </property>
      </widget>
     </widget>

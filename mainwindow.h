@@ -5,6 +5,9 @@
 #include <employee.h>
 #include <gateauxc.h>
 #include <commandec.h>
+#include <QtCharts>
+#include <QChartView>
+#include <QPieSeries>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -110,6 +113,18 @@ private slots:
     void on_pushButton_ex_clicked();
 
     void on_pushButton_5_clicked();
+
+    void on_pushButton_stat_clicked();
+
+    void on_back_15_clicked();
+
+    void on_back_16_clicked();
+
+    void on_back_17_clicked();
+
+    void on_back_18_clicked();
+
+    void on_back_19_clicked();
 
 private:
     Ui::MainWindow *ui;
