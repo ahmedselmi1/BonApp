@@ -23,7 +23,14 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>BonApp</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Resources.qrc">
+    <normaloff>:/logo app.png</normaloff>:/logo app.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QStackedWidget" name="stackedWidget">
@@ -32,13 +39,25 @@
       <x>0</x>
       <y>0</y>
       <width>1000</width>
-      <height>600</height>
+      <height>611</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget #main,#recettesWidget,#queueWidget {
+
+
+	border-image:url(:/cookies.jpg) 0 0 0 0 stretch stretch;
+
+
+}</string>
+    </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="main">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
      <widget class="QPushButton" name="recettesBtn">
       <property name="geometry">
        <rect>
@@ -49,7 +68,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image:url(:/Downloads/bonapp1/bonapp1/Resources/btnRecettes.png);</string>
+       <string notr="true">border-image:url(:/btnRecettes.png) 0 0 0 0 stretch stretch;</string>
       </property>
       <property name="text">
        <string/>
@@ -65,7 +84,7 @@
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image:url(:/Downloads/bonapp1/bonapp1/Resources/btnQueue.png);</string>
+       <string notr="true">border-image:url(:/btnQueue.png) 0 0 0 0 stretch stretch;</string>
       </property>
       <property name="text">
        <string/>
@@ -73,256 +92,300 @@
      </widget>
     </widget>
     <widget class="QWidget" name="recettesWidget">
-     <widget class="QTabWidget" name="recettesTab">
+     <widget class="QToolButton" name="toolButton">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>10</y>
-        <width>900</width>
-        <height>600</height>
+        <x>610</x>
+        <y>30</y>
+        <width>31</width>
+        <height>31</height>
        </rect>
       </property>
-      <property name="currentIndex">
-       <number>1</number>
+      <property name="text">
+       <string>X</string>
       </property>
-      <widget class="QWidget" name="rajouterTab">
-       <attribute name="title">
-        <string>Ajouter</string>
-       </attribute>
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>50</y>
-          <width>47</width>
-          <height>14</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>ID</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>100</y>
-          <width>47</width>
-          <height>14</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Nom</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_3">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>150</y>
-          <width>47</width>
-          <height>14</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Durée</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="rajouterBtn">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>140</y>
-          <width>131</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Ajouter</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="rajouterIdTxt">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>50</y>
-          <width>100</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="rajouterNomTxt">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>100</y>
-          <width>100</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QTimeEdit" name="rajouterTime">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>150</y>
-          <width>100</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="currentSection">
-         <enum>QDateTimeEdit::HourSection</enum>
-        </property>
-        <property name="displayFormat">
-         <string>HH:mm:ss</string>
-        </property>
-        <property name="time">
-         <time>
-          <hour>0</hour>
-          <minute>20</minute>
-          <second>30</second>
-         </time>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="rafficherTab">
-       <attribute name="title">
-        <string>Consulter Recettes</string>
-       </attribute>
-       <widget class="QTableView" name="rafficherTable">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>69</y>
-          <width>800</width>
-          <height>481</height>
-         </rect>
-        </property>
-        <property name="contextMenuPolicy">
-         <enum>Qt::CustomContextMenu</enum>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>29</y>
-          <width>191</width>
-          <height>21</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>30</y>
-          <width>71</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Recherche :</string>
-        </property>
-       </widget>
-       <widget class="QToolButton" name="toolButton">
-        <property name="geometry">
-         <rect>
-          <x>340</x>
-          <y>30</y>
-          <width>23</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>X</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>490</x>
-          <y>30</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>pdf</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="rsupprimerTab">
-       <attribute name="title">
-        <string>Supprimer</string>
-       </attribute>
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>90</y>
-          <width>47</width>
-          <height>14</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>ID</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="rsupprimerBtn">
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>80</y>
-          <width>131</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Supprimer</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="rsupprimerTxt">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>90</y>
-          <width>113</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>35</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+background-color: rgba(255, 255, 255, 200);</string>
+      </property>
+      <property name="text">
+       <string>Recherche :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>30</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTableView" name="rafficherTable">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>79</y>
+        <width>800</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::CustomContextMenu</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="returnbtn1_2">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>20</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image:url(:/back0001.png) 0 0 0 0 stretch stretch;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="queueWidget">
-     <widget class="QTabWidget" name="queueTab">
+     <widget class="QTableView" name="queueTableView">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>10</y>
-        <width>900</width>
-        <height>600</height>
+        <x>60</x>
+        <y>60</y>
+        <width>501</width>
+        <height>511</height>
        </rect>
       </property>
-      <property name="currentIndex">
-       <number>2</number>
+     </widget>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>60</y>
+        <width>261</width>
+        <height>191</height>
+       </rect>
       </property>
-      <widget class="QWidget" name="qajouterTab">
-       <attribute name="title">
-        <string>Tab 1</string>
-       </attribute>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+      </property>
+      <property name="title">
+       <string>Ajouter</string>
+      </property>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>150</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Ajouter</string>
+       </property>
       </widget>
-      <widget class="QWidget" name="qafficherTab">
-       <attribute name="title">
-        <string>Page</string>
-       </attribute>
+      <widget class="QLineEdit" name="lineEdit_2">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>39</y>
+         <width>113</width>
+         <height>21</height>
+        </rect>
+       </property>
       </widget>
-      <widget class="QWidget" name="qsupprimerTab">
-       <attribute name="title">
-        <string>Tab 2</string>
-       </attribute>
+      <widget class="QLineEdit" name="lineEdit_3">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>100</y>
+         <width>113</width>
+         <height>20</height>
+        </rect>
+       </property>
       </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>47</width>
+         <height>14</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Recette</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>100</y>
+         <width>47</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Etat</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>470</y>
+        <width>261</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Supprimer</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>270</y>
+        <width>261</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 200);</string>
+      </property>
+      <property name="title">
+       <string>Modifier</string>
+      </property>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>150</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Enregistrer</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_4">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>39</y>
+         <width>113</width>
+         <height>21</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_5">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>100</y>
+         <width>113</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>47</width>
+         <height>14</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Recette</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>100</y>
+         <width>47</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Etat</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>520</y>
+        <width>41</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/pdflogo.png) 0 0 0 0 stretch stretch;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>520</y>
+        <width>211</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tout Supprimer</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="returnbtn1">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image:url(:/back0001.png) 0 0 0 0 stretch stretch;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
     </widget>
    </widget>
@@ -339,6 +402,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

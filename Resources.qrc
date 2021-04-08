@@ -1,6 +1,11 @@
 <RCC>
     <qresource prefix="/">
-        <file>../../Downloads/bonapp1/bonapp1/Resources/btnQueue.png</file>
-        <file>../../Downloads/bonapp1/bonapp1/Resources/btnRecettes.png</file>
+        <file>btnQueue.png</file>
+        <file>btnRecettes.png</file>
+        <file>back0001.png</file>
+        <file>cookies.jpg</file>
+        <file>pdflogo.png</file>
+        <file>logo.png</file>
+        <file>logo app.png</file>
     </qresource>
 </RCC>

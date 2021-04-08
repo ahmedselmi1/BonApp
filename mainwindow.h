@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "recette.h"
+#include "queue.h"
 #include <QSqlTableModel>
 #include <QItemSelectionModel>
 #include <QSortFilterProxyModel>
@@ -24,13 +25,9 @@ private slots:
 
     void on_queueBtn_clicked();
 
-    void on_rajouterBtn_clicked();
 
-    void on_recettesTab_currentChanged(int index);
 
-    void on_rsupprimerBtn_clicked();
 
-    void on_rafficherTable_doubleClicked(const QModelIndex &index);
 
     void on_rafficherTable_customContextMenuRequested(const QPoint &pos);
 
@@ -47,6 +44,24 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_queueTableView_pressed(const QModelIndex &index);
+
+    void on_queueTableView_clicked(const QModelIndex &index);
+
+    void on_pushButton_4_clicked();
+
+    void on_returnbtn1_clicked();
+
+    void on_returnbtn1_2_clicked();
+
+    void on_pushButton_3_pressed();
+
 private:
     Ui::MainWindow *ui;
 
@@ -57,5 +72,7 @@ private:
     bool isAscending = false;
 
     recette Rtmp;
+    queue Qtmp;
+    int lastQueue = -1;
 };
 #endif // MAINWINDOW_H

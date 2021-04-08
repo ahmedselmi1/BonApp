@@ -5,10 +5,9 @@
 #include <QDebug>
 #include<QFileDialog>
 #include<QPrinter>
-
 #include<QTextDocument>
-
-
+#include"dateformatdelegate.h"
+#include "queue.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -23,6 +22,10 @@ MainWindow::MainWindow(QWidget *parent)
     tableModel->select();
     ui->rafficherTable->setModel(tableModel);
     //ui->rafficherTable->setModel(Rtmp.afficher());
+    ui->queueTableView->setModel(Qtmp.afficher());
+
+    ui->rafficherTable->setColumnHidden(3, true);
+    ui->rafficherTable->setItemDelegateForColumn(2, new DateFormatDelegate(this));
 
     auto header = ui->rafficherTable->horizontalHeader();
     connect(header, &QHeaderView::sectionClicked, [this](int logicalIndex){
@@ -49,89 +52,8 @@ void MainWindow::on_queueBtn_clicked()
     ui->stackedWidget->setCurrentIndex(2);
 }
 
-void MainWindow::on_rajouterBtn_clicked()
-{
-    int id = ui->rajouterIdTxt->text().toInt();
-    QString nom = ui->rajouterNomTxt->text();
-    int duree = ui->rajouterTime->time().second()+ui->rajouterTime->time().minute()*60+ui->rajouterTime->time().hour()*60*60;
 
-    recette r(id,nom,duree);
-    bool test = false;
-    if(rmodif) test = r.modifier();
-    else test = r.ajouter();
 
-    if(rmodif){
-
-        if(test)
-        {
-            QMessageBox::information(nullptr, QObject::tr("OK"), QObject::tr("Modification effectué\nClick Cancel to exit."), QMessageBox::Cancel);
-        }
-        else
-        {
-            QMessageBox::critical(nullptr, QObject::tr("Not OK"), QObject::tr("Modification non effectué\nClick Cancel to exit."), QMessageBox::Cancel);
-        }
-    }
-    else
-    {
-        if(test)
-        {
-            QMessageBox::information(nullptr, QObject::tr("OK"), QObject::tr("Ajout effectué\nClick Cancel to exit."), QMessageBox::Cancel);
-        }
-        else
-        {
-            QMessageBox::critical(nullptr, QObject::tr("Not OK"), QObject::tr("Ajout non effectué\nClick Cancel to exit."), QMessageBox::Cancel);
-        }
-    }
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-void MainWindow::on_recettesTab_currentChanged(int index)
-{
-    if(index!=0)
-    {
-        rmodif = false;
-    }
-    if(index==1){
-        //ui->rafficherTable->setModel(Rtmp.afficher());
-    }
-}
-
-void MainWindow::on_rsupprimerBtn_clicked()
-{
-    int id = ui->rsupprimerTxt->text().toInt();
-    bool test = Rtmp.supprimer(id);
-
-    if(test)
-    {
-        QMessageBox::information(nullptr, QObject::tr("OK"), QObject::tr("Suppression effectué\nClick Cancel to exit."), QMessageBox::Cancel);
-    }
-    else
-    {
-        QMessageBox::critical(nullptr, QObject::tr("Not OK"), QObject::tr("Suppression non effectué\nClick Cancel to exit."), QMessageBox::Cancel);
-    }
-}
-
-void MainWindow::on_rafficherTable_doubleClicked(const QModelIndex &index)
-{
-    if(true) return;
-    QVariant valId = ui->rafficherTable->model()->data(ui->rafficherTable->model()->index(index.row(),0));
-    QVariant valNom = ui->rafficherTable->model()->data(ui->rafficherTable->model()->index(index.row(),1));
-    QVariant valDuree = ui->rafficherTable->model()->data(ui->rafficherTable->model()->index(index.row(),2));
-
-    int heures = (valDuree.toInt())/(60*60);
-
-    int minutes = ((valDuree.toInt()-heures*60*60)%60)/60;
-
-    int secondes = ((valDuree.toInt()-heures*60*60-minutes*60));
-    ui->rajouterIdTxt->setText(QString::number(valId.toInt()));
-    ui->rajouterNomTxt->setText(valNom.toString());
-    QTime ctime;
-
-    ctime.setHMS(heures, minutes, secondes);
-    ui->rajouterTime->setTime(ctime);
-    rmodif = true;
-    ui->recettesTab->setCurrentIndex(0);
-}
 
 void MainWindow::slotDeleteRow()
 {
@@ -226,34 +148,132 @@ void MainWindow::on_toolButton_clicked()
 void MainWindow::on_pushButton_clicked()
 {
     QDialog QFileDialog;
-        QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
-                if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append("reclamation.pdf"); }
+    QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
+    if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
 
-                QPrinter printer(QPrinter::PrinterResolution);
-                printer.setOutputFormat(QPrinter::PdfFormat);
-                printer.setPaperSize(QPrinter::A4);
-                printer.setOutputFileName(fileName);
+    QPrinter printer(QPrinter::PrinterResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setPaperSize(QPrinter::A4);
+    printer.setOutputFileName(fileName);
 
-                /*QPrinter printer;*/
-                ui->rafficherTable->render(&printer);
-
+    /*QPrinter printer;*/
 
 
 
-                QTextDocument doc;
-                QSqlQuery q;
-                q.prepare("SELECT * FROM reclamation ");
-                q.exec();
-                QString pdf="<br> <img src='D:/Esprit/2A2/projet c++/logo/debug2.png' height='42' width='144'/> <h1  style='color:red'>LISTE DES RECLAMATION  <br></h1>\n <br> <table>  <tr>  <th> CODE </th> <th> SUJET </th> <th> COMMENTAIRE </th> <th> DATE AJOUT </th>  </tr>" ;
 
 
-                while ( q.next()) {
+    QTextDocument doc;
+    QSqlQuery q;
+    q.prepare("SELECT * FROM FILEATTENTE");
+    q.exec();
+    QString pdf="<br> <img src='C:\\Users\\Ahmed2\\Documents\\GitHub\\BonApp\\logo.png' height='42' width='144'/> <b><h1  style='color:red'>File d'attente :  </b><br></h1>\n <br> <table>  <tr>  <th> ID </th> <th> RECETTE </th> <th> ETAT </th>  </tr>" ;
 
-                    pdf= pdf+ " <br> <tr> <td>"+ q.value(0).toString()+"    </td>   <td>   " + q.value(1).toString() +"</td>   <td>" +q.value(2).toString() +"  "" " "</td>   <td>"+q.value(3).toString()+"</td>    <td>"+q.value(4).toString()+" </td>" ;
+    while ( q.next()) {
+        pdf = pdf+ " <br> <tr> <td>"+ q.value(0).toString()+"    </td>   <td>   " + q.value(1).toString() +"</td>   <td>" +q.value(2).toString() +"  "" " "</td>";
+    }
 
+    doc.setHtml(pdf);
+    doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+    doc.print(&printer);
+    //ui->rafficherTable->render(&printer);
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    queue nqueue = queue(0, ui->lineEdit_2->text(), ui->lineEdit_3->text());
+
+    nqueue.ajouter();
+
+    ui->queueTableView->setModel(Qtmp.afficher());
+
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    if(ui->queueTableView->selectionModel()->hasSelection())
+    {
+
+
+            QModelIndexList selection = ui->queueTableView->selectionModel()->selectedRows();
+            qDebug() << "selection count : " << selection.count();
+
+
+            for(int i=0; i< selection.count(); i++)
+            {
+                if(i==0)
+                {
+                    if (QMessageBox::warning(this,
+                                             tr("Supprimer lignes"),
+                                             tr("Etes vous sur de bien vouloir supprimer les lignes selectionnés définitivement ?"),
+                                             QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)
+                    {
+                        break;
+                    }
                 }
-                doc.setHtml(pdf);
-                doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
-             /*   doc.print(&printer);*/
-                ui->rafficherTable->render(&printer);
+                QModelIndex index = selection.at(i);
+                int id = ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),0)).toString().toInt();
+                qDebug() << "deleting queue id : " << id;
+                Qtmp.supprimer(id);
+            }
+
+
+    }
+
+    ui->queueTableView->setModel(Qtmp.afficher());
+
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    if(ui->queueTableView->selectionModel()->hasSelection())
+    {
+
+        if (QMessageBox::warning(this,
+                                 tr("Supprimer toutes les taches"),
+                                 tr("Etes vous sur de bien vouloir supprimer toutes les lignes définitivement ?"),
+                                 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+        {
+            Qtmp.supprimer(-1);
+        }
+
+    }
+
+    ui->queueTableView->setModel(Qtmp.afficher());
+}
+
+void MainWindow::on_queueTableView_pressed(const QModelIndex &index)
+{
+
+}
+
+void MainWindow::on_queueTableView_clicked(const QModelIndex &index)
+{
+    lastQueue = ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),0)).toString().toInt();
+    ui->lineEdit_4->setText(ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),1)).toString());
+    ui->lineEdit_5->setText(ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),2)).toString());
+    ui->pushButton_4->setEnabled(true);
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    queue nqueue = queue(lastQueue, ui->lineEdit_4->text(), ui->lineEdit_5->text());
+
+    nqueue.modifier();
+
+    ui->queueTableView->setModel(Qtmp.afficher());
+}
+
+void MainWindow::on_returnbtn1_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_returnbtn1_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_3_pressed()
+{
+
 }

@@ -17,13 +17,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     connection.cpp \
+    dateformatdelegate.cpp \
     main.cpp \
     mainwindow.cpp \
+    queue.cpp \
     recette.cpp
 
 HEADERS += \
     connection.h \
+    dateformatdelegate.h \
     mainwindow.h \
+    queue.h \
     recette.h
 
 FORMS += \
