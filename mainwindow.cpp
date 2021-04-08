@@ -8,6 +8,7 @@
 #include<QTextDocument>
 #include"dateformatdelegate.h"
 #include "queue.h"
+#include <QSound>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -34,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
         tableModel->sort(logicalIndex, isAscending?Qt::AscendingOrder:Qt::DescendingOrder);
        qDebug() << logicalIndex << text;
     });
+    QSound::play(":/startup.wav");
 }
 
 MainWindow::~MainWindow()
@@ -45,11 +47,13 @@ MainWindow::~MainWindow()
 void MainWindow::on_recettesBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    QApplication::beep();
 }
 
 void MainWindow::on_queueBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+    QApplication::beep();
 }
 
 

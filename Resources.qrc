@@ -7,5 +7,6 @@
         <file>pdflogo.png</file>
         <file>logo.png</file>
         <file>logo app.png</file>
+        <file>startup.wav</file>
     </qresource>
 </RCC>
