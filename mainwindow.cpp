@@ -170,7 +170,7 @@ void MainWindow::on_pushButton_clicked()
     QSqlQuery q;
     q.prepare("SELECT * FROM FILEATTENTE");
     q.exec();
-    QString pdf="<br> <img src='C:\\Users\\Ahmed2\\Documents\\GitHub\\BonApp\\logo.png' height='42' width='144'/> <b><h1  style='color:red'>File d'attente :  </b><br></h1>\n <br> <table>  <tr>  <th> ID </th> <th> RECETTE </th> <th> ETAT </th>  </tr>" ;
+    QString pdf="<br> <img src='C:\\Users\\Ahmed2\\Documents\\GitHub\\BonApp\\logo.png' height='42' width='144'/> <b><h1  style='color:blue'>File d'attente :  </b><br></h1>\n <br> <table>  <tr>  <th> ID </th> <th> RECETTE </th> <th> ETAT </th>  </tr>" ;
 
     while ( q.next()) {
         pdf = pdf+ " <br> <tr> <td>"+ q.value(0).toString()+"    </td>   <td>   " + q.value(1).toString() +"</td>   <td>" +q.value(2).toString() +"  "" " "</td>";
