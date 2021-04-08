@@ -1,4 +1,6 @@
-QT       += sql core gui
+QT       += core gui sql printsupport
+QT += printsupport network
+gui+= printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,9 +27,13 @@ HEADERS += \
     produit.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    modifierdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resource.qrc

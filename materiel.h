@@ -22,6 +22,7 @@ public:
  bool ajouter();
  QSqlQueryModel * afficher();
  bool supprimer(int);
+ bool modify(int);
 };
 
 #endif // MATERIEL_H

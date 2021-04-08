@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../../Desktop/QT/BonApp/img/logo.png</file>
+        <file>../../Desktop/QT/BonApp/img/cookies.jpg</file>
+        <file>../../Desktop/QT/BonApp/img/modifier0001.png</file>
+        <file>../../Desktop/QT/BonApp/img/modifier0002.png</file>
+        <file>../../Desktop/QT/BonApp/img/Screenshot_1.png</file>
+        <file>../../Desktop/QT/BonApp/img/Screenshot_2.png</file>
+        <file>../../Desktop/QT/BonApp/img/supprimer0001.png</file>
+        <file>../../Desktop/QT/BonApp/img/supprimer0002.png</file>
+        <file>../../Desktop/QT/BonApp/img/back0001.png</file>
+    </qresource>
+</RCC>

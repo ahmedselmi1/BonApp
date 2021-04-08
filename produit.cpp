@@ -1,6 +1,6 @@
 #include "produit.h"
 
-produit::produit( int quantite_ingredient,int id_ingrediant,QString nom_ingredient,QString date_exp;)
+produit::produit( int quantite_ingredient,int id_ingrediant,QString nom_ingredient,QString date_exp)
 {
     this->id_ingrediant=id_ingrediant;
     this->quantite_ingredient=quantite_ingredient;
@@ -10,33 +10,97 @@ produit::produit( int quantite_ingredient,int id_ingrediant,QString nom_ingredie
 bool produit::ajouter()
 {
     QSqlQuery query;
-    QString res = QString::number(id_materiel);
-    QString res2 = QString::number(nb_materiel);
-    query.prepare("insert into materiel(id_materiel,nom_materiel,nb_materiel,date_entr)""values(:id_materiel,:nom_materiel,:nb_materiel,:date_entr)");
-   query.bindValue(":id_materiel",res);
-   query.bindValue(":nom_materiel",nom_materiel);
-   query.bindValue(":nb_materiel",res2);
-   query.bindValue(":date_entr",date_entr);
+    QString res = QString::number(id_ingrediant);
+    QString res2 = QString::number(quantite_ingredient);
+    query.prepare("insert into produit(id_ingrediant,nom_ingredient,quantite_ingredient,date_exp)""values(:id_ingrediant,:nom_ingredient,:quantite_ingredient,:date_exp)");
+   query.bindValue(":id_ingrediant",res);
+   query.bindValue(":nom_ingredient",nom_ingredient);
+   query.bindValue(":quantite_ingredient",res2);
+   query.bindValue(":date_exp",date_exp);
    return query.exec();
 }
-QSqlQueryModel * materiel::afficher()
+QSqlQueryModel * produit::afficher(QString rech="", int ord=0)
 {
 QSqlQueryModel * model=new QSqlQueryModel();
-model->setQuery("select * from materiel");
-model->setHeaderData(0,Qt::Horizontal,QObject::tr("id_materiel"));
+model->setQuery("select id_ingrediant,nom_ingredient,date_exp,quantite_ingredient from produit where lower(nom_ingredient) LIKE lower('%" + rech + "%') ORDER BY " + (ord>1?"nom_ingredient":"id_ingrediant") + " " + (ord%2==0?"ASC":"DESC"));
+model->setHeaderData(0,Qt::Horizontal,QObject::tr("id_ingrediant"));
 
-model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom_materiel"));
+model->setHeaderData(1,Qt::Horizontal,QObject::tr("nom_ingredient"));
 
-model->setHeaderData(2,Qt::Horizontal,QObject::tr("date_entr"));
+model->setHeaderData(2,Qt::Horizontal,QObject::tr("date_exp"));
 
-model->setHeaderData(3,Qt::Horizontal,QObject::tr("nb_materiel"));
+model->setHeaderData(3,Qt::Horizontal,QObject::tr("quantite_ingredient"));
 return model;
 }
-bool materiel::supprimer(int id_materiel)
+bool produit::supprimer(int id_ingrediant)
 {
 QSqlQuery query;
-QString res = QString::number(id_materiel);
-query.prepare("Delete from materiel where id_materiel= :id_materiel");
-query.bindValue(":id_materiel",res);
+QString res = QString::number(id_ingrediant);
+query.prepare("Delete from produit where id_ingrediant= :id_ingrediant");
+query.bindValue(":id_ingrediant",res);
 return query.exec();
+}
+bool produit::modify(int id_ingrediant){
+    QSqlQuery query;
+    query.prepare("UPDATE produit SET ID= :id_ingrediant, nom_ingredient= :nom_ingredient, quantite ingredient= :quantite_ingredient, date exp= :date_exp WHERE ID= :id_ingrediant");
+    query.bindValue(":id_ingrediant",id_ingrediant);
+    query.bindValue(":nom_ingredient",nom_ingredient);
+    query.bindValue(":quantite_ingredient",quantite_ingredient);
+    query.bindValue(":date_exp",date_exp);
+    return query.exec();
+}
+int produit::stati()
+{
+    QSqlQuery query;
+    int count=0 ;
+    QSqlQuery requete("select * from produit where nom_ingredient='sucre' ") ;
+    while(requete.next())
+
+    {
+            count++ ;
+    }
+
+return( count);
+}
+int produit::stati1()
+{
+    QSqlQuery query;
+    int count=0 ;
+    QSqlQuery requete("select * from produit where nom_ingredient='farine'") ;
+    while(requete.next())
+
+    {
+            count++ ;
+    }
+
+return(count);
+}
+
+
+int produit::stati2()
+{
+    QSqlQuery query;
+    int count=0 ;
+    QSqlQuery requete("select * from produit where nom_ingredient='chocolat'") ;
+    while(requete.next())
+
+    {
+            count++ ;
+    }
+
+return(count);
+}
+
+int produit::nb_total()
+{
+    QSqlQuery query;
+    int count=0 ;
+    QSqlQuery requete("select * from produit") ;
+    while(requete.next())
+
+    {
+            count++ ;
+    }
+
+return(count);
 }

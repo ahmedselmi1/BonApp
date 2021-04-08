@@ -40,3 +40,27 @@ query.prepare("Delete from materiel where id_materiel= :id_materiel");
 query.bindValue(":id_materiel",res);
 return query.exec();
 }
+
+
+
+
+bool materiel::modify(int id_materiel){
+    QSqlQuery query;
+    query.prepare("UPDATE MATERIEL SET ID= :id_materiel, nom materiel= :nom_materiel, nbr materiel= :nb_materiel, date entretien= :date_entr WHERE ID= :id_materiel");
+    query.bindValue(":id_materiel",id_materiel);
+    query.bindValue(":nom_materiel",nom_materiel);
+    query.bindValue(":nb_materiel",nb_materiel);
+    query.bindValue(":date_entr",date_entr);
+    return query.exec();
+}
+
+
+
+
+
+
+
+
+
+
+

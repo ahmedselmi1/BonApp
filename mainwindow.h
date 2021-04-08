@@ -2,7 +2,11 @@
 #define MAINWINDOW_H
 #include "materiel.h"
 #include <QMainWindow>
+#include "produit.h"
 #include "database.h"
+#include<QPrintDialog>
+#include<QPrinter>
+#include<QTextDocument>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,6 +20,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     Database db;
+
+
+    QString getSearchText();
 
 private slots:
 
@@ -43,8 +50,32 @@ private slots:
 
     void on_pushButton_15_clicked();
 
+    void on_pushButton_14_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_17_clicked();
+
+    void on_pushButton_18_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_lineEdit_13_textChanged(const QString &arg1);
+
+
+
+    void on_comboBox_currentIndexChanged(int index);
+
+
+
+    void on_PDF_clicked();
+
+    void on_pushButton_19_clicked();
+
 private:
     Ui::MainWindow *ui;
     materiel Mtmp;
+    produit Ptmp;
+
 };
 #endif // MAINWINDOW_H
