@@ -133,4 +133,12 @@ QSqlQuery gateauxC::stat_3(int &stat3)
     }
     return query1;
 }
-
+void gateauxC::show_notification(QString titre,QString text)
+{
+    this->text=text;
+      this->titre=titre;
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+    notifyIcon->setIcon(QIcon(":/img/img/logo.png"));
+    notifyIcon->show();
+    notifyIcon->showMessage(titre,text,QSystemTrayIcon::Information,15000);
+}

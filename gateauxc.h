@@ -2,6 +2,7 @@
 #define GATEAUXC_H
 #include <QString>
 #include <QSqlQuery>
+#include <QSystemTrayIcon>
 #include <QSqlQueryModel>
 
 class gateauxC
@@ -23,9 +24,10 @@ public:
     bool modify();
     QSqlQueryModel * search(const QString&);
     QSqlQueryModel * show_Desc();
+    void show_notification(QString, QString);
 
 private:
-    QString ID,NAME;
+    QString ID,NAME,text,titre;
     int QUANTITY,PRICE;
 
 };

@@ -3,6 +3,7 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QSystemTrayIcon>
 
 class commandeC
 {
@@ -21,9 +22,10 @@ public:
     QSqlQueryModel * search(const QString&);
     QSqlQueryModel * show_Asc();
     bool pdfunction(QString &,QString &);
+    void show_notification(QString, QString);
 
 private:
-    QString ID,GATEAUXNAME;
+    QString ID,GATEAUXNAME,text,titre;
     int SOMME,QUANTC;
 
 };

@@ -349,8 +349,7 @@ void MainWindow::on_toolButton_save_clicked()
 
         if(toTest)
         {
-            QMessageBox::information(nullptr, QObject::tr("Adding Product"),
-                              QObject::tr("Product added successfully"), QMessageBox::Ok);
+            gateauxC().show_notification("Add cake","Cake added successfully");
         }
         ui->lineEdit_name->clear();
         ui->lineEdit_id->clear();
@@ -388,8 +387,7 @@ void MainWindow::on_toolButton_savemod_clicked()
     bool toTest =g.modify();
     if(toTest)
     {
-        QMessageBox::information(nullptr, QObject::tr("Editing Product"),
-                          QObject::tr("Product's info edited successfully"), QMessageBox::Ok);
+         gateauxC().show_notification("Modification cake","Cake modified successfully");
     }
     ui->lineEdit_name_3->clear();
     ui->spinBox_quantity_3->clear();
@@ -476,8 +474,7 @@ void MainWindow::on_pushButton_3_clicked()
 
         if(toTest)
         {
-            QMessageBox::information(nullptr, QObject::tr("Adding Order"),
-                              QObject::tr("Order added successfully"), QMessageBox::Ok);
+             commandeC().show_notification("Add order","Order added successfully");
         }
         ui->lineEdit_idc->clear();
         ui->lineEdit_somme->clear();
@@ -559,8 +556,7 @@ void MainWindow::on_pushButton_savemod_clicked()
     bool toTest =cc.modifyc();
     if(toTest)
     {
-        QMessageBox::information(nullptr, QObject::tr("Editing Order"),
-                          QObject::tr("Order's info edited successfully"), QMessageBox::Ok);
+         commandeC().show_notification("Add order","Order modified successfully");
     }
     ui->comboBox_name_1->clear();
     ui->lineEdit_quantc_1->clear();

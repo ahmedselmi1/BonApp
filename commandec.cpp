@@ -9,6 +9,7 @@
 #include <QPrinter>
 #include <QPainter>
 #include <QPrintDialog>
+#include <QDateTime>
 commandeC::commandeC()
 {
     ID="";
@@ -106,6 +107,7 @@ bool commandeC::pdfunction(QString &name, QString &path)
     QPrinter printer;
     printer.setOutputFormat(QPrinter::PdfFormat);
    printer.setOutputFileName(path);
+   QString currentDate = QDateTime().currentDateTime().toString();
     QPainter painter ;
     QPixmap logo(":/img/img/logo.png");
     painter.begin(&printer);
@@ -129,6 +131,7 @@ bool commandeC::pdfunction(QString &name, QString &path)
         font.setPixelSize(35);
         painter.setFont(font);
         painter.setPen(Qt::darkCyan);
+        painter.drawText(200,100,currentDate);
         painter.drawText(300,150,"BILL");
 
         font.setPixelSize(22);
@@ -149,4 +152,13 @@ bool commandeC::pdfunction(QString &name, QString &path)
 
     painter.end();
         }
+}
+void commandeC::show_notification(QString titre,QString text)
+{
+    this->text=text;
+      this->titre=titre;
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+    notifyIcon->setIcon(QIcon(":/img/img/logo.png"));
+    notifyIcon->show();
+    notifyIcon->showMessage(titre,text,QSystemTrayIcon::Information,15000);
 }
