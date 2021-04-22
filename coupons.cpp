@@ -22,9 +22,11 @@ int coupons::currentsorted = -1;
 int coupons::currentsorting = -1;
 int coupons::currentpage = 0;
 int coupons::maxPerPage = 8;
+QNetworkAccessManager* coupons::manager = new QNetworkAccessManager();
+QNetworkRequest coupons::request;
+
 coupons::coupons()
 {
-
 }
 
 
@@ -184,7 +186,7 @@ void coupons::processCouponTable(QTableWidget* couponsTable)
 
 
 
-bool coupons::addCouponToDB(QString code, QString totalNum, QString startDate, QString endDate, QString constraints){
+bool coupons::addCouponToDB(QString code, QString totalNum, QString startDate, QString endDate, QString constraints,bool email){
 
 
 
@@ -201,7 +203,32 @@ bool coupons::addCouponToDB(QString code, QString totalNum, QString startDate, Q
 
 
 
+    if(email)
+    {
+       /* qrcodegen::QrCode qr = qrcodegen::QrCode::encodeText(code.toStdString().c_str() , qrcodegen::QrCode::Ecc::LOW);
+        string qrcode = "";
+        const int s=qr.getSize()>0?qr.getSize():1;
 
+            for(int y=0; y<s; y++) {
+                for(int x=0; x<s; x++) {
+                    const int color=qr.getModule(x, y);  // 0 for white, 1 for black
+                    if(0!=color) {
+                        const double rx1=(x+1)*scale, ry1=(y+1)*scale;
+                        QRectF r(rx1, ry1, scale, scale);
+                        painter.drawRects(&r,1);
+                    }
+                }
+            }*/
+
+
+        string url = "http://playpals.io/phpqrcode/iyedqrmailer.php?email=iyedbhd@gmail.com&subject=Coupon Added&content=Coupon have been added successfully&psw=testttesttttaztatga&code=" + code.toStdString();
+
+
+
+        coupons::request.setUrl(QUrl(url.c_str()));
+        coupons::manager->get(request);
+
+    }
     return result;
 }
 

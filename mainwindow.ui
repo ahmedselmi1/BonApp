@@ -4143,7 +4143,7 @@ background-repeat: none;
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
-      <widget class="QCheckBox" name="checkBox_4">
+      <widget class="QCheckBox" name="notifEmailCoupon">
        <property name="geometry">
         <rect>
          <x>20</x>
