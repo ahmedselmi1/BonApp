@@ -16,16 +16,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    QCustomPlot.cpp \
     connection.cpp \
     employee.cpp \
     main.cpp \
     mainwindow.cpp \
+    role.cpp \
     shifts.cpp
 
 HEADERS += \
+    QCustomPlot.h \
     connection.h \
     employee.h \
     mainwindow.h \
+    role.h \
     shifts.h
 
 FORMS += \

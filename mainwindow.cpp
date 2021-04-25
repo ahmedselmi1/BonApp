@@ -2,19 +2,25 @@
 #include "ui_mainwindow.h"
 #include "employee.h"
 #include "shifts.h"
+#include "role.h"
+#include "QCustomPlot.h"
+#include <QSound>
 #include <QTime>
+#include <QItemSelectionModel>
+#include <QModelIndexList>
 #include <QTimeEdit>
 #include <QDebug>
 #include <QApplication>
 #include <QMessageBox>
 #include <iostream>
+#include <QObject>
 #include <QString>
 #include<string>
 #include<QDate>
 #include <algorithm>
 #include <vector>
-#include"QSqlRecord"
-#include"QSqlQuery"
+#include<QSqlRecord>
+#include<QSqlQuery>
 #include <QPixmap>
 #include <QPrinter>
 #include <QPrintDialog>
@@ -22,6 +28,9 @@
 #include <QTextStream>
 #include <QFileDialog>
 #include <QDir>
+#include <QTextDocument>
+#include <QDateTime>
+#include <QMediaPlayer>
 
 using namespace std;
 
@@ -39,6 +48,10 @@ MainWindow::~MainWindow()
 
 //INDEXING
 
+void MainWindow::on_back_11_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
 
 void MainWindow::on_back_18_clicked()
 {
@@ -62,7 +75,7 @@ void MainWindow::on_back_5_clicked()
 
 void MainWindow::on_goToEmployee_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(1);       
 }
 
 void MainWindow::on_toolButton_4_clicked()
@@ -137,10 +150,10 @@ void MainWindow::on_toolButton_save_2_clicked()
               x++;
     }
 
-    else if (age<18 || age>35)
+    else if (age<20 || age>26)
     {
         QMessageBox::critical(nullptr, QObject::tr("WARNING"),
-                    QObject::tr("Age must be between 18 and 35"), QMessageBox::Ok);
+                    QObject::tr("Age must be between 20 and 26"), QMessageBox::Ok);
               x++;
     }
 
@@ -187,16 +200,8 @@ void MainWindow::on_toolButton_save_2_clicked()
 
 void MainWindow::on_empTable_clicked(const QModelIndex &index)
 {
-    QString val=ui->empTable->model()->data(index).toString();
-    QSqlQuery query;
-    query.prepare("SELECT * FROM EMPLOYEE WHERE CIN = '"+val+"'");
-    if(query.exec())
-    {
-        while (query.next())
-        {
-            ui->lineEdit->setText(query.value(0).toString());
-        }
-    }
+    QString val = ui->empTable->model()->data(index).toString();
+    ui->lineEdit->setText(val);
 }
 
 void MainWindow::on_toolButton_10_clicked()
@@ -217,34 +222,26 @@ void MainWindow::on_toolButton_10_clicked()
 
 //modifying employee + validation
 
-void MainWindow::on_empTable_activated(const QModelIndex &index)
+void MainWindow::on_empTable_activated()
 {
-    QString val=ui->empTable->model()->data(index).toString();
-    QSqlQuery query;
-    query.prepare("SELECT * FROM EMPLOYEE WHERE CIN = '"+val+"'");
-    if(query.exec())
-    {
-        while (query.next())
-        {
-            ui->stackedWidget->setCurrentIndex(4);
-            ui->lineEdit_id_m_2->setText(query.value(0).toString());
-            ui->lineEdit_fullname_m->setText(query.value(1).toString());
-            ui->lineEdit_age_m->setText(query.value(2).toString());
-            ui->lineEdit_email_m->setText(query.value(3).toString());
-            ui->lineEdit_phone_m->setText(query.value(4).toString());
-            ui->lineEdit_address_m->setText(query.value(5).toString());
-        }
-    }
+            QItemSelectionModel *select = ui->empTable->selectionModel();
+            ui->lineEdit_fullname_m_2->setText(select->selectedRows(1).value(0).data().toString());
+            ui->lineEdit_age_m_2->setText(select->selectedRows(2).value(0).data().toString());
+            ui->lineEdit_email_m_2->setText(select->selectedRows(3).value(0).data().toString());
+            ui->lineEdit_phone_m_2->setText(select->selectedRows(4).value(0).data().toString());
+            ui->lineEdit_address_m_2->setText(select->selectedRows(5).value(0).data().toString());
+
+
 }
 
 void MainWindow::on_toolButton_modify_clicked()
 {
-    QString cin = ui->lineEdit_id_m_2->text();
-    QString fullname= ui->lineEdit_fullname_m->text();
-    int age= ui->lineEdit_age_m->text().toInt();
-    QString email= ui->lineEdit_email_m->text();
-    int phone= ui->lineEdit_phone_m->text().toInt();
-    QString address= ui->lineEdit_address_m->text();
+    QString cin = ui->lineEdit->text();
+    QString fullname= ui->lineEdit_fullname_m_2->text();
+    int age= ui->lineEdit_age_m_2->text().toInt();
+    QString email= ui->lineEdit_email_m_2->text();
+    int phone= ui->lineEdit_phone_m_2->text().toInt();
+    QString address= ui->lineEdit_address_m_2->text();
 
     int x=0;
 
@@ -258,10 +255,10 @@ void MainWindow::on_toolButton_modify_clicked()
               x++;
     }
 
-    else if (age<18 || age>35)
+    else if (age<20 || age>26)
     {
         QMessageBox::critical(nullptr, QObject::tr("WARNING"),
-                    QObject::tr("Age must be between 18 and 35"), QMessageBox::Ok);
+                    QObject::tr("Age must be between 20 and 26"), QMessageBox::Ok);
               x++;
     }
 
@@ -294,11 +291,12 @@ void MainWindow::on_toolButton_modify_clicked()
     {
         employee().show_notification("Modify employee","employee modified successfully");
     }
-    ui->lineEdit_fullname_m->clear();
-    ui->lineEdit_age_m->clear();
-    ui->lineEdit_email_m->clear();
-    ui->lineEdit_phone_m->clear();
-    ui->lineEdit_address_m->clear();
+    ui->lineEdit->clear();
+    ui->lineEdit_fullname_m_2->clear();
+    ui->lineEdit_age_m_2->clear();
+    ui->lineEdit_email_m_2->clear();
+    ui->lineEdit_phone_m_2->clear();
+    ui->lineEdit_address_m_2->clear();
     ui->stackedWidget->setCurrentIndex(3);
     ui->empTable->setModel(tableEmployee.show());
     }
@@ -310,7 +308,7 @@ void MainWindow::on_toolButton_modify_clicked()
 
 void MainWindow::on_toolButton_11_clicked()
 {
-    QString fullname=ui->lineEdit_search->text();    
+    QString fullname=ui->lineEdit->text();
    if(fullname=="")
    {
        employee().show_notification("Search","search field is empty");
@@ -318,6 +316,11 @@ void MainWindow::on_toolButton_11_clicked()
    else
    {
        ui->empTable->setModel(tableEmployee.search(fullname));
+       ui->lineEdit_fullname_m_2->clear();
+       ui->lineEdit_age_m_2->clear();
+       ui->lineEdit_email_m_2->clear();
+       ui->lineEdit_phone_m_2->clear();
+       ui->lineEdit_address_m_2->clear();
       int n= ui->empTable->model()->rowCount();
       if(n==0)
       {
@@ -340,23 +343,157 @@ void MainWindow::on_toolButton_13_clicked()
     ui->empTable->setModel(tableEmployee.show_Asc());
 }
 
-//Pdf creation ( to change )
+//Pdf creation
 
-void MainWindow::on_toolButton_pdf_2_clicked()
+void MainWindow::pdf()
 {
-    ;
-    QString filter = "pdf (*.pdf) ";    
-    QString code = ui->lineEdit->text();    
-    if(code == "")
+    QString strStream;
+    QString currentDate = QDateTime().currentDateTime().toString();
+    QTextStream out(&strStream);
+    const int rowCount = ui->empTable->model()->rowCount();
+    const int columnCount = ui->empTable->model()->columnCount();
+    out <<
+     "<html>\n"
+    "<head>\n"
+    "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+    <<QString("<title>%1</title>\n").arg("strTitle")
+    <<"</head>\n"
+    "<body bgcolor=#ffffff link=#5000A0>\n"
+     <<QString(currentDate)
+    <<//"<align='right'> " << datefich << "</align>"
+    "<center> <img src="":/img/img/logo.png"" width=""100"" height=""100"" > <br> <br><H1>LIST OF EMPLOYEES</H1> <br> <br><table border=1 cellspacing=0 cellpadding=2>\n";
+    // headers
+    out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+    for (int column = 0; column < columnCount; column++)
+    if (!ui->empTable->isColumnHidden(column))
+    out << QString("<th>%1</th>").arg(ui->empTable->model()->headerData(column, Qt::Horizontal).toString());
+    out << "</tr></thead>\n";
+    // data table
+    for (int row = 0; row < rowCount; row++)
     {
-        employee().show_notification("error","choose an employee to export");
+    out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+    for (int column = 0; column < columnCount; column++)
+    {
+    if (!ui->empTable->isColumnHidden(column))
+    {
+    QString data = ui->empTable->model()->data(ui->empTable->model()->index(row, column)).toString().simplified();
+    out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+    }
+    }
+    out << "</tr>\n";
+    }
+    out <<  "</table> </center>\n"
+         "<br> <br> <br> <br>"
+    "</body>\n"
+    "<footer>\n"
+            "<div class = ""container"">"
+                "<div class = ""row"">"
+                    "<div>"
+                        "<div><img src="":/img/img/icons8-facebook-30.png""> <span>Bon App TN </div>\n"
+                        "<br>"
+                        "<div><img src="":/img/img/icons8-instagram-30.png""> <span>@bonApp.tn </div>\n"
+                        "<p>Generated from : Bon App.exe "
+                    "</div>"
+                "</div>"
+            "</div>"
+    "</footer>\n"
+    "</html>\n";
+    QString filter = "pdf (*.pdf) ";
+    QString fileName = QFileDialog::getSaveFileName(this, "save in", QDir::homePath(),filter);
+    if(fileName.isEmpty()&&fileName.isNull())
+    {
+        employee().show_notification("error","exporting is cancelled");
     }
     else
     {
-        QString file = QFileDialog::getSaveFileName(this, "save in", QDir::homePath(),filter);
-        employee().pdfunction(code,file);
-        employee().show_notification("PDF creation","File created successfully");
+    QPrinter printer (QPrinter::PrinterResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setPaperSize(QPrinter::A4);
+    printer.setOutputFileName(fileName);
+    QTextDocument doc;
+    doc.setHtml(strStream);
+    doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+    doc.print(&printer);
+    employee().show_notification("PDF creation","File created successfully");
     }
+}
+
+void MainWindow::on_toolButton_modify_2_clicked()
+{
+    if(ui->empTable->verticalHeader()->count()==0)
+        {
+            employee().show_notification("error","no data to export");
+        }
+        else
+        {
+            pdf();
+        }
+}
+
+//stats
+
+void MainWindow::on_toolButton_pdf_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(9);
+    // set dark background gradient:
+    QColor color = QColor(251, 255, 225);
+    ui->customPlot->setBackground(QBrush(color));
+
+    // create empty bar chart objects:
+    QCPBars *age_1 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
+    age_1->setAntialiased(true);
+
+    // prepare x axis with country labels:
+    QVector<double> ticks;
+    QVector<QString> labels;
+    ticks << 1 << 2 << 3 << 4 << 5 << 6 << 7;
+    labels << "20" << "21" << "22" << "23" << "24" << "25" << "26";
+    QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
+    textTicker->addTicks(ticks, labels);
+    ui->customPlot->xAxis->setTicker(textTicker);
+    ui->customPlot->xAxis->setTickLabelRotation(60);
+    ui->customPlot->xAxis->setSubTicks(false);
+    ui->customPlot->xAxis->setTickLength(0, 4);
+    ui->customPlot->xAxis->setRange(0, 8);
+    ui->customPlot->xAxis->setLabel("AGES");
+    ui->customPlot->xAxis->setBasePen(QPen(Qt::black));
+    ui->customPlot->xAxis->setTickPen(QPen(Qt::black));
+    ui->customPlot->xAxis->grid()->setVisible(true);
+    ui->customPlot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+    ui->customPlot->xAxis->setTickLabelColor(Qt::black);
+    ui->customPlot->xAxis->setLabelColor(Qt::black);
+
+    // prepare y axis:
+    ui->customPlot->yAxis->setRange(0, 5);
+    ui->customPlot->yAxis->setPadding(1); // a bit more space to the left border
+    ui->customPlot->yAxis->setLabel("NUMBER OF EMPLOYEES");
+    ui->customPlot->yAxis->setBasePen(QPen(Qt::black));
+    ui->customPlot->yAxis->setTickPen(QPen(Qt::black));
+    ui->customPlot->yAxis->setSubTickPen(QPen(Qt::black));
+    ui->customPlot->yAxis->grid()->setSubGridVisible(true);
+    ui->customPlot->yAxis->setTickLabelColor(Qt::black);
+    ui->customPlot->yAxis->setLabelColor(Qt::black);
+    ui->customPlot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::SolidLine));
+    ui->customPlot->yAxis->grid()->setSubGridPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+
+    // Add data:
+    QVector<double> age1;
+    int stat1, stat2,stat3,stat4,stat5,stat6,stat7;
+    employee().getStat_1(stat1);
+    employee().getStat_2(stat2);
+    employee().getStat_3(stat3);
+    employee().getStat_4(stat4);
+    employee().getStat_5(stat5);
+    employee().getStat_6(stat6);
+    employee().getStat_7(stat7);
+    age1 << stat1 << stat2 << stat3 << stat4 << stat5 << stat6 << stat7;
+    age_1->setData(ticks, age1);
+    // setup legend:
+    ui->customPlot->legend->setVisible(false);
+    ui->customPlot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
+    ui->customPlot->setInteractions(QCP::iRangeDrag);
+    foreach(QCPAxisRect *rect, ui->customPlot->axisRects())
+         rect->setRangeDrag(Qt::Horizontal);
 }
 
 //END EMPLOYEE
@@ -376,15 +513,8 @@ void MainWindow::on_toolButton_7_clicked()
 void MainWindow::on_emptable_2_clicked(const QModelIndex &index)
 {
     QString val=ui->emptable_2->model()->data(index).toString();
-    QSqlQuery query;
-    query.prepare("SELECT CIN FROM EMPLOYEE WHERE CIN = '"+val+"'");
-    if(query.exec())
-    {
-        while (query.next())
-        {
-            ui->lineEdit_cin_shifts->setText(query.value(0).toString());
-        }
-    }
+    ui->lineEdit_cin_shifts->setText(val);
+
 }
 
 void MainWindow::on_toolButton_save_3_clicked()
@@ -453,15 +583,7 @@ void MainWindow::on_toolButton_6_clicked()
 void MainWindow::on_shiftsTab_clicked(const QModelIndex &index)
 {
     QString val=ui->shiftsTab->model()->data(index).toString();
-    QSqlQuery query;
-    query.prepare("SELECT CIN FROM SHIFTS WHERE CIN = '"+val+"'");
-    if(query.exec())
-    {
-        while (query.next())
-        {
-            ui->lineEdit_toDo->setText(query.value(0).toString());
-        }
-    }
+    ui->lineEdit_toDo->setText(val);
 }
 
 void MainWindow::on_toolButton_delete_4_clicked()
@@ -569,15 +691,235 @@ void MainWindow::on_toolButton_delete_5_clicked()
 
 void MainWindow::on_toolButton_delete_6_clicked()
 {
-    ui->shiftsTab->setModel(tableShifts.show_Asc());
+    if(ui->shiftsTab->verticalHeader()->count()==0)
+    {
+        employee().show_notification("error","No valid Data");
+    }
+    else
+    {
+        ui->shiftsTab->setModel(tableShifts.show_Asc());
+    }
 }
 
 //sort Desc
 
 void MainWindow::on_toolButton_delete_7_clicked()
 {
-    ui->shiftsTab->setModel(tableShifts.show_Desc());
+    if(ui->shiftsTab->verticalHeader()->count()==0)
+    {
+        employee().show_notification("error","No valid Data");
+    }
+    else
+    {
+        ui->shiftsTab->setModel(tableShifts.show_Desc());
+    }
 }
 
 //END SHIFTS
 
+
+void MainWindow::on_toolButton_delete_8_clicked()
+{
+    shifts().stats(ui->shiftsStat);
+    ui->stackedWidget->setCurrentIndex(10);
+}
+
+void MainWindow::on_toolButton_8_clicked()
+{
+    Role.stats(ui->rolestats);
+    ui->stackedWidget->setCurrentIndex(11);
+    Role.getTable(ui->roleTable);
+}
+
+void MainWindow::on_gotoRole_clicked()
+{
+    QSqlQueryModel *mod= new QSqlQueryModel();
+        mod->setQuery(("select FULLNAME from EMPLOYEE"));
+        ui->nameRole->setModel(mod);        
+        ui->modifyRoleButton->setDisabled(true);
+        ui->nameRole_Edit->setDisabled(true);
+        ui->cinrole_Edit->setDisabled(true);
+        ui->role_Edit->setDisabled(true);
+        ui->earningrole_Edit->setDisabled(true);
+        ui->bonusrole_Edit->setDisabled(true);
+        ui->addingLabel->setText("Add Role");
+        ui->modificationLabel->setText("Modification Unavailable");
+        ui->stackedWidget->setCurrentIndex(12);
+}
+
+void MainWindow::on_nameRole_activated(const QString &arg1)
+{
+            QSqlQuery query;
+            query.prepare("SELECT CIN FROM EMPLOYEE WHERE FULLNAME= '"+arg1+"'");
+            if(query.exec())
+            {
+                while (query.next())
+                {
+                    ui->cinrole->setText(query.value(0).toString());
+                }
+            }
+}
+
+void MainWindow::on_addRoleButton_clicked()
+{
+    QString cin= ui->cinrole->text();
+    QString name= ui->nameRole->currentText();
+    QString empRole= ui->role->text();
+    int earning= ui->earningrole->text().toInt();
+    int bonus= ui->bonusrole->text().toInt();
+
+    role e(cin,name,empRole,earning,bonus);
+    bool toTest =e.add();
+    if(toTest)
+    {
+        employee().show_notification("Add Role","role added successfully");
+    }
+    ui->nameRole->clear();
+    ui->earningrole->clear();
+    ui->bonusrole->clear();
+    ui->cinrole->clear();
+    ui->role->clear();
+    Role.getTable(ui->roleTable);
+    ui->stackedWidget->setCurrentIndex(11);
+}
+
+void MainWindow::on_previousPage_clicked()
+{
+    Role.prevPage(ui->roleTable);
+}
+
+void MainWindow::on_nextPage_clicked()
+{
+    Role.nextPage(ui->roleTable);
+}
+
+void MainWindow::on_deleteRole_clicked()
+{
+    QString var = ui->toDelete->text();
+    Role.remove(var,ui->roleTable);
+    ui->toDelete->clear();
+}
+
+void MainWindow::on_roleTable_cellClicked(int row)
+{
+    QString var=ui->roleTable->item(row,0)->text();
+    ui->toDelete->setText(var);
+}
+
+void MainWindow::on_editRole_clicked()
+{
+    foreach(QModelIndex index,ui->roleTable->selectionModel()->selectedIndexes())
+    {
+            int row=index.row();
+
+    if (row >=0)
+    {        
+        QString cin=ui->roleTable->item(row,0)->text();
+        QString name=ui->roleTable->item(row,1)->text();
+        QString roleEdit=ui->roleTable->item(row,2)->text();
+        QString earning=ui->roleTable->item(row,3)->text();
+        QString bonus=ui->roleTable->item(row,4)->text();
+            ui->nameRole_Edit->setText(name);
+            ui->cinrole_Edit->setText(cin);
+            ui->role_Edit->setText(roleEdit);
+            ui->earningrole_Edit->setText(earning);
+            ui->bonusrole_Edit->setText(bonus);
+            ui->addRoleButton->setDisabled(true);
+            ui->nameRole->setDisabled(true);
+            ui->cinrole->setDisabled(true);
+            ui->role->setDisabled(true);
+            ui->earningrole->setDisabled(true);
+            ui->bonusrole->setDisabled(true);
+            ui->modifyRoleButton->setDisabled(false);
+            ui->nameRole_Edit->setDisabled(false);
+            ui->cinrole_Edit->setDisabled(false);
+            ui->role_Edit->setDisabled(false);
+            ui->earningrole_Edit->setDisabled(false);
+            ui->bonusrole_Edit->setDisabled(false);
+            ui->addingLabel->setText("Adding Role Disabled");
+            ui->modificationLabel->setText("Modify Role");
+            ui->stackedWidget->setCurrentIndex(12);
+    }
+    else
+    {
+        qDebug("no item selected");
+    }
+    }
+}
+
+void MainWindow::on_modifyRoleButton_clicked()
+{
+    QString cin= ui->cinrole_Edit->text();
+    QString name= ui->nameRole_Edit->text();
+    QString empRole= ui->role_Edit->text();
+    int earning= ui->earningrole_Edit->text().toInt();
+    int bonus= ui->bonusrole_Edit->text().toInt();
+
+    role e(cin,name,empRole,earning,bonus);
+    bool toTest =e.modify();
+    if(toTest)
+    {
+        employee().show_notification("Modify Role","role modified successfully");
+    }
+    ui->nameRole_Edit->clear();
+    ui->earningrole_Edit->clear();
+    ui->bonusrole_Edit->clear();
+    ui->cinrole_Edit->clear();
+    ui->role_Edit->clear();
+    ui->addRoleButton->setDisabled(false);
+    ui->nameRole->setDisabled(false);
+    ui->cinrole->setDisabled(false);
+    ui->role->setDisabled(false);
+    ui->earningrole->setDisabled(false);
+    ui->bonusrole->setDisabled(false);
+    ui->modifyRoleButton->setDisabled(true);
+    ui->nameRole_Edit->setDisabled(true);
+    ui->cinrole_Edit->setDisabled(true);
+    ui->role_Edit->setDisabled(true);
+    ui->earningrole_Edit->setDisabled(true);
+    ui->bonusrole_Edit->setDisabled(true);
+    Role.getTable(ui->roleTable);
+    ui->stackedWidget->setCurrentIndex(11);
+}
+
+void MainWindow::on_search_clicked()
+{
+    QString toSearch = ui->searchRole->text();
+    Role.search(toSearch,ui->roleTable);
+}
+
+void MainWindow::on_sortRole_clicked()
+{
+    Role.sortRole(ui->roleTable);
+}
+
+void MainWindow::on_sortEarning_clicked()
+{
+    Role.sortEarning(ui->roleTable);
+}
+
+void MainWindow::on_back_12_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(7);
+}
+
+void MainWindow::on_back_13_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_back_14_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(11);
+}
+
+void MainWindow::on_back_19_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(11);
+}
+
+void MainWindow::on_stats_clicked()
+{
+    Role.stats(ui->rolestats);
+    ui->stackedWidget->setCurrentIndex(13);
+}

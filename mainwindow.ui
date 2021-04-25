@@ -40,7 +40,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>13</number>
     </property>
     <widget class="QWidget" name="mainPage0">
      <widget class="QLabel" name="label_2">
@@ -192,11 +192,25 @@ font: 20pt &quot;MV Boli&quot;;
         <height>131</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
+       <string notr="true">#goToEmployee
+{
+color: rgb(255, 255, 255);
 background-color: rgb(51, 24, 60);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#goToEmployee:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#goToEmployee:pressed
+{
+background-color: rgb(98, 47, 117);
+}
 </string>
       </property>
       <property name="text">
@@ -254,9 +268,9 @@ font: 20pt &quot;MV Boli&quot;;
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>379</x>
+        <x>330</x>
         <y>0</y>
-        <width>371</width>
+        <width>461</width>
         <height>121</height>
        </rect>
       </property>
@@ -327,11 +341,25 @@ background-color: rgb(0, 0, 0, 0%);</string>
         <height>151</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_3
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_3:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_3:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>See all employees</string>
@@ -365,11 +393,25 @@ border-radius: 30px;</string>
         <height>151</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_4
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_4:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_4:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Add an employee</string>
@@ -391,20 +433,80 @@ border-radius: 30px;</string>
      <widget class="QToolButton" name="toolButton_5">
       <property name="geometry">
        <rect>
-        <x>480</x>
+        <x>250</x>
         <y>360</y>
         <width>181</width>
         <height>151</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_5
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_5:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_5:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Shifts</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>:/assets/assets/icons8-plus-80.png</normaloff>:/assets/assets/icons8-plus-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_8">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>350</y>
+        <width>181</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#toolButton_8
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#toolButton_8:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_8:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>Roles</string>
       </property>
       <property name="icon">
        <iconset>
@@ -442,9 +544,9 @@ background-color: rgb(0, 0, 0, 0%);</string>
      <widget class="QLabel" name="label_21">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>310</x>
         <y>0</y>
-        <width>371</width>
+        <width>501</width>
         <height>121</height>
        </rect>
       </property>
@@ -501,7 +603,7 @@ background-color: rgb(0, 0, 0,0%);</string>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(0, 0, 0, 0%);
 color: rgb(255, 255, 255);
-font: italic 24pt &quot;High Tower Text&quot;;</string>
+font: 25 italic 20pt &quot;Bahnschrift&quot;;</string>
       </property>
       <property name="text">
        <string>Address :</string>
@@ -517,7 +619,7 @@ font: italic 24pt &quot;High Tower Text&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: italic 18pt &quot;High Tower Text&quot;;
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
@@ -533,7 +635,7 @@ background-color: rgb(255, 255, 255);</string>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(0, 0, 0, 0%);
 color: rgb(255, 255, 255);
-font: italic 24pt &quot;High Tower Text&quot;;</string>
+font: 25 italic 20pt &quot;Bahnschrift&quot;;</string>
       </property>
       <property name="text">
        <string>E-mail :</string>
@@ -551,7 +653,7 @@ font: italic 24pt &quot;High Tower Text&quot;;</string>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(0, 0, 0, 0%);
 color: rgb(255, 255, 255);
-font: italic 24pt &quot;High Tower Text&quot;;</string>
+font: 25 italic 20pt &quot;Bahnschrift&quot;;</string>
       </property>
       <property name="text">
        <string>CIN :</string>
@@ -566,11 +668,25 @@ font: italic 24pt &quot;High Tower Text&quot;;</string>
         <height>61</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_save_2
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_save_2:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_save_2:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Save</string>
@@ -595,7 +711,7 @@ border-radius: 30px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: italic 18pt &quot;High Tower Text&quot;;
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
@@ -611,7 +727,7 @@ background-color: rgb(255, 255, 255);</string>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(0, 0, 0, 0%);
 color: rgb(255, 255, 255);
-font: italic 24pt &quot;High Tower Text&quot;;</string>
+font: 25 italic 20pt &quot;Bahnschrift&quot;;</string>
       </property>
       <property name="text">
        <string>Full Name :</string>
@@ -627,7 +743,7 @@ font: italic 24pt &quot;High Tower Text&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: italic 18pt &quot;High Tower Text&quot;;
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
@@ -643,7 +759,7 @@ background-color: rgb(255, 255, 255);</string>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(0, 0, 0, 0%);
 color: rgb(255, 255, 255);
-font: italic 24pt &quot;High Tower Text&quot;;</string>
+font: 25 italic 20pt &quot;Bahnschrift&quot;;</string>
       </property>
       <property name="text">
        <string>Phone :</string>
@@ -659,7 +775,7 @@ font: italic 24pt &quot;High Tower Text&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: italic 18pt &quot;High Tower Text&quot;;
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
@@ -673,7 +789,7 @@ background-color: rgb(255, 255, 255);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: italic 18pt &quot;High Tower Text&quot;;
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
@@ -689,7 +805,8 @@ background-color: rgb(255, 255, 255);</string>
       <property name="styleSheet">
        <string notr="true">background-color: rgba(0, 0, 0, 0%);
 color: rgb(255, 255, 255);
-font: italic 24pt &quot;High Tower Text&quot;;</string>
+font: 25 italic 20pt &quot;Bahnschrift&quot;;
+</string>
       </property>
       <property name="text">
        <string>Age :</string>
@@ -705,7 +822,7 @@ font: italic 24pt &quot;High Tower Text&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: italic 18pt &quot;High Tower Text&quot;;
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
@@ -759,7 +876,7 @@ background-color: rgb(0, 0, 0, 0%);</string>
        <rect>
         <x>10</x>
         <y>140</y>
-        <width>871</width>
+        <width>661</width>
         <height>371</height>
        </rect>
       </property>
@@ -860,17 +977,31 @@ background-color: rgb(0, 0, 0, 0%);</string>
      <widget class="QToolButton" name="toolButton_10">
       <property name="geometry">
        <rect>
-        <x>940</x>
+        <x>950</x>
         <y>140</y>
-        <width>121</width>
+        <width>131</width>
         <height>51</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_10
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;</string>
+border-radius: 20px;
+}
+#toolButton_10:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_10:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Delete</string>
@@ -891,33 +1022,34 @@ border-radius: 20px;</string>
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_search">
-      <property name="geometry">
-       <rect>
-        <x>580</x>
-        <y>40</y>
-        <width>301</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:white;</string>
-      </property>
-     </widget>
      <widget class="QToolButton" name="toolButton_11">
       <property name="geometry">
        <rect>
-        <x>940</x>
+        <x>470</x>
         <y>40</y>
-        <width>121</width>
+        <width>131</width>
         <height>51</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_11
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;</string>
+border-radius: 20px;
+}
+#toolButton_11:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_11:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Search</string>
@@ -941,17 +1073,31 @@ border-radius: 20px;</string>
      <widget class="QToolButton" name="toolButton_12">
       <property name="geometry">
        <rect>
-        <x>940</x>
-        <y>340</y>
-        <width>121</width>
+        <x>790</x>
+        <y>40</y>
+        <width>131</width>
         <height>51</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_12
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;</string>
+border-radius: 20px;
+}
+#toolButton_12:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_12:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Sort : older</string>
@@ -975,17 +1121,31 @@ border-radius: 20px;</string>
      <widget class="QToolButton" name="toolButton_13">
       <property name="geometry">
        <rect>
-        <x>940</x>
-        <y>240</y>
-        <width>121</width>
+        <x>630</x>
+        <y>40</y>
+        <width>131</width>
         <height>51</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_13
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;</string>
+border-radius: 20px;
+}
+#toolButton_13:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_13:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Sort : younger</string>
@@ -1011,31 +1171,46 @@ border-radius: 20px;</string>
        <rect>
         <x>202</x>
         <y>40</y>
-        <width>241</width>
+        <width>191</width>
         <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white;</string>
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color:white;</string>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QToolButton" name="toolButton_pdf">
       <property name="geometry">
        <rect>
-        <x>940</x>
-        <y>430</y>
-        <width>121</width>
+        <x>950</x>
+        <y>40</y>
+        <width>131</width>
         <height>51</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_pdf
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;</string>
+border-radius: 20px;
+}
+#toolButton_pdf:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_pdf:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Stats</string>
@@ -1056,20 +1231,146 @@ border-radius: 20px;</string>
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QToolButton" name="toolButton_pdf_2">
+     <widget class="QLineEdit" name="lineEdit_fullname_m_2">
       <property name="geometry">
        <rect>
-        <x>940</x>
-        <y>510</y>
-        <width>121</width>
-        <height>51</height>
+        <x>720</x>
+        <y>150</y>
+        <width>181</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_age_m_2">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>230</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_email_m_2">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>310</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_phone_m_2">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>390</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_address_m_2">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>470</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_modify">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>340</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#toolButton_modify
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;</string>
+border-radius: 20px;
+}
+#toolButton_modify:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_modify:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>Modify</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_modify_2">
+      <property name="geometry">
+       <rect>
+        <x>950</x>
+        <y>240</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#toolButton_modify_2
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 20px;
+}
+#toolButton_modify_2:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_modify_2:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>PDF</string>
@@ -1080,27 +1381,26 @@ border-radius: 20px;</string>
         <height>60</height>
        </size>
       </property>
-      <property name="popupMode">
-       <enum>QToolButton::DelayedPopup</enum>
-      </property>
       <property name="toolButtonStyle">
        <enum>Qt::ToolButtonTextUnderIcon</enum>
-      </property>
-      <property name="autoRaise">
-       <bool>false</bool>
       </property>
      </widget>
      <zorder>empTable</zorder>
      <zorder>back_9</zorder>
      <zorder>label_23</zorder>
      <zorder>toolButton_10</zorder>
-     <zorder>lineEdit_search</zorder>
      <zorder>toolButton_11</zorder>
      <zorder>toolButton_12</zorder>
      <zorder>toolButton_13</zorder>
      <zorder>lineEdit</zorder>
      <zorder>toolButton_pdf</zorder>
-     <zorder>toolButton_pdf_2</zorder>
+     <zorder>lineEdit_fullname_m_2</zorder>
+     <zorder>lineEdit_age_m_2</zorder>
+     <zorder>lineEdit_email_m_2</zorder>
+     <zorder>lineEdit_phone_m_2</zorder>
+     <zorder>lineEdit_address_m_2</zorder>
+     <zorder>toolButton_modify</zorder>
+     <zorder>toolButton_modify_2</zorder>
     </widget>
     <widget class="QWidget" name="modifyEmployee4">
      <widget class="QLineEdit" name="lineEdit_age_m">
@@ -1179,34 +1479,6 @@ font: italic 24pt &quot;High Tower Text&quot;;</string>
       <property name="styleSheet">
        <string notr="true">font: italic 18pt &quot;High Tower Text&quot;;
 background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="toolButton_modify">
-      <property name="geometry">
-       <rect>
-        <x>940</x>
-        <y>500</y>
-        <width>141</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
-color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
-      </property>
-      <property name="text">
-       <string>Modify</string>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>60</width>
-        <height>60</height>
-       </size>
-      </property>
-      <property name="toolButtonStyle">
-       <enum>Qt::ToolButtonTextUnderIcon</enum>
       </property>
      </widget>
      <widget class="QLabel" name="label_33">
@@ -1410,7 +1682,7 @@ font: 40pt &quot;Lemon&quot;;
 background-color: rgb(0, 0, 0,0%);</string>
       </property>
       <property name="text">
-       <string>ORDERS</string>
+       <string>SHIFTS</string>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -1471,14 +1743,28 @@ background-color: rgb(0, 0, 0, 0%);</string>
         <height>151</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_6
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_6:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_6:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
-       <string>See all employees' shifts</string>
+       <string>View all shifts</string>
       </property>
       <property name="icon">
        <iconset>
@@ -1509,11 +1795,25 @@ border-radius: 30px;</string>
         <height>151</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_7
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_7:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_7:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Add shifts info</string>
@@ -1657,7 +1957,8 @@ background-color:white;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white;</string>
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color:white;</string>
       </property>
       <property name="readOnly">
        <bool>false</bool>
@@ -1672,11 +1973,25 @@ background-color:white;</string>
         <height>61</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_save_3
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_save_3:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_save_3:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Save</string>
@@ -1816,11 +2131,25 @@ background-color:white;</string>
         <height>61</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_delete_4
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_delete_4:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_delete_4:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>delete</string>
@@ -1923,11 +2252,25 @@ border-radius: 30px;</string>
         <height>61</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_delete_5
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_delete_5:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_delete_5:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>Search</string>
@@ -1951,11 +2294,25 @@ border-radius: 30px;</string>
         <height>61</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_delete_6
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_delete_6:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_delete_6:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>sort : asc</string>
@@ -1979,14 +2336,70 @@ border-radius: 30px;</string>
         <height>61</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_delete_7
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_delete_7:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_delete_7:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>sort : desc</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="toolButtonStyle">
+       <enum>Qt::ToolButtonTextUnderIcon</enum>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="toolButton_delete_8">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>470</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#toolButton_delete_8
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#toolButton_delete_8:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_delete_8:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>Stats</string>
       </property>
       <property name="iconSize">
        <size>
@@ -2009,11 +2422,25 @@ border-radius: 30px;</string>
         <height>61</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 24, 60);
+       <string notr="true">#toolButton_edit_6
+{
+background-color: rgb(51, 24, 60);
 color: rgb(255, 255, 255);
 font: 10pt &quot;Segoe Print&quot;;
-border-radius: 30px;</string>
+border-radius: 30px;
+}
+#toolButton_edit_6:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#toolButton_edit_6:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
       </property>
       <property name="text">
        <string>edit</string>
@@ -2038,7 +2465,8 @@ border-radius: 30px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white;</string>
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color:white;</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -2125,6 +2553,785 @@ color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="stats9">
+     <widget class="QCustomPlot" name="customPlot" native="true">
+      <property name="geometry">
+       <rect>
+        <x>119</x>
+        <y>70</y>
+        <width>891</width>
+        <height>421</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="back_11">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>520</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page">
+     <widget class="QFrame" name="shiftsStat">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>40</y>
+        <width>661</width>
+        <height>491</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255,0%);</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout"/>
+     </widget>
+     <widget class="QToolButton" name="back_12">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>520</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="showRole">
+     <widget class="QTableWidget" name="roleTable">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>200</y>
+        <width>781</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="tabKeyNavigation">
+       <bool>false</bool>
+      </property>
+      <property name="dragDropOverwriteMode">
+       <bool>false</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="textElideMode">
+       <enum>Qt::ElideMiddle</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="gotoRole">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>110</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#gotoRole
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#gotoRole:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#gotoRole:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>add role</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="nextPage">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>470</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#nextPage
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 20px;
+}
+#nextPage:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#nextPage:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>next</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="previousPage">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>470</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#previousPage
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 20px;
+}
+#previousPage:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#previousPage:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>previous</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="deleteRole">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>190</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#deleteRole
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#deleteRole:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#deleteRole:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>delete</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="toDelete">
+      <property name="geometry">
+       <rect>
+        <x>980</x>
+        <y>220</y>
+        <width>16</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="search">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>110</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#search
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#search:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#search:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>search</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="sortRole">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>290</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#sortRole
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#sortRole:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#sortRole:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>sort role</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="sortEarning">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>370</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#sortEarning
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#sortEarning:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#sortEarning:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>sort earning</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="searchRole">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>120</y>
+        <width>181</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="editRole">
+      <property name="geometry">
+       <rect>
+        <x>730</x>
+        <y>470</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#editRole
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 20px;
+}
+#editRole:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#editRole:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>edit Selected</string>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="back_13">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>520</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="stats">
+      <property name="geometry">
+       <rect>
+        <x>920</x>
+        <y>450</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#stats
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#stats:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#stats:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>stats</string>
+      </property>
+     </widget>
+     <zorder>toDelete</zorder>
+     <zorder>roleTable</zorder>
+     <zorder>gotoRole</zorder>
+     <zorder>nextPage</zorder>
+     <zorder>previousPage</zorder>
+     <zorder>deleteRole</zorder>
+     <zorder>search</zorder>
+     <zorder>sortRole</zorder>
+     <zorder>sortEarning</zorder>
+     <zorder>searchRole</zorder>
+     <zorder>editRole</zorder>
+     <zorder>back_13</zorder>
+     <zorder>stats</zorder>
+    </widget>
+    <widget class="QWidget" name="addrole">
+     <widget class="QLineEdit" name="cinrole">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>220</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="role">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>290</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);	</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="earningrole">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>360</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="bonusrole">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>430</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="nameRole">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>150</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="addRoleButton">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>490</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#addRoleButton
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#addRoleButton:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#addRoleButton:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>Add</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line">
+      <property name="geometry">
+       <rect>
+        <x>564</x>
+        <y>150</y>
+        <width>3</width>
+        <height>400</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color : black
+</string>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="bonusrole_Edit">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>430</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="earningrole_Edit">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>360</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cinrole_Edit">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>220</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="role_Edit">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>290</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);	</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="modifyRoleButton">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>490</y>
+        <width>141</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#modifyRoleButton
+{
+background-color: rgb(51, 24, 60);
+color: rgb(255, 255, 255);
+font: 10pt &quot;Segoe Print&quot;;
+border-radius: 30px;
+}
+#modifyRoleButton:hover
+{
+background-color: rgb(74, 35, 88);
+}
+#modifyRoleButton:pressed
+{
+background-color: rgb(98, 47, 117);
+}</string>
+      </property>
+      <property name="text">
+       <string>Modify</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="modificationLabel">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>60</y>
+        <width>361</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255,0%);
+font: italic 14pt &quot;Lucida Fax&quot;;</string>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="addingLabel">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>60</y>
+        <width>361</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255,0%);
+font: italic 14pt &quot;Lucida Fax&quot;;</string>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nameRole_Edit">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>150</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 25 italic 18pt &quot;Bahnschrift&quot;;
+background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QToolButton" name="back_14">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>520</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <widget class="QToolButton" name="back_19">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>520</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0, 0%);</string>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+      <property name="icon">
+       <iconset resource="assets.qrc">
+        <normaloff>:/img/img/icons8-back-80.png</normaloff>:/img/img/icons8-back-80.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QFrame" name="rolestats">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>30</y>
+        <width>961</width>
+        <height>571</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255,0%);</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout"/>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -2139,6 +3346,14 @@ color: rgb(0, 0, 0);</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="assets.qrc"/>
  </resources>

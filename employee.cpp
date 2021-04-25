@@ -1,4 +1,4 @@
-    #include "employee.h"
+#include "employee.h"
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
@@ -13,8 +13,11 @@
 #include <QApplication>
 #include <QFileDialog>
 #include <QDir>
+#include <QDateTime>
 #include <QMessageBox>
 #include <QSystemTrayIcon>
+#include <QVector>
+#include "QCustomPlot.h"
 
 employee::employee()
 {
@@ -56,10 +59,9 @@ bool employee::add(){
     return query.exec();
 }
 
-bool employee::remove(QString cin)
+bool employee::remove(QString toSearch)
 {
 QSqlQuery query;
-QString toSearch= cin;
 query.prepare("DELETE FROM EMPLOYEE WHERE CIN = :CIN");
 query.bindValue(":CIN", toSearch);
 return    query.exec();
@@ -139,68 +141,6 @@ QSqlQueryModel * employee::show_shifts()
         return mod;
 }
 
-bool employee::pdfunction(QString &name, QString &path)
-{
-    QPrinter printer;
-    printer.setOutputFormat(QPrinter::PdfFormat);
-   printer.setOutputFileName(path);
-    QPainter painter ;
-    QPixmap logo(":/img/img/logo.png");
-    painter.begin(&printer);
-
-    QFont font;
-    QSqlQuery query;
-    QString cin_pdf, fullname_pdf, age_pdf, email_pdf, phone_pdf, address_pdf ;
-
-        if(name !=""){
-        query.prepare("select * from employee where CIN='"+name+"'");
-        if (query.exec())
-        {
-            while (query.next())
-            {
-                cin_pdf=query.value(0).toString();
-                fullname_pdf=query.value(1).toString();
-                age_pdf=query.value(2).toString();
-                email_pdf=query.value(3).toString();
-                phone_pdf=query.value(4).toString();
-                address_pdf=query.value(5).toString();
-
-            }
-        }
-        font.setPixelSize(50);
-        painter.setFont(font);
-        painter.setPen(Qt::red);
-        painter.drawText(350,150,"Employee");
-
-        font.setPixelSize(35);
-        painter.setFont(font);
-        painter.setPen(Qt::blue);
-        painter.drawPixmap(10,10,50,50, logo);
-        painter.drawText(20,300,"CIN :");
-        painter.drawText(20,500,"Name :");
-        painter.drawText(20,650,"Age :");
-        painter.drawText(20,800,"Email :");
-        painter.drawText(20,1050,"phone :");
-        painter.drawText(20,1300,"Address :");
-
-
-        font.setPixelSize(22);
-        painter.setFont(font);
-        painter.setPen(Qt::black);
-        painter.drawText(300,500,fullname_pdf);
-        painter.drawText(300,300,cin_pdf);
-        painter.drawText(300,650,age_pdf);
-        painter.drawText(300,800,email_pdf);
-        painter.drawText(300,1050,phone_pdf);
-        painter.drawText(300,1300,address_pdf);
-
-    painter.end();
-        }
-
-}
-
-//notification
-
 void employee::show_notification(QString titre,QString text)
 {
     this->text=text;
@@ -209,5 +149,82 @@ void employee::show_notification(QString titre,QString text)
     notifyIcon->setIcon(QIcon(":/img/img/logo.png"));
     notifyIcon->show();
     notifyIcon->showMessage(titre,text,QSystemTrayIcon::Information,15000);
+}
+
+QSqlQuery employee::getStat_1(int &stat1)
+{
+    stat1 = 0;
+    QSqlQuery query1("SELECT COUNT(*) FROM EMPLOYEE WHERE AGE='20'");
+    while(query1.next())
+    {
+        stat1 = query1.value(0).toInt();
+    }
+    return query1;
+}
+
+QSqlQuery employee::getStat_2(int &stat2)
+{
+    stat2 = 0;
+    QSqlQuery query2("SELECT COUNT(*) FROM EMPLOYEE WHERE AGE='21'");
+    while(query2.next())
+    {
+        stat2 = query2.value(0).toInt();
+    }
+    return query2;
+}
+
+QSqlQuery employee::getStat_3(int &stat3)
+{
+    stat3 = 0;
+    QSqlQuery query3("SELECT COUNT(*) FROM EMPLOYEE WHERE AGE='22'");
+    while(query3.next())
+    {
+        stat3 = query3.value(0).toInt();
+    }
+    return query3;
+}
+
+QSqlQuery employee::getStat_4(int &stat4)
+{
+    stat4 = 0;
+    QSqlQuery query4("SELECT COUNT(*) FROM EMPLOYEE WHERE AGE='23'");
+    while(query4.next())
+    {
+        stat4 = query4.value(0).toInt();
+    }
+    return query4;
+}
+
+QSqlQuery employee::getStat_5(int &stat5)
+{
+    stat5 = 0;
+    QSqlQuery query5("SELECT COUNT(*) FROM EMPLOYEE WHERE AGE='24'");
+    while(query5.next())
+    {
+        stat5 = query5.value(0).toInt();
+    }
+    return query5;
+}
+
+QSqlQuery employee::getStat_6(int &stat6)
+{
+    stat6 = 0;
+    QSqlQuery query6("SELECT COUNT(*) FROM EMPLOYEE WHERE AGE='25'");
+    while(query6.next())
+    {
+        stat6 = query6.value(0).toInt();
+    }
+    return query6;
+}
+
+QSqlQuery employee::getStat_7(int &stat7)
+{
+    stat7 = 0;
+    QSqlQuery query7("SELECT COUNT(*) FROM EMPLOYEE WHERE AGE='26'");
+    while(query7.next())
+    {
+        stat7 = query7.value(0).toInt();
+    }
+    return query7;
 }
 
