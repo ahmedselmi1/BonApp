@@ -5,10 +5,11 @@
 #include <employee.h>
 #include <gateauxc.h>
 #include <commandec.h>
+#include <category.h>
 #include <QtCharts>
 #include <QChartView>
 #include <QPieSeries>
-
+#include "arduino.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -23,6 +24,7 @@ public:
 
 private slots:
     void on_goToOrders_clicked();
+    void update_label();   // slot permettant la mise à jour du label état de la lampe 1,
 
     void on_goToProducts_clicked();
 
@@ -126,13 +128,39 @@ private slots:
 
     void on_back_19_clicked();
 
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_addCategory_clicked();
+
+    void on_showCategory_clicked();
+
+    void on_pushButton_10_clicked();
+
+    void on_CatTab_activated(const QModelIndex &index);
+
+    void on_back_20_clicked();
+
+    void on_back_22_clicked();
+
+    void on_pushButton_11_clicked();
+
 private:
     Ui::MainWindow *ui;
 
+    QByteArray data; // variable contenant les données reçues
+
+    Arduino A; // objet temporaire
     //louay doc
     employee tableEmployee;
     //ghada doc
     gateauxC tabGateaux;
     commandeC tablecommande;
+    category tabCategory;
 };
 #endif // MAINWINDOW_H

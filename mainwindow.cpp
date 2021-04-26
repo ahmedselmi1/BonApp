@@ -3,6 +3,7 @@
 #include "employee.h"
 #include"gateauxc.h"
 #include"commandec.h"
+#include"category.h"
 #include <QDebug>
 #include <QApplication>
 #include <QMessageBox>
@@ -17,11 +18,37 @@
 
 using namespace std;
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+        break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+       break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+     QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+     //le slot update_label suite à la reception du signal readyRead (reception des données).
+}
+
+void MainWindow::update_label()
+{
+    data=A.read_from_arduino();
+    if(data.isNull())return;
+    qDebug()<<data;
+    if(data=="1")
+
+        ui->label_3->setText("ON"); // si les données reçues de arduino via la liaison série sont égales à 1
+    // alors afficher ON
+
+    else if (data=="0")
+
+        ui->label_3->setText("OFF");   // si les données reçues de arduino via la liaison série sont égales à 0
+     //alors afficher ON
 }
 
 MainWindow::~MainWindow()
@@ -36,7 +63,7 @@ void MainWindow::on_goToOrders_clicked()
 }
 void MainWindow::on_goToProducts_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(20);
     audio.play();
 }
 
@@ -77,13 +104,16 @@ void MainWindow::on_back_5_clicked()
 
 void MainWindow::on_addProduct_clicked()
 {
+    QString type=ui->type->text();
     ui->stackedWidget->setCurrentIndex(3);
+    ui->lineEdit_type->setText(type);
 }
 
 void MainWindow::on_showProducts_clicked()
 {
+    QString type=ui->type->text();
     ui->stackedWidget->setCurrentIndex(4);
-    ui->GatTab->setModel(tabGateaux.show());
+    ui->GatTab->setModel(tabGateaux.show(type));
     QSqlQueryModel *mod= new QSqlQueryModel();
     mod->setQuery(("select ID from GATEAUX"));
     ui->comboBox_id->setModel(mod);
@@ -92,12 +122,12 @@ void MainWindow::on_showProducts_clicked()
 
 void MainWindow::on_back_6_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(20);
 }
 
 void MainWindow::on_back_7_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(20);
 }
 
 void MainWindow::on_back_8_clicked()
@@ -325,6 +355,7 @@ void MainWindow::on_toolButton_save_clicked()
     QString NAME= ui->lineEdit_name->text();
     int QUANTITY= ui->spinBox_quantity->text().toInt();
     int PRICE= ui->lineEdit_price->text().toInt();
+    QString TYPE= ui->lineEdit_type->text();
 
 
         int x=0;
@@ -344,7 +375,7 @@ void MainWindow::on_toolButton_save_clicked()
 
         else if (x==0)
         {
-            gateauxC g(ID,NAME,QUANTITY,PRICE);
+            gateauxC g(ID,NAME,QUANTITY,PRICE,TYPE);
             bool toTest=g.add_gateaux();
 
         if(toTest)
@@ -355,16 +386,17 @@ void MainWindow::on_toolButton_save_clicked()
         ui->lineEdit_id->clear();
         ui->spinBox_quantity->clear();
         ui->lineEdit_price->clear();
-        ui->stackedWidget->setCurrentIndex(2);
+        ui->stackedWidget->setCurrentIndex(20);
         }
 
 }
 
 void MainWindow::on_toolButton_delete_clicked()
 {
+    QString type=ui->type->text();
     int id = ui->comboBox_id->currentText().toInt();
     tabGateaux.remove(id);
-    ui->GatTab->setModel(tabGateaux.show());
+    ui->GatTab->setModel(tabGateaux.show(type));
     QSqlQueryModel *mod= new QSqlQueryModel();
     mod->setQuery(("select ID from GATEAUX"));
     ui->comboBox_id->setModel(mod);
@@ -379,11 +411,12 @@ void MainWindow::on_toolButton_savemod_clicked()
     QString NAME= ui->lineEdit_name_3->text();
     int QUANTITY= ui->spinBox_quantity_3->text().toInt();
     int PRICE= ui->lineEdit_price_3->text().toInt();
+    QString TYPE=ui->lineEdit_type_3->text();
 
     int x=0;
     if (x==0)
     {
-     gateauxC g(ID,NAME,QUANTITY,PRICE);
+     gateauxC g(ID,NAME,QUANTITY,PRICE,TYPE);
     bool toTest =g.modify();
     if(toTest)
     {
@@ -392,8 +425,9 @@ void MainWindow::on_toolButton_savemod_clicked()
     ui->lineEdit_name_3->clear();
     ui->spinBox_quantity_3->clear();
     ui->lineEdit_price_3->clear();
+    ui->lineEdit_type_3->clear();
     ui->stackedWidget->setCurrentIndex(4);
-    ui->GatTab->setModel(tabGateaux.show());
+    ui->GatTab->setModel(tabGateaux.show(TYPE));
     QSqlQueryModel *mod= new QSqlQueryModel();
     mod->setQuery(("select ID from GATEAUX"));
     }
@@ -413,6 +447,7 @@ void MainWindow::on_GatTab_activated(const QModelIndex &index)
                 ui->lineEdit_name_3->setText(query.value(1).toString());
                 ui->spinBox_quantity_3->setValue(query.value(2).toInt());
                 ui->lineEdit_price_3->setText(query.value(3).toString());
+                ui->lineEdit_type_3->setText(query.value(4).toString());
             }
         }
 }
@@ -736,4 +771,143 @@ void MainWindow::on_back_18_clicked()
 void MainWindow::on_back_19_clicked()
 {
     ui->stackedWidget->setCurrentIndex(17);
+}
+//CATEGORY PART
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    QString id= ui->lineEdit->text();
+    QString type= ui->lineEdit_2->text();
+
+
+        int x=0;
+
+        if(type=="")
+        {
+            x++;
+        }
+
+
+        else if (x==0)
+        {
+            category cat(id,type);
+            bool toTest=cat.add_category();
+
+        if(toTest)
+        {
+            category().show_notification("Add category","Category added successfully");
+        }
+        ui->lineEdit->clear();
+        ui->lineEdit_2->clear();
+        ui->stackedWidget->setCurrentIndex(20);
+        }
+
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    int id = ui->comboBox_4->currentText().toInt();
+    tabCategory.remove(id);
+    ui->CatTab->setModel(tabCategory.show());
+    QSqlQueryModel *mod= new QSqlQueryModel();
+    mod->setQuery(("select ID from CATEGORY"));
+    ui->comboBox_4->setModel(mod);
+    audio.play();
+}
+
+void MainWindow::on_pushButton_8_clicked()
+{
+    QString name=ui->lineEdit_3->text();
+        ui->CatTab->setModel(tabCategory.search(name));
+        audio.play();
+}
+
+void MainWindow::on_pushButton_9_clicked()
+{
+    ui->CatTab->setModel(tabCategory.show_Desc());
+    audio.play();
+}
+
+void MainWindow::on_addCategory_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(21);
+    audio.play();
+}
+
+void MainWindow::on_showCategory_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(22);
+    ui->CatTab->setModel(tabCategory.show());
+    QSqlQueryModel *mod= new QSqlQueryModel();
+    mod->setQuery(("select ID from CATEGORY"));
+    ui->comboBox_4->setModel(mod);
+    audio.play();
+}
+
+void MainWindow::on_pushButton_10_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(20);
+    audio.play();
+}
+
+void MainWindow::on_CatTab_activated(const QModelIndex &index)
+{
+    QString val=ui->CatTab->model()->data(index).toString();
+        QSqlQuery query;
+        query.prepare("SELECT * FROM CATEGORY WHERE TYPE = '"+val+"'");
+        if(query.exec())
+        {
+            while (query.next())
+            {
+                ui->stackedWidget->setCurrentIndex(4);
+                ui->GatTab->setModel(tabGateaux.show(val));
+                ui->type->setText(val);
+            }
+        }
+        QString valm=ui->CatTab->model()->data(index).toString();
+            QSqlQuery queryy;
+            queryy.prepare("SELECT * FROM CATEGOORY WHERE ID = '"+valm+"'");
+            if(queryy.exec())
+            {
+                while (queryy.next())
+                {
+                    ui->stackedWidget->setCurrentIndex(23);
+                    ui->lineEdit_4->setText(query.value(0).toString());
+                    ui->lineEdit_5->setText(query.value(1).toString());
+                }
+            }
+}
+
+void MainWindow::on_back_20_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    audio.play();
+}
+
+void MainWindow::on_back_22_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(20);
+    audio.play();
+}
+
+void MainWindow::on_pushButton_11_clicked()
+{
+    QString id = ui->lineEdit_4->text();
+    QString type= ui->lineEdit_5->text();
+
+    int x=0;
+    if (x==0)
+    {
+     category cat(id,type);
+    bool toTest =cat.modify();
+    if(toTest)
+    {
+         category().show_notification("Modification cake","Cake modified successfully");
+    }
+    ui->lineEdit_5->clear();
+    ui->stackedWidget->setCurrentIndex(22);
+    ui->CatTab->setModel(tabCategory.show());
+    QSqlQueryModel *mod= new QSqlQueryModel();
+    mod->setQuery(("select ID from CATEGORY"));
+    }
 }
