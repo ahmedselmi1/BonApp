@@ -13,6 +13,7 @@
 #include <QTextDocument>
 #include "qpainter.h"
 #include <QAbstractItemModel>
+#include <QSystemTrayIcon>
 using std::uint8_t;
 using qrcodegen::QrCode;
 using qrcodegen::QrSegment;
@@ -97,6 +98,12 @@ bool clients::addClientToDB(QString nom, QString prenom, QString adresse, QStrin
     query.bindValue(":TEL",tel);
     bool result = query.exec();
 
+
+
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+    notifyIcon->setIcon(QIcon(":/img/img/logo.png"));
+    notifyIcon->show();
+    notifyIcon->showMessage("Réussi!","Utilisateur Ajouté!",QSystemTrayIcon::Information,15000);
 
 
 

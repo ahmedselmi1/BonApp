@@ -41,6 +41,37 @@ MainWindow::MainWindow(QWidget *parent)
         clients::sortAccording(ui->couponsTable, logicalIndex);
     });
 
+
+
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+        break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+       break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+     QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(onMsg())); // permet de lancer
+
+
+}
+
+
+
+void MainWindow::onMsg()
+{
+    while(A.getserial()->canReadLine())
+    {
+        data=A.getserial()->readLine();
+        qDebug()<<"Data Received: " <<data;
+        if(data.split(':')[0] == "b")
+        {
+            qDebug()<<"very cool";
+        }
+    }
+
+
+
 }
 
 

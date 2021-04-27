@@ -40,7 +40,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>17</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QLabel" name="label_2">
@@ -3810,6 +3810,16 @@ background-repeat: none;
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>210</y>
+        <width>120</width>
+        <height>80</height>
+       </rect>
       </property>
      </widget>
     </widget>

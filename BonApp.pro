@@ -1,4 +1,4 @@
-QT       += core gui sql printsupport multimedia
+QT       += core gui sql printsupport multimedia serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,6 +19,7 @@ SOURCES += \
     QrCode.cpp \
     QrCodeGeneratorDemo.cpp \
     QrCodeGeneratorWorker.cpp \
+    arduino.cpp \
     clients.cpp \
     connection.cpp \
     coupons.cpp \
@@ -30,6 +31,7 @@ SOURCES += \
 
 HEADERS += \
     QrCode.hpp \
+    arduino.h \
     clients.h \
     connection.h \
     coupons.h \

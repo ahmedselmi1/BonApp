@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <employee.h>
 #include <clients.h>
-
+#include "arduino.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -24,6 +24,8 @@ private slots:
     void on_goToProducts_clicked();
 
     void on_goToStock_clicked();
+
+    void onMsg();
 
     void on_goToClient_clicked();
 
@@ -152,5 +154,10 @@ private:
     clients Clients;
     pair<int,int> lastClientCell = make_pair(-1,-1);
     pair<int,int> lastCouponsCell = make_pair(-1,-1);
+
+    QByteArray data; // variable contenant les données reçues
+
+    Arduino A; // objet temporaire
+
 };
 #endif // MAINWINDOW_H
