@@ -28,6 +28,9 @@
         <file>img/print0002.png</file>
         <file>img/search0001.png</file>
         <file>img/search0002.png</file>
+        <file>img/plate.png</file>
+        <file>img/plateholder.png</file>
+        <file>img/ok.png</file>
     </qresource>
     <qresource prefix="/">
         <file>sounds/click1.mp3</file>

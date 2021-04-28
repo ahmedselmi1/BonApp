@@ -5,6 +5,7 @@
 #include <employee.h>
 #include <clients.h>
 #include "arduino.h"
+#include <deque>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -17,7 +18,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void paintQR(QPainter &painter, const QSize sz, const QString &data, QColor fg);
-
+    static Ui::MainWindow getUi();
 private slots:
     void on_goToOrders_clicked();
 
@@ -144,6 +145,8 @@ private slots:
 
     void on_nextCoupon_clicked();
 
+    void on_backvitrine_clicked();
+
 private:
 
 
@@ -154,7 +157,7 @@ private:
     clients Clients;
     pair<int,int> lastClientCell = make_pair(-1,-1);
     pair<int,int> lastCouponsCell = make_pair(-1,-1);
-
+    deque<int> lastPlateValues;
     QByteArray data; // variable contenant les données reçues
 
     Arduino A; // objet temporaire

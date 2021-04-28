@@ -16,12 +16,48 @@
 using std::uint8_t;
 
 
+
+
+
+
+
+
+
+
+
+
 using namespace std;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 int coupons::currentsorted = -1;
 int coupons::currentsorting = -1;
 int coupons::currentpage = 0;
 int coupons::maxPerPage = 8;
+QChartView* coupons::chartView;
 QNetworkAccessManager* coupons::manager = new QNetworkAccessManager();
 QNetworkRequest coupons::request;
 
@@ -31,7 +67,7 @@ coupons::coupons()
 
 
 
-void coupons::deleteSelectedCoupons(QTableWidget * couponsTable)
+void coupons::deleteSelectedCoupons(QTableWidget * couponsTable, QLayout* chartLayout)
 {
 
     map<QString,bool> toDelete;
@@ -49,7 +85,7 @@ void coupons::deleteSelectedCoupons(QTableWidget * couponsTable)
             query.exec();
           //cout << it->first << " => " << it->second << '\n';
        }
-    processCouponTable(couponsTable);
+    processCouponTable(couponsTable, chartLayout);
     string aaa = std::to_string(toDelete.size()) + " Coupons deleted successfully";
     QMessageBox::information(nullptr, QObject::tr("Coupons Deleted"),
                       QObject::tr(aaa.c_str()), QMessageBox::Ok);
@@ -129,7 +165,7 @@ void coupons::printPDF(QTableWidget* couponsTable)
       painter.end();
 
 }*/
-void coupons::processCouponTable(QTableWidget* couponsTable)
+void coupons::processCouponTable(QTableWidget* couponsTable, QLayout* chartLayout)
 {
 
 
@@ -172,15 +208,92 @@ void coupons::processCouponTable(QTableWidget* couponsTable)
                 item->setFlags(flags);
 
             }
+            /*if(column == 1)
+            {
+                categories << item->text();
 
+            }
+            if(column == 5)
+            {
+                *set0 << item->text().toInt();
+            }
+*/
             couponsTable->setItem(row, column, item);
         }
         row++;
 
      }
 
-    coupons::currentpage = 0;
-    coupons::showPage(couponsTable);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    QChart *chart = new QChart;
+    chart->setAnimationOptions(QChart::AllAnimations);
+    //! [3]
+
+    // series 1
+    //! [4]
+
+
+    //! [6]
+
+    //! [7]
+    coupons::chartView = new QChartView(chart);
+    coupons::chartView->setRenderHint(QPainter::Antialiasing);
+    coupons::chartView->setMinimumSize(640, 480);
+    //! [7]
+
+    //! [8]
+    // create main layout
+
+    QLayoutItem* item;
+    while ( ( item = chartLayout->layout()->takeAt( 0 ) ) != NULL )
+    {
+        delete item->widget();
+        delete item;
+    }
+
+   chartLayout->addWidget(coupons::chartView);
+   //ui->randomWidget->replace
+
+
+
+
+
+
+
+
+
+
+
+
+   coupons::currentpage = 0;
+   coupons::showPage(couponsTable);
+
+
+
+
+
 
 }
 
@@ -294,15 +407,68 @@ void coupons::prevPage(QTableWidget* couponsTable)
 void coupons::showPage(QTableWidget* couponsTable)
 {
 
+
+    QBarSet *set0 = new QBarSet("Uses");
+
+    QStringList categories;
+
+    QBarSeries *series = new QBarSeries;
+    series->append(set0);
+
+
     for(int i=0; i<couponsTable->rowCount(); i++)
     {
         couponsTable->showRow(i);
 
         if(i > coupons::currentpage*coupons::maxPerPage + (coupons::maxPerPage-1) || i < coupons::currentpage*coupons::maxPerPage)
              couponsTable->hideRow(i);
+        else
+        {
+
+                        categories <<couponsTable->item(i,1)->text();
+                        *set0 <<couponsTable->item(i,5)->text().toInt();
+        }
 
     }
 
+
+
+
+    int first = 3;
+    int count = 5;
+
+
+
+
+    QVBarModelMapper *mapper = new QVBarModelMapper();
+    mapper->setFirstBarSetColumn(1);
+    mapper->setLastBarSetColumn(4);
+    mapper->setFirstRow(first);
+    mapper->setRowCount(count);
+    mapper->setSeries(series);
+    //mapper->setModel(m_model);
+    coupons::chartView->chart()->removeAllSeries();
+    coupons::chartView->chart()->addSeries(series);
+    //! [4]
+
+    //! [5]
+    // for storing color hex from the series
+    QString seriesColorHex = "#000000";
+
+    // get the color of the series and use it for showing the mapped area
+    QList<QBarSet *> barsets = series->barSets();
+    for (int i = 0; i < barsets.count(); i++) {
+        seriesColorHex = "#" + QString::number(barsets.at(i)->brush().color().rgb(), 16).right(6).toUpper();
+        //m_model->addMapping(seriesColorHex, QRect(1 + i, first, 1, barsets.at(i)->count()));
+    }
+    //! [5]
+
+    //! [6]
+    QBarCategoryAxis *axis = new QBarCategoryAxis();
+    axis->setCategories(categories);
+    coupons::chartView->chart()->createDefaultAxes();
+    coupons::chartView->chart()->setAxisX(axis, series);
+    coupons::chartView->chart()->setAxisY(axis, series);
 
 }
 
@@ -314,6 +480,10 @@ void coupons::showPage(QTableWidget* couponsTable)
 void coupons::searchText(QTableWidget* couponsTable, QString textsearched)
 {
     qDebug()<<"eyo";
+
+
+
+
     map<int,bool> rowsFound;
 
     for (int row = 0 ; row < couponsTable->rowCount() ; ++row) {
@@ -324,6 +494,17 @@ void coupons::searchText(QTableWidget* couponsTable, QString textsearched)
 
     if(textsearched != "")
     {
+
+
+        QBarSet *set0 = new QBarSet("Uses");
+
+        QStringList categories;
+
+        QBarSeries *series = new QBarSeries;
+        series->append(set0);
+
+
+
         foreach(QTableWidgetItem* item, couponsTable->findItems(textsearched,Qt::MatchContains))
         {
             item->setBackgroundColor(*new QColor(120,120,120));
@@ -334,7 +515,14 @@ void coupons::searchText(QTableWidget* couponsTable, QString textsearched)
         {
             if(rowsFound[i])
                  {
+
                 couponsTable->showRow(i);
+
+
+
+                categories <<couponsTable->item(i,1)->text();
+                *set0 <<couponsTable->item(i,5)->text().toInt();
+
 
             }
             else
@@ -343,6 +531,45 @@ void coupons::searchText(QTableWidget* couponsTable, QString textsearched)
             }
 
         }
+
+
+
+
+        int first = 3;
+        int count = 5;
+
+
+
+
+        QVBarModelMapper *mapper = new QVBarModelMapper();
+        mapper->setFirstBarSetColumn(1);
+        mapper->setLastBarSetColumn(4);
+        mapper->setFirstRow(first);
+        mapper->setRowCount(count);
+        mapper->setSeries(series);
+        //mapper->setModel(m_model);
+        coupons::chartView->chart()->removeAllSeries();
+        coupons::chartView->chart()->addSeries(series);
+        //! [4]
+
+        //! [5]
+        // for storing color hex from the series
+        QString seriesColorHex = "#000000";
+
+        // get the color of the series and use it for showing the mapped area
+        QList<QBarSet *> barsets = series->barSets();
+        for (int i = 0; i < barsets.count(); i++) {
+            seriesColorHex = "#" + QString::number(barsets.at(i)->brush().color().rgb(), 16).right(6).toUpper();
+            //m_model->addMapping(seriesColorHex, QRect(1 + i, first, 1, barsets.at(i)->count()));
+        }
+        //! [5]
+
+        //! [6]
+        QBarCategoryAxis *axis = new QBarCategoryAxis();
+        axis->setCategories(categories);
+        coupons::chartView->chart()->createDefaultAxes();
+        coupons::chartView->chart()->setAxisX(axis, series);
+        coupons::chartView->chart()->setAxisY(axis, series);
     }
     else
     {

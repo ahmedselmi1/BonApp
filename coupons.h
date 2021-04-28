@@ -5,6 +5,24 @@
 #include <QNetworkReply>
 
 
+
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QTableView>
+#include <QtCharts/QChart>
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QVXYModelMapper>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QVBarModelMapper>
+#include <QtWidgets/QHeaderView>
+#include <QtCharts/QBarCategoryAxis>
+using namespace QtCharts;
+
+
+
+
+
 class coupons
 {
 public:
@@ -14,8 +32,8 @@ public:
     static int currentpage;
     static int maxPerPage;
 
-    static void deleteSelectedCoupons(QTableWidget*);
-    static void processCouponTable(QTableWidget*);
+    static void deleteSelectedCoupons(QTableWidget*, QLayout* chartLayout);
+    static void processCouponTable(QTableWidget*, QLayout* chartLayout);
     static bool addCouponToDB(QString code, QString totalNum, QString startDate, QString endDate, QString constraints,bool email);
     static void printPDF(QTableWidget* couponsTable);
     static bool editCouponData(QTableWidget* couponsTable, int row);
@@ -29,7 +47,7 @@ public:
 private:
     static QNetworkAccessManager *manager;
     static QNetworkRequest request;
-
+    static QChartView *chartView;
 };
 
 #endif // COUPONS_H

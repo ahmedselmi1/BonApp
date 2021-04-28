@@ -17,6 +17,11 @@
 #include "qrcodedisplayer.h"
 #include <QPrinter>
 #include <QSound>
+
+
+#include<math.h>
+
+
 using std::uint8_t;
 using qrcodegen::QrCode;
 using qrcodegen::QrSegment;
@@ -54,6 +59,23 @@ MainWindow::MainWindow(QWidget *parent)
      QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(onMsg())); // permet de lancer
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -63,10 +85,61 @@ void MainWindow::onMsg()
     while(A.getserial()->canReadLine())
     {
         data=A.getserial()->readLine();
+        data.chop(2);
         qDebug()<<"Data Received: " <<data;
         if(data.split(':')[0] == "b")
         {
-            qDebug()<<"very cool";
+            qDebug()<<"button state" << data.split(':')[1];
+        }
+        else if(data.split(':')[0] == "p")
+        {
+            qDebug()<<"distance: "<< data.split(':')[1];
+            int rawDistance = data.split(':')[1].toInt();
+            if(lastPlateValues.size() == 10)
+            {
+                lastPlateValues.pop_front();
+            }
+
+            lastPlateValues.push_back(rawDistance);
+            int total = 0;
+            int presentNum = 0;
+            int totalPresent = 0;
+            for(int s=0;s<lastPlateValues.size();s++)
+            {
+                total += lastPlateValues[s];
+                if(lastPlateValues[s] < 100)
+                {
+                    presentNum++;
+                    totalPresent += lastPlateValues[s];
+                }
+            }
+
+            int distance = total/lastPlateValues.size();
+            if(presentNum == 0) presentNum = 1;
+            int distancePresent = totalPresent/presentNum;
+            if(distance > 100)
+            {
+                ui->plate->setVisible(false);
+                ui->okplate->setVisible(false);
+                lastPlateValues.clear();
+            }
+            else
+            {
+                ui->plate->setVisible(true);
+                int finalDist = max(0,distancePresent-6);
+                ui->plate->move(465,290-finalDist*4);
+                if(finalDist == 0)
+                {
+                    ui->okplate->setVisible(true);
+
+                }
+                else
+                {
+                    ui->okplate->setVisible(false);
+
+                }
+            }
+
         }
     }
 
@@ -503,7 +576,7 @@ void MainWindow::on_pushButton_2_clicked()
 
     lastCouponsCell = make_pair(-1,-1);
 
-    coupons::processCouponTable(ui->couponsTable);
+    coupons::processCouponTable(ui->couponsTable, ui->randomLayout);
 
 
 
@@ -529,7 +602,7 @@ void MainWindow::on_supprimerCoupon_clicked()
 {
     QSound::play(":/clicky.wav");
 
-    coupons::deleteSelectedCoupons(ui->couponsTable);
+    coupons::deleteSelectedCoupons(ui->couponsTable, ui->randomLayout);
 
 }
 
@@ -591,7 +664,7 @@ void MainWindow::on_ajoutCoupon_clicked()
 
     if(added)
     {
-        coupons::processCouponTable(ui->couponsTable);
+        coupons::processCouponTable(ui->couponsTable,  ui->randomLayout);
         QMessageBox::information(nullptr, QObject::tr("Coupon Added"),QObject::tr("Coupon Added Successfuly"), QMessageBox::Ok);
         ui->stackedWidget->setCurrentIndex(16);
     }
@@ -686,4 +759,9 @@ void MainWindow::on_nextCoupon_clicked()
 void MainWindow::on_prevCoupon_clicked()
 {
     if(ui->couponSearch->toPlainText() == "")coupons::prevPage(ui->couponsTable);
+}
+
+void MainWindow::on_backvitrine_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(6);
 }
