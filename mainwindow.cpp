@@ -866,15 +866,17 @@ void MainWindow::on_CatTab_activated(const QModelIndex &index)
         }
         QString valm=ui->CatTab->model()->data(index).toString();
             QSqlQuery queryy;
-            queryy.prepare("SELECT * FROM CATEGOORY WHERE ID = '"+valm+"'");
+            queryy.prepare("SELECT * FROM CATEGORY WHERE ID = '"+valm+"'");
             if(queryy.exec())
             {
                 while (queryy.next())
                 {
                     ui->stackedWidget->setCurrentIndex(23);
-                    ui->lineEdit_4->setText(query.value(0).toString());
-                    ui->lineEdit_5->setText(query.value(1).toString());
+                    ui->lineEdit_4->setText(queryy.value(0).toString());
+                    ui->lineEdit_5->setText(queryy.value(1).toString());
+
                 }
+
             }
 }
 
@@ -911,3 +913,4 @@ void MainWindow::on_pushButton_11_clicked()
     mod->setQuery(("select ID from CATEGORY"));
     }
 }
+
