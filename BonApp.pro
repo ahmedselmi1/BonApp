@@ -1,4 +1,5 @@
 QT       += core gui sql charts multimedia multimediawidgets printsupport
+QT += serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     QCustomPlot.cpp \
+    arduino.cpp \
     connection.cpp \
     employee.cpp \
     main.cpp \
@@ -26,6 +28,7 @@ SOURCES += \
 
 HEADERS += \
     QCustomPlot.h \
+    arduino.h \
     connection.h \
     employee.h \
     mainwindow.h \

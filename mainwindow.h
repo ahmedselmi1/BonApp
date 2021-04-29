@@ -5,6 +5,7 @@
 #include <employee.h>
 #include <shifts.h>
 #include "role.h"
+#include "arduino.h"
 #include <QtCharts>
 #include <QChartView>
 #include <QPieSeries>
@@ -135,6 +136,10 @@ private slots:
 private:
 
 Ui::MainWindow *ui;
+
+QByteArray data; // variable contenant les données reçues
+
+    Arduino A;
 
     employee tableEmployee, tableEmployee1;
     shifts tableShifts, tableShifts1;
