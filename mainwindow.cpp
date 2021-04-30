@@ -40,15 +40,17 @@ void MainWindow::update_label()
     data=A.read_from_arduino();
     if(data.isNull())return;
     qDebug()<<data;
-    if(data=="1")
+    if(data.split(':')[0] == "s")
+    {
+        if(data.split(':')[1] == "-1")
+        {
+            ui->label_86->setText("Not Detected"); // si les données reçues de arduino via la liaison série sont égales à 1
 
-        ui->label_3->setText("ON"); // si les données reçues de arduino via la liaison série sont égales à 1
-    // alors afficher ON
+        }
+        else
+        ui->label_86->setText("Detected"); // si les données reçues de arduino via la liaison série sont égales à 1
+    }
 
-    else if (data=="0")
-
-        ui->label_3->setText("OFF");   // si les données reçues de arduino via la liaison série sont égales à 0
-     //alors afficher ON
 }
 
 MainWindow::~MainWindow()
@@ -914,3 +916,9 @@ void MainWindow::on_pushButton_11_clicked()
     }
 }
 
+
+void MainWindow::on_pushButton_12_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(24);
+     audio.play();
+}
