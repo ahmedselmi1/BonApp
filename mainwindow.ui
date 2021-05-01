@@ -40,7 +40,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>19</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QLabel" name="label_2">
