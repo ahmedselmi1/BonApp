@@ -24,5 +24,25 @@
         <file>img/supprimer0001.png</file>
         <file>img/supprimer0002.png</file>
         <file>img/btnCoupons0002.png</file>
+        <file>img/print0001.png</file>
+        <file>img/print0002.png</file>
+        <file>img/search0001.png</file>
+        <file>img/search0002.png</file>
+        <file>img/plate.png</file>
+        <file>img/plateholder.png</file>
+        <file>img/ok.png</file>
+        <file>img/click.wav</file>
+        <file>img/output-onlinepngtools.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>sounds/click1.mp3</file>
+        <file>sounds/click1.wav</file>
+        <file>sounds/click2.mp3</file>
+        <file>sounds/click2.wav</file>
+        <file>sounds/click3.mp3</file>
+        <file>sounds/click3.wav</file>
+        <file>sounds/click4.mp3</file>
+        <file>sounds/click4.wav</file>
+        <file>clicky.wav</file>
     </qresource>
 </RCC>
