@@ -20,7 +20,7 @@
 #include <QPropertyAnimation>
 #include <QTimer>
 #include<math.h>
-
+#include <QMediaPlayer>
 using std::uint8_t;
 using qrcodegen::QrCode;
 using qrcodegen::QrSegment;
@@ -29,8 +29,10 @@ using namespace std;
 
 QSound audio (":/img/img/click.wav");
 
-
-
+QMediaPlayer* musicPlayer = new QMediaPlayer;
+QString songsList[] = {"music1.mp3", "music2.mp3", "music3.mp3", "music4.mp3", "music5.mp3"};
+int currentSong = 0;
+bool autoPlay = true;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -65,6 +67,26 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
+
+     if(autoPlay)
+     {
+
+         musicPlayer->setMedia(QUrl("qrc:/music/" + songsList[currentSong]));
+         musicPlayer->setVolume(50);
+         musicPlayer->play();
+         ui->musicStop->setVisible(true);
+         ui->musicPlay->setVisible(false);
+
+
+     }
+     else
+     {
+         ui->musicStop->setVisible(false);
+         ui->musicPlay->setVisible(true);
+
+     }
+
+     startTimer(1000);   // 1-second timer
 
 
 
@@ -534,7 +556,7 @@ void MainWindow::on_ajoutercoupon_clicked()
 {
     QSound::play(":/clicky.wav");
 
-    ui->stackedWidget->setCurrentIndex(18);
+    ui->stackedWidget->setCurrentIndex(28);
 
 }
 
@@ -542,7 +564,7 @@ void MainWindow::on_ajouterclient_clicked()
 {
     QSound::play(":/clicky.wav");
 
-    ui->stackedWidget->setCurrentIndex(17);
+    ui->stackedWidget->setCurrentIndex(27);
 
 }
 
@@ -822,6 +844,65 @@ void MainWindow::on_labelClientNom_textEdited(const QString &arg1)
 void MainWindow::on_ajoutCoupon_clicked()
 {
 
+    bool bad = false;
+    if(ui->labelCouponCode->text() == "")
+    {
+
+        QPropertyAnimation* anim = new QPropertyAnimation(ui->codeWarning, "geometry");
+        anim->setDuration(500);
+        anim->setEasingCurve(QEasingCurve::InOutSine);
+        anim->setStartValue(QRect(ui->codeWarning->geometry().x()+5,ui->codeWarning->geometry().y(),ui->codeWarning->geometry().width(),ui->codeWarning->geometry().height()));
+        anim->setEndValue(QRect(ui->codeWarning->geometry().x(),ui->codeWarning->geometry().y(),ui->codeWarning->geometry().width(),ui->codeWarning->geometry().height()));
+        anim->start();
+        animateObjWhite(ui->labelCouponCode,255);
+        ui->codeWarning->setText("<font color='red'>Code est vide</font>");
+        bad = true;
+    }
+    else
+    {
+        ui->codeWarning->setText("");
+    }
+
+    if(ui->labelCouponUses->text() == "")
+    {
+
+        QPropertyAnimation* anim = new QPropertyAnimation(ui->usesWarning, "geometry");
+        anim->setDuration(500);
+        anim->setEasingCurve(QEasingCurve::InOutSine);
+        anim->setStartValue(QRect(ui->usesWarning->geometry().x()+5,ui->usesWarning->geometry().y(),ui->usesWarning->geometry().width(),ui->usesWarning->geometry().height()));
+        anim->setEndValue(QRect(ui->usesWarning->geometry().x(),ui->usesWarning->geometry().y(),ui->usesWarning->geometry().width(),ui->usesWarning->geometry().height()));
+        anim->start();
+        animateObjWhite(ui->labelCouponUses,255);
+        ui->usesWarning->setText("<font color='red'>Uses est vide</font>");
+        bad = true;
+    }
+    else
+    {
+        for(int s=0;s<ui->labelCouponUses->text().size();s++)
+        {
+            if(!ui->labelCouponUses->text()[s].isDigit())
+            {
+                QPropertyAnimation* anim = new QPropertyAnimation(ui->usesWarning, "geometry");
+                anim->setDuration(500);
+                anim->setEasingCurve(QEasingCurve::InOutSine);
+                anim->setStartValue(QRect(ui->usesWarning->geometry().x()+5,ui->usesWarning->geometry().y(),ui->usesWarning->geometry().width(),ui->usesWarning->geometry().height()));
+                anim->setEndValue(QRect(ui->usesWarning->geometry().x(),ui->usesWarning->geometry().y(),ui->usesWarning->geometry().width(),ui->usesWarning->geometry().height()));
+                anim->start();
+                animateObjWhite(ui->labelCouponUses,255);
+                ui->usesWarning->setText("<font color='red'>Uses est un nombre</font>");
+                bad = true;
+                break;
+            }
+        }
+        if(!bad)ui->usesWarning->setText("");
+    }
+
+    if(bad)
+    {
+        return;
+    }
+
+
     QSound::play(":/clicky.wav");
 
     bool added = coupons::addCouponToDB(ui->labelCouponCode->text(),ui->labelCouponUses->text(), ui->CouponCalendarStart->selectedDate().toString("yyyy-MM-dd") + " " + ui->CouponTimeStart->time().toString("hh:mm:ss"),ui->CouponCalendarEnd->selectedDate().toString("yyyy-MM-dd") + " " + ui->CouponTimeEnd->time().toString("hh:mm:ss"),'{' + (ui->couponTotalSup->isChecked()?("\"totalSup\": " + ui->couponTotalSupInput->text()):"") +  '}', ui->notifEmailCoupon->isChecked());
@@ -1066,6 +1147,7 @@ void MainWindow::on_pushButton_clicked()
     mod->setQuery(("select ID from COMMANDE"));
     ui->comboBox_3->setModel(mod);
     audio.play();
+
 }
 
 void MainWindow::on_pushButton_3_clicked()
@@ -1529,3 +1611,52 @@ void MainWindow::on_showProducts_clicked()
 }
 
 
+
+void MainWindow::on_vitrineBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(29);
+    audio.play();
+
+}
+
+void MainWindow::on_musicNext_clicked()
+{
+    int length = sizeof(songsList) / sizeof(songsList[0]);
+    currentSong = (currentSong + 1)%length;
+    musicPlayer->setMedia(QUrl("qrc:/music/" + songsList[currentSong]));
+    musicPlayer->play();
+
+}
+
+void MainWindow::on_musicBack_clicked()
+{
+    int length = sizeof(songsList) / sizeof(songsList[0]);
+
+    currentSong = (currentSong - 1);
+    if(currentSong<0)
+    {
+        currentSong = length-1;
+    }
+    musicPlayer->setMedia(QUrl("qrc:/music/" + songsList[currentSong]));
+    musicPlayer->play();
+
+}
+
+void MainWindow::on_musicStop_clicked()
+{
+    musicPlayer->pause();
+    ui->musicStop->setVisible(false);
+    ui->musicPlay->setVisible(true);
+}
+
+void MainWindow::on_musicPlay_clicked()
+{
+    musicPlayer->play();
+    ui->musicStop->setVisible(true);
+    ui->musicPlay->setVisible(false);
+
+}
+void MainWindow::timerEvent(QTimerEvent * event)
+{
+    ui->timeTXT->setText("<span style=' font-size:22pt; color:#ffffff;'>" + QTime::currentTime().toString("hh:mm:ss") + "</span>");
+}

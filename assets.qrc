@@ -33,6 +33,8 @@
         <file>img/ok.png</file>
         <file>img/click.wav</file>
         <file>img/output-onlinepngtools.png</file>
+        <file>img/vitrine0001.png</file>
+        <file>img/vitrine0002.png</file>
     </qresource>
     <qresource prefix="/">
         <file>sounds/click1.mp3</file>
@@ -44,5 +46,20 @@
         <file>sounds/click4.mp3</file>
         <file>sounds/click4.wav</file>
         <file>clicky.wav</file>
+        <file>img/vitrine0001.png</file>
+        <file>img/vitrine0002.png</file>
+        <file>music/music1.mp3</file>
+        <file>music/music2.mp3</file>
+        <file>music/music3.mp3</file>
+        <file>music/music4.mp3</file>
+        <file>music/music5.mp3</file>
+        <file>img/next0001.png</file>
+        <file>img/next0002.png</file>
+        <file>img/stop0001.png</file>
+        <file>img/stop0002.png</file>
+        <file>img/backmusic0001.png</file>
+        <file>img/backmusic0002.png</file>
+        <file>img/play0001.png</file>
+        <file>img/play0002.png</file>
     </qresource>
 </RCC>

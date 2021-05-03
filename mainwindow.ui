@@ -34,7 +34,7 @@
      <string notr="true">background-color: rgb(255, 255, 255,0%);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QLabel" name="label_2">
@@ -82,8 +82,8 @@ background-color: rgb(0, 0, 0, 0%);</string>
      <widget class="QToolButton" name="goToOrders">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>230</y>
+        <x>130</x>
+        <y>170</y>
         <width>241</width>
         <height>131</height>
        </rect>
@@ -123,8 +123,8 @@ background-color: rgb(0, 85, 127);
      <widget class="QToolButton" name="goToProducts">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>230</y>
+        <x>450</x>
+        <y>170</y>
         <width>241</width>
         <height>131</height>
        </rect>
@@ -164,8 +164,8 @@ font: 20pt &quot;MV Boli&quot;;
      <widget class="QToolButton" name="goToStock">
       <property name="geometry">
        <rect>
-        <x>800</x>
-        <y>230</y>
+        <x>740</x>
+        <y>170</y>
         <width>241</width>
         <height>131</height>
        </rect>
@@ -205,8 +205,8 @@ background-color: rgb(0, 85, 127);
      <widget class="QToolButton" name="goToEmployee">
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>420</y>
+        <x>590</x>
+        <y>330</y>
         <width>241</width>
         <height>131</height>
        </rect>
@@ -246,8 +246,8 @@ background-color: rgb(0, 85, 127);
      <widget class="QToolButton" name="goToClient">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>420</y>
+        <x>280</x>
+        <y>330</y>
         <width>241</width>
         <height>131</height>
        </rect>
@@ -284,22 +284,6 @@ font: 20pt &quot;MV Boli&quot;;
        <enum>Qt::ToolButtonTextUnderIcon</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_48">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1131</width>
-        <height>621</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-image: url(:/img/img/output-onlinepngtools.png);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_12">
       <property name="geometry">
        <rect>
@@ -329,15 +313,143 @@ font: 20pt &quot;MV Boli&quot;;
        <string>Arduino Part</string>
       </property>
      </widget>
-     <zorder>label_48</zorder>
-     <zorder>label_2</zorder>
-     <zorder>label</zorder>
-     <zorder>goToOrders</zorder>
-     <zorder>goToProducts</zorder>
-     <zorder>goToStock</zorder>
-     <zorder>goToEmployee</zorder>
-     <zorder>goToClient</zorder>
-     <zorder>pushButton_12</zorder>
+     <widget class="QPushButton" name="musicNext">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>550</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#musicNext {
+background-color: transparent;
+border-image: url(:/img/next0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#musicNext:hover {
+
+  	border-image: url(:/img/next0002.png);
+}
+#musicNext:pressed
+{
+   border-image: url(:/img/next0001.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="musicStop">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>550</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#musicStop {
+background-color: transparent;
+border-image: url(:/img/stop0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#musicStop:hover {
+
+  	border-image: url(:/img/stop0002.png);
+}
+#musicStop:pressed
+{
+   border-image: url(:/img/stop0001.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="musicBack">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>550</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#musicBack {
+background-color: transparent;
+border-image: url(:/img/backmusic0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#musicBack:hover {
+
+  	border-image: url(:/img/backmusic0002.png);
+}
+#musicBack:pressed
+{
+   border-image: url(:/img/backmusic0001.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="musicPlay">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>550</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#musicPlay {
+background-color: transparent;
+border-image: url(:/img/play0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#musicPlay:hover {
+
+  	border-image: url(:/img/play0002.png);
+}
+#musicPlay:pressed
+{
+   border-image: url(:/img/play0001.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="timeTXT">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>550</y>
+        <width>211</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt; color:#ffffff;&quot;&gt;24:59:59&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="orders">
      <widget class="QLabel" name="label_3">
@@ -1439,7 +1551,7 @@ background-color: rgb(0, 0, 0,0%);</string>
       <property name="geometry">
        <rect>
         <x>270</x>
-        <y>280</y>
+        <y>310</y>
         <width>271</width>
         <height>101</height>
        </rect>
@@ -1472,9 +1584,9 @@ background-repeat: none;
       <property name="geometry">
        <rect>
         <x>610</x>
-        <y>280</y>
+        <y>310</y>
         <width>271</width>
-        <height>101</height>
+        <height>100</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -1542,6 +1654,39 @@ background-color: rgb(0, 0, 0, 0%);</string>
         <width>60</width>
         <height>60</height>
        </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="vitrineBtn">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>190</y>
+        <width>281</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#vitrineBtn {
+background-color: transparent;
+border-image: url(:/img/img/vitrine0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#vitrineBtn:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/vitrine0002.png);
+	 border: none;
+}
+#vitrineBtn:pressed
+{
+   border-image: url(:/img/img/vitrine0001.png);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
@@ -6090,6 +6235,38 @@ background-repeat: none;
          <width>250</width>
          <height>250</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="codeWarning">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>40</y>
+         <width>171</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="usesWarning">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>90</y>
+         <width>171</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </widget>

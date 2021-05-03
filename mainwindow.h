@@ -232,6 +232,16 @@ private slots:
 
     void on_pushButton_12_clicked();
 
+    void on_vitrineBtn_clicked();
+
+    void on_musicNext_clicked();
+
+    void on_musicBack_clicked();
+
+    void on_musicStop_clicked();
+
+    void on_musicPlay_clicked();
+
 private:
 
 
@@ -257,6 +267,8 @@ private:
     category tabCategory;
 /////////
 
+protected:
+    void timerEvent(QTimerEvent *event);
 
 
 };
