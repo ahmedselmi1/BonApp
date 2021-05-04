@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    QCustomPlot.cpp \
     QrCode.cpp \
     QrCodeGeneratorDemo.cpp \
     QrCodeGeneratorWorker.cpp \
@@ -33,9 +34,12 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     qrcodedisplayer.cpp \
-    qrwidget.cpp
+    qrwidget.cpp \
+    role.cpp \
+    shifts.cpp
 
 HEADERS += \
+    QCustomPlot.h \
     QrCode.hpp \
     arduino.h \
     category.h \
@@ -47,7 +51,9 @@ HEADERS += \
     gateauxc.h \
     mainwindow.h \
     qrcodedisplayer.h \
-    qrwidget.hpp
+    qrwidget.hpp \
+    role.h \
+    shifts.h
 
 FORMS += \
     mainwindow.ui \

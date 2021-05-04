@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <employee.h>
 #include <clients.h>
 #include "arduino.h"
 #include <deque>
@@ -12,6 +11,20 @@
 #include "category.h"
 #include <QPieSeries>
 #include <QFileDialog>
+
+
+
+
+
+#include <employee.h>
+#include <shifts.h>
+#include "role.h"
+#include <QtCharts>
+#include <QChartView>
+#include <QPieSeries>
+
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -58,19 +71,14 @@ private slots:
 
     void on_toolButton_4_clicked();
 
-    void on_toolButton_3_clicked();
 
     void on_back_8_clicked();
 
     void on_back_9_clicked();
 
-    void on_toolButton_save_2_clicked();
 
-    void on_toolButton_10_clicked();
 
-    void on_toolButton_11_clicked();
 
-    void on_toolButton_modify_clicked();
 
     void on_back_10_clicked();
 
@@ -242,13 +250,140 @@ private slots:
 
     void on_musicPlay_clicked();
 
+    void on_goToShifts_clicked();
+
+
+
+
+
+    //LOUAY
+
+
+
+
+
+
+
+
+
+
+
+    void pdf();
+
+
+    void on_goBack_clicked();
+
+    void on_goToAddEmployee_clicked();
+
+    void on_viewEmployee_clicked();
+
+    void on_backToEmployeefnc_clicked();
+
+    void on_backToEmployeefnc_2_clicked();
+
+    void on_addEmployeeToDB_clicked();
+
+    void on_deleteEmployee_clicked();
+
+    void on_modifyEmployeeDB_clicked();
+
+    void on_backToEmployeeList_clicked();
+
+    void on_empTable_activated();
+
+
+    void on_addShiftsInfo_clicked();
+
+    void on_addShiftsToDB_clicked();
+
+    void on_backToEmployeefnc_3_clicked();
+
+    void on_searchEmployee_clicked();
+
+    void on_ageDESC_clicked();
+
+    void on_ageASC_clicked();
+
+    void on_backToShiftsfcn_clicked();
+
+    void on_backToShiftsfcn_2_clicked();
+
+    void on_viewAllShifts_clicked();
+
+    void on_empTable_clicked(const QModelIndex &index);
+
+    void on_emptable_2_clicked(const QModelIndex &index);
+
+    void on_shiftsTab_clicked(const QModelIndex &index);
+
+    void on_deleteShiftsFromDB_clicked();
+
+    void on_backToShiftsList_clicked();
+
+    void on_shiftsTab_doubleClicked(const QModelIndex &index);
+
+    void on_toolButton_edit_6_clicked();
+
+    void on_toolButton_delete_5_clicked();
+
+    void on_toolButton_delete_6_clicked();
+
+    void on_toolButton_delete_7_clicked();
+
+    void on_toolButton_pdf_clicked();
+
+    void on_back_24_clicked();
+
+    void on_getEmployeePdf_clicked();
+
+    void on_getShiftsStat_clicked();
+
+    void on_viewRoles_clicked();
+
+    void on_addRolePage_clicked();
+
+    void on_nameRole_activated(const QString &arg1);
+
+    void on_addRoleToDB_clicked();
+
+    void on_previousRolePage_clicked();
+
+    void on_nextRolePage_clicked();
+
+    void on_deleteRole_clicked();
+
+    void on_roleTable_cellClicked(int row);
+
+    void on_editRole_clicked();
+
+    void on_modifyRole_clicked();
+
+    void on_searchRoleInDB_clicked();
+
+    void on_sortRole_clicked();
+
+    void on_sortEarning_clicked();
+
+    void on_backToRoleList_clicked();
+
+    void on_backToRolefct_clicked();
+
+    void on_backToRolefct_2_clicked();
+
+    void on_backToRolesFct_3_clicked();
+
+    void on_roleStats_clicked();
+
+
+
+
+
 private:
 
 
     Ui::MainWindow *ui;
 
     //louay doc
-    employee tableEmployee;
     clients Clients;
     pair<int,int> lastClientCell = make_pair(-1,-1);
     pair<int,int> lastCouponsCell = make_pair(-1,-1);
@@ -266,6 +401,14 @@ private:
     commandeC tablecommande;
     category tabCategory;
 /////////
+
+
+
+    //LOUAY
+
+    employee tableEmployee, tableEmployee1;
+    shifts tableShifts, tableShifts1;
+    role Role;
 
 protected:
     void timerEvent(QTimerEvent *event);
