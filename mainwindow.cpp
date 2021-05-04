@@ -1652,7 +1652,7 @@ void MainWindow::on_addEmployeeToDB_clicked()
     ui->lineEdit_email->clear();
     ui->lineEdit_phone->clear();
     ui->lineEdit_address->clear();
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(7);
     }
 }
 
@@ -1661,12 +1661,12 @@ void MainWindow::on_addEmployeeToDB_clicked()
 void MainWindow::on_empTable_clicked(const QModelIndex &index)
 {
     QString val = ui->empTable->model()->data(index).toString();
-    ui->lineEdit->setText(val);
+    ui->lineEdit_6->setText(val);
 }
 
 void MainWindow::on_deleteEmployee_clicked()
 {
-    QString cin = ui->lineEdit->text();
+    QString cin = ui->lineEdit_6->text();
     if(cin=="")
     {
         employee().show_notification("Delete","no employee selected");
@@ -1757,7 +1757,7 @@ void MainWindow::on_modifyEmployeeDB_clicked()
     ui->lineEdit_email_m_2->clear();
     ui->lineEdit_phone_m_2->clear();
     ui->lineEdit_address_m_2->clear();
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(9);
     ui->empTable->setModel(tableEmployee.show());
     }
 }
@@ -1768,7 +1768,7 @@ void MainWindow::on_modifyEmployeeDB_clicked()
 
 void MainWindow::on_searchEmployee_clicked()
 {
-    QString fullname=ui->lineEdit->text();
+    QString fullname=ui->lineEdit_6->text();
    if(fullname=="")
    {
        employee().show_notification("Search","search field is empty");
@@ -1894,7 +1894,7 @@ void MainWindow::on_getEmployeePdf_clicked()
 
 void MainWindow::on_toolButton_pdf_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(9);
+    ui->stackedWidget->setCurrentIndex(34);
     // set dark background gradient:
     QColor color = QColor(251, 255, 225);
     ui->customPlot->setBackground(QBrush(color));

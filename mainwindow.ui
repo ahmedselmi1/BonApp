@@ -34,7 +34,7 @@
      <string notr="true">background-color: rgb(255, 255, 255,0%);</string>
     </property>
     <property name="currentIndex">
-     <number>30</number>
+     <number>36</number>
     </property>
     <widget class="QWidget" name="mainPage">
      <widget class="QLabel" name="label_2">
@@ -6367,7 +6367,7 @@ background-repeat: none;
            <x>0</x>
            <y>0</y>
            <width>314</width>
-           <height>218</height>
+           <height>246</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
@@ -6394,7 +6394,7 @@ background-repeat: none;
            <x>0</x>
            <y>0</y>
            <width>314</width>
-           <height>218</height>
+           <height>246</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -8045,6 +8045,15 @@ background-color: rgb(98, 47, 117);
       <property name="textElideMode">
        <enum>Qt::ElideMiddle</enum>
       </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>146</number>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
      </widget>
      <widget class="QPushButton" name="editRole">
       <property name="geometry">
@@ -8076,6 +8085,19 @@ background-color: rgb(98, 47, 117);
        <string>edit Selected</string>
       </property>
      </widget>
+     <zorder>toDelete</zorder>
+     <zorder>roleStats</zorder>
+     <zorder>previousRolePage</zorder>
+     <zorder>deleteRole</zorder>
+     <zorder>sortEarning</zorder>
+     <zorder>backToRolefct</zorder>
+     <zorder>nextRolePage</zorder>
+     <zorder>searchRoleInDB</zorder>
+     <zorder>sortRole</zorder>
+     <zorder>searchRole</zorder>
+     <zorder>addRolePage</zorder>
+     <zorder>roleTable</zorder>
+     <zorder>editRole</zorder>
     </widget>
     <widget class="QWidget" name="addRole">
      <widget class="QToolButton" name="backToRolefct_2">
@@ -8433,7 +8455,7 @@ font: italic 14pt &quot;Lucida Fax&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1128</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
