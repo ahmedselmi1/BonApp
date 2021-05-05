@@ -65,14 +65,15 @@ MainWindow::MainWindow(QWidget *parent)
      QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(onMsg())); // permet de lancer
 
 
+     ui->stackedWidget->setCurrentIndex(0);
 
+     musicPlayer->setMedia(QUrl("qrc:/music/" + songsList[currentSong]));
+     musicPlayer->setVolume(50);
 
 
      if(autoPlay)
      {
 
-         musicPlayer->setMedia(QUrl("qrc:/music/" + songsList[currentSong]));
-         musicPlayer->setVolume(50);
          musicPlayer->play();
          ui->musicStop->setVisible(true);
          ui->musicPlay->setVisible(false);
@@ -116,6 +117,7 @@ void MainWindow::onMsg()
         if(data.split(':')[0] == "b")
         {
             qDebug()<<"button state" << data.split(':')[1];
+            if(data.split(':')[1] == "1")safeZonePlate = lastDist;
         }
         else if(data.split(':')[0] == "p")
         {
@@ -152,7 +154,8 @@ void MainWindow::onMsg()
             else
             {
                 ui->plate->setVisible(true);
-                int finalDist = max(0,distancePresent-6);
+                int finalDist = max(0,distancePresent-safeZonePlate);
+                lastDist = distancePresent;
                 ui->plate->move(465,290-finalDist*4);
                 if(finalDist == 0)
                 {

@@ -13,6 +13,7 @@
 #include <QTextDocument>
 #include "qpainter.h"
 #include <QAbstractItemModel>
+#include <QSystemTrayIcon>
 using std::uint8_t;
 
 
@@ -342,6 +343,11 @@ bool coupons::addCouponToDB(QString code, QString totalNum, QString startDate, Q
         coupons::manager->get(request);
 
     }
+    QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+    notifyIcon->setIcon(QIcon(":/img/img/logo.png"));
+    notifyIcon->show();
+    notifyIcon->showMessage("Réussi!","Coupon Ajouté!",QSystemTrayIcon::Information,15000);
+
     return result;
 }
 

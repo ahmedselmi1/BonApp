@@ -393,7 +393,8 @@ private:
     void animateObjWhite(QWidget* widget, int current);
 
     Arduino A; // objet temporaire
-
+    int safeZonePlate = 8;
+    int lastDist = -1;
 
 
     //GHADA
