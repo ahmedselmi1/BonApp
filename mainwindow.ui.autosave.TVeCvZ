@@ -30,16 +30,80 @@
      <string notr="true">background-color: rgb(255, 161, 102);</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
-    <widget class="QWidget" name="page_7"/>
-    <widget class="QWidget" name="page">
-     <widget class="QPushButton" name="pushbuttonprod">
+    <widget class="QWidget" name="page_7">
+     <widget class="QPushButton" name="pushButton_17">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/back0001.png) 0 0 0 0 stretch stretch;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_18">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>360</y>
+        <width>231</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(216, 136, 85);
+</string>
+      </property>
+      <property name="text">
+       <string>valider</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
         <x>70</x>
+        <y>210</y>
+        <width>321</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roman</family>
+        <pointsize>26</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_12">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>210</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page">
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
         <y>200</y>
-        <width>301</width>
+        <width>251</width>
         <height>111</height>
        </rect>
       </property>
@@ -58,26 +122,23 @@
       <property name="tabletTracking">
        <bool>false</bool>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 2.png) 0 0 0 0 stretch stretch;</string>
-      </property>
       <property name="text">
-       <string/>
+       <string>PRODUIT</string>
       </property>
       <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushbuttonmat">
+     <widget class="QPushButton" name="pushButton_2">
       <property name="enabled">
        <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>200</y>
-        <width>301</width>
-        <height>111</height>
+        <x>450</x>
+        <y>210</y>
+        <width>241</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
@@ -92,11 +153,8 @@
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 3.png) 0 0 0 0 stretch stretch;</string>
-      </property>
       <property name="text">
-       <string/>
+       <string>MATERIEL</string>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -110,7 +168,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_2">
-     <widget class="QPushButton" name="pushbuttonback1">
+     <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -130,7 +188,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonaj1">
+     <widget class="QPushButton" name="pushButton_5">
       <property name="geometry">
        <rect>
         <x>570</x>
@@ -150,7 +208,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonmod1">
+     <widget class="QPushButton" name="pushButton_6">
       <property name="geometry">
        <rect>
         <x>570</x>
@@ -158,9 +216,6 @@
         <width>151</width>
         <height>61</height>
        </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/modifier0002.png) 0 0 0 0 stretch stretch;
@@ -173,7 +228,7 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonsup1">
+     <widget class="QPushButton" name="pushButton_7">
       <property name="geometry">
        <rect>
         <x>570</x>
@@ -181,9 +236,6 @@
         <width>151</width>
         <height>61</height>
        </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/supprimer0002.png) 0 0 0 0 stretch stretch;
@@ -193,7 +245,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QTableView" name="tableView11">
+     <widget class="QTableView" name="tableView">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -203,7 +255,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditrech1">
+     <widget class="QLineEdit" name="lineEdit_13">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -241,7 +293,7 @@
        <string>Recherche :</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboboxtri1">
+     <widget class="QComboBox" name="comboBox">
       <property name="geometry">
        <rect>
         <x>680</x>
@@ -249,9 +301,6 @@
         <width>181</width>
         <height>41</height>
        </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <item>
        <property name="text">
@@ -274,17 +323,14 @@
        </property>
       </item>
      </widget>
-     <widget class="QPushButton" name="PDF11">
+     <widget class="QPushButton" name="PDF">
       <property name="geometry">
        <rect>
         <x>570</x>
         <y>400</y>
-        <width>161</width>
+        <width>151</width>
         <height>41</height>
        </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 4.png) 0 0 0 0 stretch stretch;
@@ -295,20 +341,40 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="stat11">
+     <widget class="QPushButton" name="pushButton_19">
       <property name="geometry">
        <rect>
-        <x>570</x>
-        <y>450</y>
-        <width>161</width>
-        <height>41</height>
+        <x>610</x>
+        <y>460</y>
+        <width>93</width>
+        <height>28</height>
        </rect>
       </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
+      <property name="text">
+       <string>stat</string>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 5.png) 0 0 0 0 stretch stretch;</string>
+     </widget>
+     <widget class="QLabel" name="label_stat_1">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>510</y>
+        <width>55</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_stat2">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>540</y>
+        <width>55</width>
+        <height>16</height>
+       </rect>
       </property>
       <property name="text">
        <string/>
@@ -351,6 +417,73 @@
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>574</x>
+        <y>505</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Cookies Lover Filled</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>farine</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>584</x>
+        <y>535</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Cookies Lover Filled</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255);
+</string>
+      </property>
+      <property name="text">
+       <string>sucre</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>570</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Cookies Lover Filled</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>chocolat</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_17">
@@ -420,68 +553,49 @@
        <string/>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditsup1">
+     <widget class="QLineEdit" name="lineEdit_11">
       <property name="geometry">
        <rect>
-        <x>730</x>
-        <y>320</y>
-        <width>81</width>
-        <height>51</height>
+        <x>590</x>
+        <y>330</y>
+        <width>31</width>
+        <height>31</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Cookies Lover Filled</family>
-        <pointsize>14</pointsize>
-        <kerning>false</kerning>
-       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(255, 255, 255,0%);
 background-color: rgb(255, 255, 255,0%);</string>
       </property>
-      <property name="text">
-       <string/>
-      </property>
       <property name="readOnly">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_21">
-      <property name="geometry">
-       <rect>
-        <x>740</x>
-        <y>580</y>
-        <width>21</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <zorder>pushbuttonback1</zorder>
-     <zorder>pushButtonaj1</zorder>
-     <zorder>pushButtonmod1</zorder>
-     <zorder>pushButtonsup1</zorder>
-     <zorder>lineEditrech1</zorder>
+     <zorder>lineEdit_11</zorder>
+     <zorder>pushButton_3</zorder>
+     <zorder>pushButton_5</zorder>
+     <zorder>pushButton_6</zorder>
+     <zorder>pushButton_7</zorder>
+     <zorder>lineEdit_13</zorder>
      <zorder>label_3</zorder>
-     <zorder>comboboxtri1</zorder>
-     <zorder>PDF11</zorder>
-     <zorder>stat11</zorder>
+     <zorder>comboBox</zorder>
+     <zorder>PDF</zorder>
+     <zorder>pushButton_19</zorder>
+     <zorder>label_stat_1</zorder>
+     <zorder>label_stat2</zorder>
      <zorder>label_12</zorder>
      <zorder>label_13</zorder>
-     <zorder>tableView11</zorder>
+     <zorder>label_14</zorder>
+     <zorder>label_15</zorder>
+     <zorder>label_16</zorder>
+     <zorder>tableView</zorder>
      <zorder>label_17</zorder>
      <zorder>label_stat_3</zorder>
      <zorder>label_18</zorder>
      <zorder>label_19</zorder>
      <zorder>label_20</zorder>
-     <zorder>label_21</zorder>
-     <zorder>lineEditsup1</zorder>
     </widget>
     <widget class="QWidget" name="page_4">
-     <widget class="QPushButton" name="pushButtonback">
+     <widget class="QPushButton" name="pushButton_11">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -512,13 +626,9 @@ background-color: rgb(255, 255, 255,0%);</string>
       </property>
       <property name="font">
        <font>
-        <family>Cookies Lover Filled</family>
+        <family>Roman</family>
         <pointsize>26</pointsize>
        </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);
-</string>
       </property>
       <property name="text">
        <string>ID</string>
@@ -535,12 +645,9 @@ background-color: rgb(255, 255, 255,0%);</string>
       </property>
       <property name="font">
        <font>
-        <family>Cookies Lover Filled</family>
-        <pointsize>20</pointsize>
+        <family>Roman</family>
+        <pointsize>26</pointsize>
        </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>NOM PRODUIT</string>
@@ -557,18 +664,15 @@ background-color: rgb(255, 255, 255,0%);</string>
       </property>
       <property name="font">
        <font>
-        <family>Cookies Lover Filled</family>
-        <pointsize>21</pointsize>
+        <family>Roman</family>
+        <pointsize>26</pointsize>
        </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>DATE D'EXPIRATION</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonvalid1">
+     <widget class="QPushButton" name="pushButton_14">
       <property name="geometry">
        <rect>
         <x>290</x>
@@ -580,13 +684,8 @@ background-color: rgb(255, 255, 255,0%);</string>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/valider.png) 0 0 0 0 stretch stretch;
-
-</string>
-      </property>
       <property name="text">
-       <string/>
+       <string>valider</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_6">
@@ -600,18 +699,15 @@ background-color: rgb(255, 255, 255,0%);</string>
       </property>
       <property name="font">
        <font>
-        <family>Cookies Lover Filled</family>
+        <family>Roman</family>
         <pointsize>26</pointsize>
        </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>QUANTITE</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditprod1">
+     <widget class="QLineEdit" name="lineEdit_7">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -621,7 +717,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditprod2">
+     <widget class="QLineEdit" name="lineEdit_8">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -631,7 +727,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditprod4">
+     <widget class="QLineEdit" name="lineEdit_10">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -641,7 +737,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QDateEdit" name="lineEditprod3">
+     <widget class="QDateEdit" name="lineEdit_9">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -670,7 +766,41 @@ background-color: rgb(255, 255, 255,0%);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonaj2">
+     <widget class="QLineEdit" name="lineEdit_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>10</y>
+        <width>231</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roman</family>
+        <pointsize>26</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>MATERIEL</string>
+      </property>
+      <property name="dragEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_8">
       <property name="geometry">
        <rect>
         <x>580</x>
@@ -679,33 +809,24 @@ background-color: rgb(255, 255, 255,0%);</string>
         <height>61</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/Screenshot_1.png) 0 0 0 0 stretch stretch;
-</string>
-      </property>
       <property name="text">
-       <string/>
+       <string>AJOUTER MATERIEL</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonsup2">
+     <widget class="QPushButton" name="pushButton_9">
       <property name="geometry">
        <rect>
         <x>580</x>
         <y>300</y>
-        <width>151</width>
+        <width>161</width>
         <height>61</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/supprimer0002.png) 0 0 0 0 stretch stretch;
-
-</string>
-      </property>
       <property name="text">
-       <string/>
+       <string>SUPPRIMER MATERIEL</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonmod2">
+     <widget class="QPushButton" name="pushButton_10">
       <property name="geometry">
        <rect>
         <x>580</x>
@@ -714,16 +835,11 @@ background-color: rgb(255, 255, 255,0%);</string>
         <height>61</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/modifier0002.png) 0 0 0 0 stretch stretch;
-
-</string>
-      </property>
       <property name="text">
-       <string/>
+       <string>MODIFIER MATERIEL</string>
       </property>
      </widget>
-     <widget class="QTableView" name="tableView22">
+     <widget class="QTableView" name="tableView_2">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -731,172 +847,6 @@ background-color: rgb(255, 255, 255,0%);</string>
         <width>511</width>
         <height>441</height>
        </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="PDF_mat">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>380</y>
-        <width>161</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 4.png) 0 0 0 0 stretch stretch;
-
-</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_suppmat">
-      <property name="geometry">
-       <rect>
-        <x>750</x>
-        <y>300</y>
-        <width>81</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Cookies Lover Filled</family>
-        <pointsize>14</pointsize>
-        <kerning>false</kerning>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255,0%);
-background-color: rgb(255, 255, 255,0%);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="readOnly">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_mat">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>430</y>
-        <width>161</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 5.png) 0 0 0 0 stretch stretch;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_rech_mat">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>50</y>
-        <width>113</width>
-        <height>21</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="comboboxtri2">
-      <property name="geometry">
-       <rect>
-        <x>700</x>
-        <y>20</y>
-        <width>181</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <item>
-       <property name="text">
-        <string>ID croissant</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>ID decroissant</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nom A-Z</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Nom Z-A</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="label_14">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>50</y>
-        <width>151</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Cookies Lover Filled</family>
-        <pointsize>15</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-        <kerning>true</kerning>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>Recherche :</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_22">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>10</y>
-        <width>161</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Cookies Lover Filled</family>
-        <pointsize>18</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-        <kerning>true</kerning>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>materiel</string>
       </property>
      </widget>
     </widget>
@@ -939,7 +889,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        <string>DATE D'ENTRETIEN</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonback3">
+     <widget class="QPushButton" name="pushButton_12">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -976,7 +926,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        <string>ID</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonval2">
+     <widget class="QPushButton" name="pushButton_13">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -1008,7 +958,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        <string>NOMBRE DE MATERIEL</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditmat1">
+     <widget class="QLineEdit" name="lineEdit_3">
       <property name="geometry">
        <rect>
         <x>460</x>
@@ -1018,7 +968,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditmat2">
+     <widget class="QLineEdit" name="lineEdit_4">
       <property name="geometry">
        <rect>
         <x>460</x>
@@ -1028,7 +978,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditmat4">
+     <widget class="QLineEdit" name="lineEdit_5">
       <property name="geometry">
        <rect>
         <x>460</x>
@@ -1038,7 +988,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QDateEdit" name="lineEditmat3">
+     <widget class="QDateEdit" name="lineEdit_6">
       <property name="geometry">
        <rect>
         <x>470</x>
@@ -1049,7 +999,57 @@ background-color: rgb(255, 255, 255,0%);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_6"/>
+    <widget class="QWidget" name="page_6">
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>210</y>
+        <width>321</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Roman</family>
+        <pointsize>26</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_15">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>360</y>
+        <width>231</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>valider</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_16">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/back0001.png) 0 0 0 0 stretch stretch;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1058,7 +1058,7 @@ background-color: rgb(255, 255, 255,0%);</string>
      <x>0</x>
      <y>0</y>
      <width>884</width>
-     <height>21</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

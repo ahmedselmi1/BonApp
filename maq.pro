@@ -1,7 +1,4 @@
-QT       += core gui sql printsupport
-QT += printsupport network
-gui+= printsupport
-
+QT       += network sql printsupport serialport widgets multimedia core gui charts
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -17,18 +14,24 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     materiel.cpp \
-    produit.cpp
+    notifications.cpp \
+    produit.cpp \
+    qcustomplot.cpp \
+    secdialog.cpp
 
 HEADERS += \
     connection.h \
     database.h \
     mainwindow.h \
     materiel.h \
-    produit.h
+    notifications.h \
+    produit.h \
+    qcustomplot.h \
+    secdialog.h
 
 FORMS += \
     mainwindow.ui \
-    modifierdialog.ui
+    secdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -37,3 +40,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES += \
+    ../../Desktop/QT/ffqf/Symbol 4.png \
+    ../../Desktop/QT/valider.png
