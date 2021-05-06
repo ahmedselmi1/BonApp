@@ -92,7 +92,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="recettesWidget">
-     <widget class="QToolButton" name="toolButton">
+     <widget class="QToolButton" name="toolButton111">
       <property name="geometry">
        <rect>
         <x>610</x>
@@ -125,7 +125,7 @@ background-color: rgba(255, 255, 255, 200);</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="lineEdit111">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -176,7 +176,7 @@ background-color: rgba(255, 255, 255, 200);</string>
        </rect>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QGroupBox" name="groupBox111">
       <property name="geometry">
        <rect>
         <x>640</x>
@@ -191,7 +191,7 @@ background-color: rgba(255, 255, 255, 200);</string>
       <property name="title">
        <string>Ajouter</string>
       </property>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pushButtonrec1">
        <property name="geometry">
         <rect>
          <x>90</x>
@@ -204,7 +204,7 @@ background-color: rgba(255, 255, 255, 200);</string>
         <string>Ajouter</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="lineEditrec1">
        <property name="geometry">
         <rect>
          <x>130</x>
@@ -214,7 +214,7 @@ background-color: rgba(255, 255, 255, 200);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="lineEditrec2">
        <property name="geometry">
         <rect>
          <x>130</x>
@@ -224,7 +224,7 @@ background-color: rgba(255, 255, 255, 200);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="labelrec1">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -237,7 +237,7 @@ background-color: rgba(255, 255, 255, 200);</string>
         <string>Recette</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="labelrec2">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -251,7 +251,7 @@ background-color: rgba(255, 255, 255, 200);</string>
        </property>
       </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="pushButtonrec3">
       <property name="geometry">
        <rect>
         <x>640</x>
@@ -279,7 +279,7 @@ background-color: rgba(255, 255, 255, 200);</string>
       <property name="title">
        <string>Modifier</string>
       </property>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="pushButtonrec2">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -295,7 +295,7 @@ background-color: rgba(255, 255, 255, 200);</string>
         <string>Enregistrer</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_4">
+      <widget class="QLineEdit" name="lineEditrec3">
        <property name="geometry">
         <rect>
          <x>130</x>
@@ -305,7 +305,7 @@ background-color: rgba(255, 255, 255, 200);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_5">
+      <widget class="QLineEdit" name="lineEditrec4">
        <property name="geometry">
         <rect>
          <x>130</x>
@@ -315,7 +315,7 @@ background-color: rgba(255, 255, 255, 200);</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="labelrec3">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -328,7 +328,7 @@ background-color: rgba(255, 255, 255, 200);</string>
         <string>Recette</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="labelrec4">
        <property name="geometry">
         <rect>
          <x>30</x>
@@ -342,7 +342,7 @@ background-color: rgba(255, 255, 255, 200);</string>
        </property>
       </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButtonpdf">
       <property name="geometry">
        <rect>
         <x>640</x>

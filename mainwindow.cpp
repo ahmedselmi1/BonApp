@@ -138,18 +138,18 @@ void MainWindow::on_rafficherTable_customContextMenuRequested(const QPoint &pos)
     menu->popup(ui->rafficherTable->viewport()->mapToGlobal(pos));
 }
 
-void MainWindow::on_lineEdit_textChanged(const QString &arg1)
+void MainWindow::on_lineEdit111_textChanged(const QString &arg1)
 {
     tableModel->setFilter("lower(NOM) LIKE lower('%" + arg1 + "%')");
 }
 
 
-void MainWindow::on_toolButton_clicked()
+void MainWindow::on_toolButton111_clicked()
 {
-    ui->lineEdit->setText("");
+    ui->lineEdit111->setText("");
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButtonpdf_clicked()
 {
     QDialog QFileDialog;
     QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
@@ -182,9 +182,9 @@ void MainWindow::on_pushButton_clicked()
     //ui->rafficherTable->render(&printer);
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_pushButtonrec1_clicked()
 {
-    queue nqueue = queue(0, ui->lineEdit_2->text(), ui->lineEdit_3->text());
+    queue nqueue = queue(0, ui->lineEditrec1->text(), ui->lineEditrec2->text());
 
     nqueue.ajouter();
 
@@ -192,7 +192,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_pushButtonrec3_clicked()
 {
     if(ui->queueTableView->selectionModel()->hasSelection())
     {
@@ -227,7 +227,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 }
 
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_pushButtonrec4_clicked()
 {
     if(ui->queueTableView->selectionModel()->hasSelection())
     {
@@ -253,14 +253,14 @@ void MainWindow::on_queueTableView_pressed(const QModelIndex &index)
 void MainWindow::on_queueTableView_clicked(const QModelIndex &index)
 {
     lastQueue = ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),0)).toString().toInt();
-    ui->lineEdit_4->setText(ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),1)).toString());
-    ui->lineEdit_5->setText(ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),2)).toString());
-    ui->pushButton_4->setEnabled(true);
+    ui->lineEditrec3->setText(ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),1)).toString());
+    ui->lineEditrec4->setText(ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),2)).toString());
+    ui->pushButtonrec2->setEnabled(true);
 }
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_pushButtonrec2_clicked()
 {
-    queue nqueue = queue(lastQueue, ui->lineEdit_4->text(), ui->lineEdit_5->text());
+    queue nqueue = queue(lastQueue, ui->lineEditrec3->text(), ui->lineEditrec4->text());
 
     nqueue.modifier();
 
@@ -277,7 +277,7 @@ void MainWindow::on_returnbtn1_2_clicked()
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-void MainWindow::on_pushButton_3_pressed()
+void MainWindow::on_pushButtonrec3_pressed()
 {
 
 }

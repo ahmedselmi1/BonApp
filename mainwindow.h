@@ -37,30 +37,30 @@ private slots:
     void slotDeleteRow();
 
 
-    void on_lineEdit_textChanged(const QString &arg1);
+    void on_lineEdit111_textChanged(const QString &arg1);
 
 
-    void on_toolButton_clicked();
+    void on_toolButton111_clicked();
 
-    void on_pushButton_clicked();
+    void on_pushButtonpdf_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_pushButtonrec1_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_pushButtonrec3_clicked();
 
-    void on_pushButton_5_clicked();
+    void on_pushButtonrec4_clicked();
 
     void on_queueTableView_pressed(const QModelIndex &index);
 
     void on_queueTableView_clicked(const QModelIndex &index);
 
-    void on_pushButton_4_clicked();
+    void on_pushButtonrec2_clicked();
 
     void on_returnbtn1_clicked();
 
     void on_returnbtn1_2_clicked();
 
-    void on_pushButton_3_pressed();
+    void on_pushButtonrec3_pressed();
 
 private:
     Ui::MainWindow *ui;
