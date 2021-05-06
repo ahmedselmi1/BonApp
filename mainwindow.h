@@ -11,7 +11,8 @@
 #include "category.h"
 #include <QPieSeries>
 #include <QFileDialog>
-
+#include "materiel.h"
+#include "produit.h"
 
 
 
@@ -22,8 +23,14 @@
 #include <QtCharts>
 #include <QChartView>
 #include <QPieSeries>
-
-
+#include <QSqlTableModel>
+#include <QItemSelectionModel>
+#include <QSortFilterProxyModel>
+#include "recette.h"
+#include "queue.h"
+#include "database.h"
+#include "notifications.h"
+#include "secdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,6 +45,13 @@ public:
     ~MainWindow();
     void paintQR(QPainter &painter, const QSize sz, const QString &data, QColor fg);
     static Ui::MainWindow getUi();
+
+    Database db;
+    SecDialog *sec;
+    Notifications N;
+
+    QString getSearchText();
+
 private slots:
     void on_goToOrders_clicked();
 
@@ -375,8 +389,111 @@ private slots:
     void on_roleStats_clicked();
 
 
+    void on_recettesBtn_clicked();
+
+    void on_queueBtn_clicked();
 
 
+
+
+
+    void on_rafficherTable_customContextMenuRequested(const QPoint &pos);
+
+    void slotAddBefore();
+    void slotAddAfter();
+    void slotAddEnd();
+    void slotDeleteRow();
+
+
+    void on_lineEdit111_textChanged(const QString &arg1);
+
+
+    void on_toolButton111_clicked();
+
+    void on_pushButtonpdf_clicked();
+
+    void on_pushButtonrec1_clicked();
+
+    void on_pushButtonrec3_clicked();
+
+    void on_pushButtonrec4_clicked();
+
+    void on_queueTableView_pressed(const QModelIndex &index);
+
+    void on_queueTableView_clicked(const QModelIndex &index);
+
+    void on_pushButtonrec2_clicked();
+
+    void on_returnbtn1_clicked();
+
+    void on_returnbtn1_2_clicked();
+
+    void on_pushButtonrec3_pressed();
+
+
+    //karim start
+
+    void on_pushbuttonmat_clicked();
+
+    void on_pushbuttonprod_clicked();
+
+    void on_pushbuttonback2_clicked();
+
+    void on_pushbuttonback1_clicked();
+
+    void on_pushButtonaj1_clicked();
+
+    void on_pushButtonback_clicked();
+
+    void on_pushButtonback3_clicked();
+
+    void on_pushButtonaj2_clicked();
+
+    void on_pushButtonval2_clicked();
+
+    void on_pushButtonsup2_clicked();
+
+
+
+    void on_pushButtonvalid1_clicked();
+
+    void on_pushButtonsup1_clicked();
+
+
+
+    void on_pushButtonmod1_clicked();
+
+    void on_lineEditrech1_textChanged(const QString &arg1);
+
+
+
+    void on_comboboxtri1_currentIndexChanged(int index);
+
+
+
+    void on_PDF11_clicked();
+
+    void on_stat11_clicked();
+
+    void on_tableView11_activated(const QModelIndex &index);
+
+    void on_pushButtonmod2_clicked();
+
+    void on_PDF_mat_clicked();
+
+    void on_pushButton_mat_clicked();
+
+
+    void on_lineEdit_rech_mat_textChanged(const QString &arg1);
+
+    void on_comboboxtri2_currentIndexChanged(int index);
+
+    //karim end
+
+
+
+
+    void on_pushButton_13_clicked();
 
 private:
 
@@ -401,6 +518,11 @@ private:
     gateauxC tabGateaux;
     commandeC tablecommande;
     category tabCategory;
+
+    //karim
+
+    materiel Mtmp;
+    produit Ptmp;
 /////////
 
 
@@ -410,6 +532,18 @@ private:
     employee tableEmployee, tableEmployee1;
     shifts tableShifts, tableShifts1;
     role Role;
+
+    //ahmed
+
+    QSqlTableModel *tableModel;
+
+    bool rmodif = false;
+
+    bool isAscending = false;
+
+    recette Rtmp;
+    queue Qtmp;
+    int lastQueue = -1;
 
 protected:
     void timerEvent(QTimerEvent *event);

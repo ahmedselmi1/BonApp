@@ -21,6 +21,9 @@
 #include <QTimer>
 #include<math.h>
 #include <QMediaPlayer>
+#include"dateformatdelegate.h"
+
+
 using std::uint8_t;
 using qrcodegen::QrCode;
 using qrcodegen::QrSegment;
@@ -87,7 +90,7 @@ MainWindow::MainWindow(QWidget *parent)
 
      }
 
-     startTimer(1000);   // 1-second timer
+        // 1-second timer
 
 
 
@@ -97,12 +100,46 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
+    //ahmed
+
+     //ui->stackedWidget->setCurrentIndex(0);
+
+     qDebug() << "Starting recipe code";
+     tableModel = new QSqlTableModel();
+     tableModel->setEditStrategy(QSqlTableModel::OnRowChange);
+     tableModel->setTable("RECETTES");
+     tableModel->select();
+     ui->rafficherTable->setModel(tableModel);
+     //ui->rafficherTable->setModel(Rtmp.afficher());
+     ui->queueTableView->setModel(Qtmp.afficher());
+     qDebug() << "finished recipes code";
+
+     ui->rafficherTable->setColumnHidden(3, true);
+     ui->rafficherTable->setItemDelegateForColumn(2, new DateFormatDelegate(this));
+
+     auto headerr = ui->rafficherTable->horizontalHeader();
+     connect(headerr, &QHeaderView::sectionClicked, [this](int logicalIndex){
+         QString text = ui->rafficherTable->model()->headerData(logicalIndex, Qt::Horizontal).toString();
+         isAscending = !isAscending;
+         tableModel->sort(logicalIndex, isAscending?Qt::AscendingOrder:Qt::DescendingOrder);
+        qDebug() << logicalIndex << text;
+     });
+     QSound::play(":/startup.wav");
+
+     //fin ahmed
+
+
+     //start karim
+
+     ui->tableView22->setModel(Mtmp.afficher(ui->lineEdit_rech_mat->text(), ui->comboboxtri1->currentIndex()));
+     ui->tableView11->setModel(Ptmp.afficher(ui->lineEditrech1->text(), ui->comboboxtri1->currentIndex()));
+      ui->tableView22->setModel(Ptmp.afficher(ui->lineEdit_rech_mat->text(), ui->comboboxtri1->currentIndex()));
+
+     //end karim
 
 
 
-
-
-
+startTimer(1000);
 }
 
 
@@ -302,12 +339,12 @@ void MainWindow::on_back_9_clicked()
 
 void MainWindow::on_addProduct_2_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(11);
+    ui->stackedWidget->setCurrentIndex(41);
 }
 
 void MainWindow::on_showProducts_2_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(12);
+    ui->stackedWidget->setCurrentIndex(43);
 }
 
 void MainWindow::on_back_11_clicked()
@@ -2388,3 +2425,551 @@ void MainWindow::on_roleStats_clicked()
 }
 
 
+//ahmed functions
+
+
+void MainWindow::on_recettesBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(39);
+    QApplication::beep();
+}
+
+void MainWindow::on_queueBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(40);
+    QApplication::beep();
+}
+
+
+
+
+void MainWindow::slotDeleteRow()
+{
+
+    int row = ui->rafficherTable->selectionModel()->currentIndex().row();
+
+    if(row >= 0){
+
+        if (QMessageBox::warning(this,
+                                 tr("Supprimer ligne"),
+                                 tr("Etes vous sur de bien vouloir supprimer cette ligne définitivement ??"),
+                                 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+        {
+            qDebug() << "Deleting row " << row;
+            tableModel->removeRows(row, 1);
+            tableModel->submitAll();
+            return;
+        }
+    }
+}
+
+void MainWindow::slotAddBefore()
+{
+
+    int row = ui->rafficherTable->selectionModel()->currentIndex().row();
+
+    if(row >= 0){
+        tableModel->insertRows(row, 1);
+    }
+}
+
+
+void MainWindow::slotAddEnd()
+{
+
+    int row = ui->rafficherTable->selectionModel()->currentIndex().row();
+
+    if(row >= 0){
+        tableModel->insertRows(tableModel->rowCount(), 1);
+    }
+}
+
+
+void MainWindow::slotAddAfter()
+{
+
+    int row = ui->rafficherTable->selectionModel()->currentIndex().row();
+
+    if(row >= 0){
+        tableModel->insertRows(row+1, 1);
+    }
+}
+
+
+
+void MainWindow::on_rafficherTable_customContextMenuRequested(const QPoint &pos)
+{
+    qDebug() << "Adding context menu";
+    QMenu * menu = new QMenu(this);
+
+    QAction * addBefore = new QAction(tr("Ajouter avant"), this);
+    QAction * addAfter = new QAction(tr("Ajouter apres"), this);
+    QAction * addEnd = new QAction(tr("Ajouter à la fin"), this);
+    QAction * deleteRow = new QAction(tr("Supprimer"), this);
+
+    connect(addBefore, SIGNAL(triggered()), this, SLOT(slotAddBefore()));
+    connect(addAfter, SIGNAL(triggered()), this, SLOT(slotAddAfter()));
+    connect(addEnd, SIGNAL(triggered()), this, SLOT(slotAddEnd()));
+    connect(deleteRow, SIGNAL(triggered()), this, SLOT(slotDeleteRow()));
+
+    menu->addAction(addBefore);
+    menu->addAction(addAfter);
+    menu->addAction(addEnd);
+    menu->addAction(deleteRow);
+
+    qDebug() << "done context menu";
+
+    menu->popup(ui->rafficherTable->viewport()->mapToGlobal(pos));
+}
+
+void MainWindow::on_lineEdit111_textChanged(const QString &arg1)
+{
+    tableModel->setFilter("lower(NOM) LIKE lower('%" + arg1 + "%')");
+}
+
+
+void MainWindow::on_toolButton111_clicked()
+{
+    ui->lineEdit111->setText("");
+}
+
+void MainWindow::on_pushButtonpdf_clicked()
+{
+    QDialog QFileDialog;
+    QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
+    if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+    QPrinter printer(QPrinter::PrinterResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setPaperSize(QPrinter::A4);
+    printer.setOutputFileName(fileName);
+
+    /*QPrinter printer;*/
+
+
+
+
+
+    QTextDocument doc;
+    QSqlQuery q;
+    q.prepare("SELECT * FROM FILEATTENTE");
+    q.exec();
+    QString pdf="<br> <img src='C:\\Users\\Ahmed2\\Documents\\GitHub\\BonApp\\logo.png' height='42' width='144'/> <b><h1  style='color:blue'>File d'attente :  </b><br></h1>\n <br> <table>  <tr>  <th> ID </th> <th> RECETTE </th> <th> ETAT </th>  </tr>" ;
+
+    while ( q.next()) {
+        pdf = pdf+ " <br> <tr> <td>"+ q.value(0).toString()+"    </td>   <td>   " + q.value(1).toString() +"</td>   <td>" +q.value(2).toString() +"  "" " "</td>";
+    }
+
+    doc.setHtml(pdf);
+    doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+    doc.print(&printer);
+    //ui->rafficherTable->render(&printer);
+}
+
+void MainWindow::on_pushButtonrec1_clicked()
+{
+    queue nqueue = queue(0, ui->lineEditrec1->text(), ui->lineEditrec2->text());
+
+    nqueue.ajouter();
+
+    ui->queueTableView->setModel(Qtmp.afficher());
+
+}
+
+void MainWindow::on_pushButtonrec3_clicked()
+{
+    if(ui->queueTableView->selectionModel()->hasSelection())
+    {
+
+
+            QModelIndexList selection = ui->queueTableView->selectionModel()->selectedRows();
+            qDebug() << "selection count : " << selection.count();
+
+
+            for(int i=0; i< selection.count(); i++)
+            {
+                if(i==0)
+                {
+                    if (QMessageBox::warning(this,
+                                             tr("Supprimer lignes"),
+                                             tr("Etes vous sur de bien vouloir supprimer les lignes selectionnés définitivement ?"),
+                                             QMessageBox::Yes | QMessageBox::No) == QMessageBox::No)
+                    {
+                        break;
+                    }
+                }
+                QModelIndex index = selection.at(i);
+                int id = ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),0)).toString().toInt();
+                qDebug() << "deleting queue id : " << id;
+                Qtmp.supprimer(id);
+            }
+
+
+    }
+
+    ui->queueTableView->setModel(Qtmp.afficher());
+
+}
+
+void MainWindow::on_pushButtonrec4_clicked()
+{
+    if(ui->queueTableView->selectionModel()->hasSelection())
+    {
+
+        if (QMessageBox::warning(this,
+                                 tr("Supprimer toutes les taches"),
+                                 tr("Etes vous sur de bien vouloir supprimer toutes les lignes définitivement ?"),
+                                 QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
+        {
+            Qtmp.supprimer(-1);
+        }
+
+    }
+
+    ui->queueTableView->setModel(Qtmp.afficher());
+}
+
+void MainWindow::on_queueTableView_pressed(const QModelIndex &index)
+{
+
+}
+
+void MainWindow::on_queueTableView_clicked(const QModelIndex &index)
+{
+    lastQueue = ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),0)).toString().toInt();
+    ui->lineEditrec3->setText(ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),1)).toString());
+    ui->lineEditrec4->setText(ui->queueTableView->model()->data(ui->queueTableView->model()->index(index.row(),2)).toString());
+    ui->pushButtonrec2->setEnabled(true);
+}
+
+void MainWindow::on_pushButtonrec2_clicked()
+{
+    queue nqueue = queue(lastQueue, ui->lineEditrec3->text(), ui->lineEditrec4->text());
+
+    nqueue.modifier();
+
+    ui->queueTableView->setModel(Qtmp.afficher());
+}
+
+void MainWindow::on_returnbtn1_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_returnbtn1_2_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButtonrec3_pressed()
+{
+
+}
+
+
+
+
+
+
+
+//ahmed functions end
+
+
+
+
+
+
+
+
+
+//karim functions start
+
+
+void MainWindow::on_pushbuttonmat_clicked()
+{
+  ui->stackedWidget ->setCurrentIndex(43);
+}
+
+void MainWindow::on_pushbuttonprod_clicked()
+{
+    ui->stackedWidget ->setCurrentIndex(41);
+    QSound::play(":/../../Desktop/QT/ffqf/crunch.wav");
+}
+
+void MainWindow::on_pushbuttonback2_clicked()
+{
+      ui->stackedWidget ->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushbuttonback1_clicked()
+{
+    ui->stackedWidget ->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButtonaj1_clicked()
+{
+     ui->stackedWidget ->setCurrentIndex(42);
+      QSound::play(":./Desktop/QT/ffqf/crunch.wav");
+}
+
+void MainWindow::on_pushButtonback_clicked()
+{
+    ui->stackedWidget ->setCurrentIndex(41);
+}
+
+void MainWindow::on_pushButtonback3_clicked()
+{
+   ui->stackedWidget ->setCurrentIndex(43);
+}
+
+void MainWindow::on_pushButtonaj2_clicked()
+{
+   ui->stackedWidget ->setCurrentIndex(44);
+}
+
+void MainWindow::on_pushButtonval2_clicked()
+{
+  int id_materiel=ui->lineEditmat1 ->text().toInt();
+int nb_materiel=ui->lineEditmat4 ->text().toInt();
+QString nom_materiel=ui->lineEditmat2 ->text();
+QString date_entr=ui->lineEditmat3 ->text();
+materiel M( nb_materiel,id_materiel,nom_materiel,date_entr);
+bool test=M.ajouter();
+        if(test)
+{
+            ui->tableView22->setModel(Mtmp.afficher(ui->lineEdit_rech_mat->text(), ui->comboboxtri1->currentIndex()));
+            QMessageBox::information(nullptr,QObject::tr("ok"),
+                           QObject::tr("ajout effectué\n"
+                                       "click Cancel to exit"), QMessageBox::Cancel);
+
+        }
+        else
+            QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Ajout non effectué\n"
+                                                                            "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+
+void MainWindow::on_pushButtonsup2_clicked()
+{
+    int id_materiel =ui->lineEdit_suppmat ->text().toInt();
+    bool test=Mtmp.supprimer(id_materiel);
+    if(test)
+    {
+         ui->tableView22->setModel(Mtmp.afficher(ui->lineEdit_rech_mat->text(), ui->comboboxtri1->currentIndex()));
+      QMessageBox::information(nullptr,QObject::tr("OK"),
+              QObject::tr("Suppression effectué.\n"
+                          "click Cancel to exit"), QMessageBox::Cancel);
+    }
+    QMessageBox::information(nullptr,QObject::tr("NOT OK"),
+            QObject::tr("Suppression non effectué.\n"
+                        "click Cancel to exit"),QMessageBox::Cancel);
+
+}
+
+
+
+void MainWindow::on_pushButtonvalid1_clicked()
+{
+    int id_ingrediant=ui->lineEditprod1 ->text().toInt();
+  int quantite_ingredient=ui->lineEditprod4 ->text().toInt();
+  QString nom_ingredient=ui->lineEditprod2 ->text();
+  QString date_exp=ui->lineEditprod3 ->text();
+  produit P( quantite_ingredient,id_ingrediant,nom_ingredient,date_exp);
+  bool test=P.ajouter();
+          if(test)
+  {      ui->tableView11->setModel(Ptmp.afficher(ui->lineEditrech1->text(), ui->comboboxtri1->currentIndex()));
+
+              QMessageBox::information(nullptr,QObject::tr("ok"),
+                             QObject::tr("ajout effectué\n"
+                                         "click Cancel to exit"), QMessageBox::Cancel);
+
+          }
+          else
+              QMessageBox::critical(nullptr,QObject::tr("Not OK"),QObject::tr("Ajout non effectué\n"
+                                                                              "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_pushButtonsup1_clicked()
+{
+    //ui->stackedWidget ->setCurrentIndex(0);
+    int id_produit =ui->lineEditsup1 ->text().toInt();
+    bool test=Ptmp.supprimer(id_produit);
+    if(test)
+    {
+         ui->tableView11->setModel(Ptmp.afficher(ui->lineEditrech1->text(), ui->comboboxtri1->currentIndex()));
+     N.notifications_supprimerproduit();
+    }
+    QMessageBox::information(nullptr,QObject::tr("NOT OK"),
+            QObject::tr("Suppression non effectué.\n"
+                        "click Cancel to exit"),QMessageBox::Cancel);
+
+}
+
+
+
+
+void MainWindow::on_pushButtonmod1_clicked()
+{
+    if (ui->pushButtonmod1->isChecked())
+               {
+                  // ui->pushButton_modifier->setDisabled(true);
+                  // ui->pushButton_6->setText("Terminer Modif");
+                   QSqlTableModel *tableModel= new QSqlTableModel();
+                   tableModel->setTable("PRODUIT");
+tableModel->setEditStrategy(QSqlTableModel::OnFieldChange);
+
+           //tableModel->setFilter("where lower(NOM_INGREDIENT) like lower('%" + ui->lineEdit_13->text() + "%')");
+                   tableModel->select();
+                   ui->tableView11->setModel(tableModel);
+               }
+               else
+               {
+                   //ui->pushButton_6->setText("Modifier");
+                   ui->tableView11->setModel(Ptmp.afficher(ui->lineEditrech1->text(), ui->comboboxtri1->currentIndex()));
+
+               }
+}
+
+QString MainWindow::getSearchText()
+{
+    return ui->lineEditrech1->text();
+}
+
+void MainWindow::on_lineEditrech1_textChanged(const QString &arg1)
+{
+    ui->tableView11->setModel(Ptmp.afficher(ui->lineEditrech1->text(), ui->comboboxtri1->currentIndex()));
+}
+
+void MainWindow::on_comboboxtri1_currentIndexChanged(int index)
+{
+    ui->tableView11->setModel(Ptmp.afficher(ui->lineEditrech1->text(), ui->comboboxtri1->currentIndex()));
+}
+
+
+
+void MainWindow::on_PDF11_clicked()
+{
+     QSound::play(":/../../Desktop/QT/ffqf/crunch.wav");
+    QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
+            if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append("liste des produits.pdf"); }
+
+            QPrinter printer(QPrinter::PrinterResolution);
+            printer.setOutputFormat(QPrinter::PdfFormat);
+            printer.setPaperSize(QPrinter::A4);
+            printer.setOutputFileName(fileName);
+
+            QTextDocument doc;
+            QSqlQuery q;
+            q.prepare("SELECT * FROM PRODUIT ");
+            q.exec();
+            QString pdf="<br> <img src='C:\\Users\\Karim\\Desktop\\QT\\BonApp\\img\\logo.png' height='42' width='144'/> <h1  style='color:#d88855'>       LISTE DES PRODUITS  <br></h1>\n <br> <table>  <tr>  <th> ID </th> <th> nom </th> <th> date_exp </th>  <th> quantité  </th>   </tr>" ;
+
+
+            while ( q.next()) {
+
+                pdf= pdf+ " <br> <tr> <td>"+ q.value(0).toString()+"    </td>  <td>   " + q.value(1).toString() +"</td>  <td>" +q.value(2).toString() +"  "" " "</td>      <td>     "+q.value(3).toString()+"--"+"</td>       <td>"+q.value(4).toString()+"             </td>" ;
+
+            }
+            doc.setHtml(pdf);
+            doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+            doc.print(&printer);
+
+}
+
+void MainWindow::on_stat11_clicked()
+{
+    sec = new SecDialog(this);
+    sec->show();
+}
+void MainWindow::on_tableView11_activated(const QModelIndex &index)
+{
+    int totest = ui->tableView11->model()->data(index).toInt();
+    QString s=QString::number(totest);
+    ui->lineEditsup1->setText(s);
+}
+
+void MainWindow::on_pushButtonmod2_clicked()
+{
+    if (ui->pushButtonmod2->isChecked())
+               {
+                  // ui->pushButton_modifier->setDisabled(true);
+                  // ui->pushButton_10->setText("Terminer Modif");
+                   QSqlTableModel *tableModel= new QSqlTableModel();
+                   tableModel->setTable("MATERIEL");
+tableModel->setEditStrategy(QSqlTableModel::OnFieldChange);
+
+           //tableModel->setFilter("where lower(NOM_INGREDIENT) like lower('%" + ui->lineEdit_13->text() + "%')");
+                   tableModel->select();
+                   ui->tableView22->setModel(tableModel);
+               }
+               else
+               {
+                   //ui->pushButton_10->setText("Modifier");
+                   ui->tableView22->setModel(Mtmp.afficher(ui->lineEdit_rech_mat->text(), ui->comboboxtri1->currentIndex()));
+
+               }
+}
+
+void MainWindow::on_PDF_mat_clicked()
+{
+    QSound::play(":/../../Desktop/QT/ffqf/crunch.wav");
+   QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Export PDF", QString(), "*.pdf");
+           if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append("liste des materiels.pdf"); }
+
+           QPrinter printer(QPrinter::PrinterResolution);
+           printer.setOutputFormat(QPrinter::PdfFormat);
+           printer.setPaperSize(QPrinter::A4);
+           printer.setOutputFileName(fileName);
+
+           QTextDocument doc;
+           QSqlQuery q;
+           q.prepare("SELECT * FROM MATERIEL ");
+           q.exec();
+           QString pdf="<br> <img src='C:\\Users\\Karim\\Desktop\\QT\\BonApp\\img\\logo.png' height='42' width='144'/> <h1  style='color:#d88855'>       LISTE DES PRODUITS  <br></h1>\n <br> <table>  <tr>  <th> ID </th> <th> nom </th> <th> date_exp </th>  <th> quantité  </th>   </tr>" ;
+
+
+           while ( q.next()) {
+
+               pdf= pdf+ " <br> <tr> <td>"+ q.value(0).toString()+"    </td>  <td>   " + q.value(1).toString() +"</td>  <td>" +q.value(2).toString() +"  "" " "</td>      <td>     "+q.value(3).toString()+"--"+"</td>       <td>"+q.value(4).toString()+"             </td>" ;
+
+           }
+           doc.setHtml(pdf);
+           doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+           doc.print(&printer);
+
+}
+
+void MainWindow::on_pushButton_mat_clicked()
+{
+    sec = new SecDialog(this);
+    sec->show();
+}
+
+
+
+void MainWindow::on_lineEdit_rech_mat_textChanged(const QString &arg1)
+{
+     ui->tableView22->setModel(Ptmp.afficher(ui->lineEdit_rech_mat->text(), ui->comboboxtri2->currentIndex()));
+}
+
+void MainWindow::on_comboboxtri2_currentIndexChanged(int index)
+{
+    ui->tableView22->setModel(Ptmp.afficher(ui->lineEdit_rech_mat->text(), ui->comboboxtri2->currentIndex()));
+}
+
+//karim funcs end
+
+
+
+
+
+
+
+
+
+
+
+void MainWindow::on_pushButton_13_clicked()
+{
+    ui->stackedWidget ->setCurrentIndex(0);
+}

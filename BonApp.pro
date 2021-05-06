@@ -29,13 +29,21 @@ SOURCES += \
     commandec.cpp \
     connection.cpp \
     coupons.cpp \
+    database.cpp \
+    dateformatdelegate.cpp \
     employee.cpp \
     gateauxc.cpp \
     main.cpp \
     mainwindow.cpp \
+    materiel.cpp \
+    notifications.cpp \
+    produit.cpp \
     qrcodedisplayer.cpp \
     qrwidget.cpp \
+    queue.cpp \
+    recette.cpp \
     role.cpp \
+    secdialog.cpp \
     shifts.cpp
 
 HEADERS += \
@@ -47,18 +55,27 @@ HEADERS += \
     commandec.h \
     connection.h \
     coupons.h \
+    database.h \
+    dateformatdelegate.h \
     employee.h \
     gateauxc.h \
     mainwindow.h \
+    materiel.h \
+    notifications.h \
+    produit.h \
     qrcodedisplayer.h \
     qrwidget.hpp \
+    queue.h \
+    recette.h \
     role.h \
+    secdialog.h \
     shifts.h
 
 FORMS += \
     mainwindow.ui \
     mainwindowIyed.ui \
-    qrcodedisplayer.ui
+    qrcodedisplayer.ui \
+    secdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
