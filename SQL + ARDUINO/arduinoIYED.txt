@@ -1,0 +1,103 @@
+// ---------------------------------------------------------------- //
+// Arduino Ultrasoninc Sensor HC-SR04
+// Re-writed by Arbi Abdul Jabbaar
+// Using Arduino IDE 1.8.7
+// Using HC-SR04 Module
+// Tested on 17 September 2019
+// ---------------------------------------------------------------- //
+
+#define echoPin 2 // attach pin D2 Arduino to pin Echo of HC-SR04
+#define trigPin 3 //attach pin D3 Arduino to pin Trig of HC-SR04
+
+// defines variables
+long duration; // variable for the duration of sound wave travel
+int distance; // variable for the distance measurement
+const int buttonPin = 8;     // the number of the pushbutton pin
+int buttonState = 0;         // variable for reading the pushbutton status
+const int ledPin =  LED_BUILTIN;      // the number of the LED pin
+int oldBtnState = 0;
+int counter = 0;
+
+
+unsigned long previousMillis = 0;        
+
+
+const long interval = 100;
+
+
+void setup() {
+  pinMode(trigPin, OUTPUT); // Sets the trigPin as an OUTPUT
+  pinMode(echoPin, INPUT); // Sets the echoPin as an INPUT
+  Serial.begin(9600); // // Serial Communication is starting with 9600 of baudrate speed
+  Serial.println("Ultrasonic Sensor HC-SR04 Test"); // print some text in Serial Monitor
+  Serial.println("with Arduino UNO R3");
+
+
+    pinMode(ledPin, OUTPUT);
+  // initialize the pushbutton pin as an input:
+  pinMode(buttonPin, INPUT);
+  digitalWrite(buttonPin, HIGH);
+
+
+}
+void loop() {
+
+      unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval) {
+    // save the last time you blinked the LED
+    previousMillis = currentMillis;
+
+      writeDistance();
+    }
+    buttonState = digitalRead(buttonPin);
+    if(buttonState != oldBtnState)
+    {
+      Serial.print("b:");
+      Serial.println(buttonState == LOW?"1":"0" );
+      oldBtnState = buttonState;
+    }
+  // Show the state of pushbutton on serial monitor
+ // Serial.println(buttonState);
+  // check if the pushbutton is pressed.
+  // if it is, the buttonState is HIGH:
+  if (buttonState == LOW) {
+    // turn LED on:
+    digitalWrite(ledPin, HIGH);
+  } else {
+    // turn LED off:
+    digitalWrite(ledPin, LOW);
+  }
+  
+  //Serial.write("b:" + buttonState==LOW?"1":"0"); //envoyer le nouvel état de la lampe
+
+  //delay(100);
+
+}
+
+void writeDistance()
+{
+  // Clears the trigPin condition
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin HIGH (ACTIVE) for 10 microseconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+  // Calculating the distance
+  distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
+  // Displays the distance on the Serial Monitor
+ /* Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");*/
+
+
+
+
+  
+      Serial.print("p:");
+      Serial.println(distance);
+
+}

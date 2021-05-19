@@ -787,8 +787,8 @@ font: 20pt &quot;MV Boli&quot;;
      <widget class="QPushButton" name="pushButton_10">
       <property name="geometry">
        <rect>
-        <x>420</x>
-        <y>450</y>
+        <x>210</x>
+        <y>260</y>
         <width>291</width>
         <height>111</height>
        </rect>
@@ -796,16 +796,15 @@ font: 20pt &quot;MV Boli&quot;;
       <property name="styleSheet">
        <string notr="true">#pushButton_10 {
 color: rgb(255, 255, 255);
-	background-color: rgb(255, 85, 0);
+background-color: rgb(120, 63, 4);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
 }
 #pushButton_10:hover {
-	
-	background-color: rgb(0, 85, 0);
+background-color: rgb(170, 0, 0);
 }
 #pushButton_10:pressed {
-	background-color: rgb(255, 170, 0);
+background-color: rgb(0, 85, 127);
 }
 </string>
       </property>
@@ -1547,10 +1546,19 @@ background-color: rgb(0, 0, 0, 0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+#showProducts_2 {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#showProducts_2:hover {
+	background-color: rgb(255, 85, 0);
+}
+#showProducts_2:pressed {
+	background-color: rgb(255, 170, 0);
+}
 </string>
       </property>
       <property name="text">
@@ -1580,10 +1588,19 @@ font: 20pt &quot;MV Boli&quot;;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+#addProduct_2 {
+color: rgb(255, 255, 255);
+background-color: rgb(120, 63, 4);
 border-radius: 30px;
 font: 20pt &quot;MV Boli&quot;;
+}
+#addProduct_2:hover {
+background-color: rgb(170, 0, 0);
+}
+#addProduct_2:pressed {
+background-color: rgb(0, 85, 127);
+}
 </string>
       </property>
       <property name="text">
@@ -1639,27 +1656,24 @@ background-color: rgb(0, 0, 0,0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#gestionClient {
-background-color: transparent;
-border-image: url(:/img/img/btnClients.png);
-background: none;
-border: none;
-background-repeat: none;
+       <string notr="true">
+#gestionClient {
+color: rgb(255, 255, 255);
+background-color: rgb(120, 63, 4);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-
 #gestionClient:hover {
-
-	background-color: rgba(255, 255, 255, 0.4);
-  	border-image: url(:/img/img/btnClients2.png);
-	 border: none;
+background-color: rgb(170, 0, 0);
 }
-#gestionClient:pressed
-{
-   border-image: url(:/img/img/btnClients.png);
-}</string>
+#gestionClient:pressed {
+background-color: rgb(0, 85, 127);
+}
+
+</string>
       </property>
       <property name="text">
-       <string/>
+       <string>CLIENTS</string>
       </property>
      </widget>
      <widget class="QPushButton" name="gestionCoupon">
@@ -1672,7 +1686,7 @@ background-repeat: none;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#gestionCoupon {
+       <string notr="true">/*#gestionCoupon {
 background-color: transparent;
 border-image: url(:/img/img/btnCoupons0001.png);
 background: none;
@@ -1689,10 +1703,26 @@ background-repeat: none;
 #gestionCoupon:pressed
 {
    border-image: url(:/img/img/btnCoupons0001.png);
-}</string>
+}*/
+
+#gestionCoupon {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
+}
+
+
+#gestionCoupon:hover {
+	background-color: rgb(255, 85, 0);
+}
+#gestionCoupon:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
-       <string/>
+       <string>COUPONS</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_10">
@@ -1748,27 +1778,25 @@ background-color: rgb(0, 0, 0, 0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#vitrineBtn {
-background-color: transparent;
-border-image: url(:/img/img/vitrine0001.png);
-background: none;
-border: none;
-background-repeat: none;
+       <string notr="true">
+#vitrineBtn {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
+
 
 #vitrineBtn:hover {
-
-	background-color: rgba(255, 255, 255, 0.4);
-  	border-image: url(:/img/img/vitrine0002.png);
-	 border: none;
+	background-color: rgb(255, 85, 0);
 }
-#vitrineBtn:pressed
-{
-   border-image: url(:/img/img/vitrine0001.png);
-}</string>
+#vitrineBtn:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
-       <string/>
+       <string>VITRINE</string>
       </property>
      </widget>
     </widget>
@@ -1776,9 +1804,9 @@ background-repeat: none;
      <widget class="QToolButton" name="viewRoles">
       <property name="geometry">
        <rect>
-        <x>740</x>
+        <x>690</x>
         <y>360</y>
-        <width>181</width>
+        <width>231</width>
         <height>151</height>
        </rect>
       </property>
@@ -1786,21 +1814,25 @@ background-repeat: none;
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#viewRoles
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+#viewRoles {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+background-color: rgb(120, 63, 4);
 border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-#viewRoles:hover
-{
-background-color: rgb(74, 35, 88);
+#viewRoles:hover {
+background-color: rgb(170, 0, 0);
 }
-#viewRoles:pressed
-{
-background-color: rgb(98, 47, 117);
-}</string>
+#viewRoles:pressed {
+background-color: rgb(0, 85, 127);
+}
+
+
+
+</string>
       </property>
       <property name="text">
        <string>Roles</string>
@@ -1822,9 +1854,9 @@ background-color: rgb(98, 47, 117);
      <widget class="QToolButton" name="goToShifts">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>220</x>
         <y>370</y>
-        <width>181</width>
+        <width>231</width>
         <height>151</height>
        </rect>
       </property>
@@ -1832,20 +1864,21 @@ background-color: rgb(98, 47, 117);
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#goToShifts
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+#goToShifts {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-#goToShifts:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#goToShifts:hover {
+	background-color: rgb(255, 85, 0);
 }
-#goToShifts:pressed
-{
-background-color: rgb(98, 47, 117);
+#goToShifts:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -1868,9 +1901,9 @@ background-color: rgb(98, 47, 117);
      <widget class="QToolButton" name="viewEmployee">
       <property name="geometry">
        <rect>
-        <x>740</x>
+        <x>690</x>
         <y>170</y>
-        <width>181</width>
+        <width>231</width>
         <height>151</height>
        </rect>
       </property>
@@ -1878,20 +1911,21 @@ background-color: rgb(98, 47, 117);
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#viewEmployee
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+#viewEmployee {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-#viewEmployee:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#viewEmployee:hover {
+	background-color: rgb(255, 85, 0);
 }
-#viewEmployee:pressed
-{
-background-color: rgb(98, 47, 117);
+#viewEmployee:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -1987,9 +2021,9 @@ background-color: rgb(0, 0, 0,0%);</string>
      <widget class="QToolButton" name="goToAddEmployee">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>220</x>
         <y>170</y>
-        <width>181</width>
+        <width>231</width>
         <height>151</height>
        </rect>
       </property>
@@ -1997,21 +2031,22 @@ background-color: rgb(0, 0, 0,0%);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#goToAddEmployee
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+#goToAddEmployee {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+background-color: rgb(120, 63, 4);
 border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-#goToAddEmployee:hover
-{
-background-color: rgb(74, 35, 88);
+#goToAddEmployee:hover {
+background-color: rgb(170, 0, 0);
 }
-#goToAddEmployee:pressed
-{
-background-color: rgb(98, 47, 117);
-}</string>
+#goToAddEmployee:pressed {
+background-color: rgb(0, 85, 127);
+}
+
+</string>
       </property>
       <property name="text">
        <string>Add an employee</string>
@@ -2263,20 +2298,21 @@ background-color: rgb(255, 255, 255);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#addEmployeeToDB
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+#addEmployeeToDB {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-#addEmployeeToDB:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#addEmployeeToDB:hover {
+	background-color: rgb(255, 85, 0);
 }
-#addEmployeeToDB:pressed
-{
-background-color: rgb(98, 47, 117);
+#addEmployeeToDB:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -2393,9 +2429,9 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QToolButton" name="ageASC">
       <property name="geometry">
        <rect>
-        <x>650</x>
+        <x>620</x>
         <y>60</y>
-        <width>131</width>
+        <width>161</width>
         <height>51</height>
        </rect>
       </property>
@@ -2403,20 +2439,24 @@ background-color: rgb(255, 255, 255);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#ageASC
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+#ageASC {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-#ageASC:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#ageASC:hover {
+	background-color: rgb(255, 85, 0);
 }
-#ageASC:pressed
-{
-background-color: rgb(98, 47, 117);
+#ageASC:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -2451,20 +2491,24 @@ background-color: rgb(98, 47, 117);
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#ageDESC
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+#ageDESC {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-#ageDESC:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#ageDESC:hover {
+	background-color: rgb(255, 85, 0);
 }
-#ageDESC:pressed
-{
-background-color: rgb(98, 47, 117);
+#ageDESC:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -2499,20 +2543,27 @@ background-color: rgb(98, 47, 117);
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#deleteEmployee
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+
+
+
+#deleteEmployee {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-#deleteEmployee:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#deleteEmployee:hover {
+	background-color: rgb(255, 85, 0);
 }
-#deleteEmployee:pressed
-{
-background-color: rgb(98, 47, 117);
+#deleteEmployee:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -2678,20 +2729,24 @@ background-color: rgb(255, 255, 255);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#modifyEmployeeDB
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+#modifyEmployeeDB {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-#modifyEmployeeDB:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#modifyEmployeeDB:hover {
+	background-color: rgb(255, 85, 0);
 }
-#modifyEmployeeDB:pressed
-{
-background-color: rgb(98, 47, 117);
+#modifyEmployeeDB:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -2710,7 +2765,7 @@ background-color: rgb(98, 47, 117);
      <widget class="QToolButton" name="searchEmployee">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>460</x>
         <y>60</y>
         <width>131</width>
         <height>51</height>
@@ -2720,20 +2775,22 @@ background-color: rgb(98, 47, 117);
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#searchEmployee
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+#searchEmployee {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-#searchEmployee:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#searchEmployee:hover {
+	background-color: rgb(255, 85, 0);
 }
-#searchEmployee:pressed
-{
-background-color: rgb(98, 47, 117);
+#searchEmployee:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -2802,20 +2859,25 @@ background-color:white;</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#toolButton_pdf
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+
+#toolButton_pdf {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-#toolButton_pdf:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#toolButton_pdf:hover {
+	background-color: rgb(255, 85, 0);
 }
-#toolButton_pdf:pressed
-{
-background-color: rgb(98, 47, 117);
+#toolButton_pdf:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -2864,20 +2926,28 @@ background-color: rgb(255, 255, 255);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#getEmployeePdf
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+
+
+
+
+#getEmployeePdf {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
-border-radius: 20px;
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-#getEmployeePdf:hover
-{
-background-color: rgb(74, 35, 88);
+
+
+#getEmployeePdf:hover {
+	background-color: rgb(255, 85, 0);
 }
-#getEmployeePdf:pressed
-{
-background-color: rgb(98, 47, 117);
+#getEmployeePdf:pressed {
+	background-color: rgb(255, 170, 0);
 }</string>
       </property>
       <property name="text">
@@ -4722,8 +4792,8 @@ font: 15pt &quot;MV Boli&quot;;
      <widget class="QToolButton" name="back_21">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>420</y>
+        <x>10</x>
+        <y>540</y>
         <width>81</width>
         <height>71</height>
        </rect>
@@ -4805,10 +4875,10 @@ font: 40pt &quot;MV Boli&quot;;
      <widget class="QTableView" name="CatTab">
       <property name="geometry">
        <rect>
-        <x>460</x>
+        <x>415</x>
         <y>220</y>
-        <width>256</width>
-        <height>192</height>
+        <width>351</width>
+        <height>231</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -4862,9 +4932,9 @@ font: 15pt &quot;MV Boli&quot;;
       <property name="geometry">
        <rect>
         <x>630</x>
-        <y>190</y>
-        <width>51</width>
-        <height>21</height>
+        <y>170</y>
+        <width>141</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -4872,7 +4942,7 @@ font: 15pt &quot;MV Boli&quot;;
 color: rgb(255, 255, 255);
 	background-color: rgb(230, 145, 56);
 border-radius: 8px;
-font: 10pt &quot;MV Boli&quot;;
+font: 15pt &quot;MV Boli&quot;;
 }
 #pushButton_8:hover {
 	background-color: rgb(255, 85, 0);
@@ -4889,10 +4959,10 @@ font: 10pt &quot;MV Boli&quot;;
      <widget class="QPushButton" name="pushButton_9">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>420</y>
-        <width>61</width>
-        <height>21</height>
+        <x>640</x>
+        <y>460</y>
+        <width>131</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -4900,7 +4970,7 @@ font: 10pt &quot;MV Boli&quot;;
 color: rgb(255, 255, 255);
 	background-color: rgb(230, 145, 56);
 border-radius: 8px;
-font: 10pt &quot;MV Boli&quot;;
+font: 15pt &quot;MV Boli&quot;;
 }
 #pushButton_9:hover {
 	background-color: rgb(255, 85, 0);
@@ -4917,10 +4987,10 @@ font: 10pt &quot;MV Boli&quot;;
      <widget class="QLineEdit" name="lineEdit_3">
       <property name="geometry">
        <rect>
-        <x>500</x>
-        <y>190</y>
-        <width>113</width>
-        <height>20</height>
+        <x>412</x>
+        <y>169</y>
+        <width>201</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -4931,8 +5001,8 @@ color: rgb(255, 255, 255);</string>
      <widget class="QToolButton" name="back_22">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>420</y>
+        <x>20</x>
+        <y>540</y>
         <width>81</width>
         <height>71</height>
        </rect>
@@ -5315,31 +5385,31 @@ font: 40pt &quot;MV Boli&quot;;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#supprimerClient {
-background-color: transparent;
-border-image: url(:/img/img/supprimer0001.png);
-background: none;
-border: none;
-background-repeat: none;
+       <string notr="true">
+
+
+
+
+
+
+
+
+#supprimerClient {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-
-
-
-
 #supprimerClient:hover {
-
-	background-color: rgba(255, 255, 255, 0.4);
-  	border-image: url(:/img/img/supprimer0002.png);
-	 border: none;
+	background-color: rgb(255, 85, 0);
 }
-#supprimerClient:pressed
-{
-   border-image: url(:/img/img/supprimer0001.png);
+#supprimerClient:pressed {
+	background-color: rgb(255, 170, 0);
 }
 </string>
       </property>
       <property name="text">
-       <string/>
+       <string>SUPPRIMER</string>
       </property>
      </widget>
      <widget class="QPushButton" name="ajouterclient">
@@ -5352,26 +5422,29 @@ background-repeat: none;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#ajouterclient {
-background-color: transparent;
-border-image: url(:/img/img/ajouterclient0001.png);
-background: none;
-border: none;
-background-repeat: none;
+       <string notr="true">
+
+
+
+#ajouterclient {
+color: rgb(255, 255, 255);
+background-color: rgb(120, 63, 4);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
 #ajouterclient:hover {
-
-	background-color: rgba(255, 255, 255, 0.4);
-  	border-image: url(:/img/img/ajouterclient0002.png);
-	 border: none;
+background-color: rgb(170, 0, 0);
 }
-#ajouterclient:pressed
-{
-   border-image: url(:/img/img/ajouterclient0001.png);
-}</string>
+#ajouterclient:pressed {
+background-color: rgb(0, 85, 127);
+}
+
+
+
+</string>
       </property>
       <property name="text">
-       <string/>
+       <string>AJOUTER</string>
       </property>
      </widget>
      <widget class="QPushButton" name="searchClient">
@@ -5451,27 +5524,29 @@ background-repeat: none;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#printtable2 {
-background-color: transparent;
-border-image: url(:/img/img/print0001.png);
-background: none;
-border: none;
-background-repeat: none;
-}
+       <string notr="true">
 
+
+
+#printtable2 {
+color: rgb(255, 255, 255);
+background-color: rgb(120, 63, 4);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
+}
 #printtable2:hover {
-
-	background-color: rgba(255, 255, 255, 0.4);
-  	border-image: url(:/img/img/print0002.png);
-	 border: none;
+background-color: rgb(170, 0, 0);
 }
-#printtable2:pressed
-{
-   border-image: url(:/img/img/print0001.png);
-}</string>
+#printtable2:pressed {
+background-color: rgb(0, 85, 127);
+}
+
+
+
+</string>
       </property>
       <property name="text">
-       <string/>
+       <string>PRINT</string>
       </property>
      </widget>
      <widget class="QToolButton" name="toolButton_6">
@@ -5545,28 +5620,31 @@ background-repeat: none;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#ajoutercoupon {
-background-color: transparent;
-border-image: url(:/img/img/ajoutercoupon0001.png);
-background: none;
-border: none;
-background-repeat: none;
+       <string notr="true">
+
+
+
+
+
+#ajoutercoupon {
+color: rgb(255, 255, 255);
+background-color: rgb(120, 63, 4);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-
-
 #ajoutercoupon:hover {
-
-	background-color: rgba(255, 255, 255, 0.4);
-  	border-image: url(:/img/img/ajoutercoupon0002.png);
-	 border: none;
+background-color: rgb(170, 0, 0);
 }
-#ajoutercoupon:pressed
-{
-   border-image: url(:/img/img/ajoutercoupon0001.png);
-}</string>
+#ajoutercoupon:pressed {
+background-color: rgb(0, 85, 127);
+}
+
+
+
+</string>
       </property>
       <property name="text">
-       <string/>
+       <string>AJOUTER</string>
       </property>
      </widget>
      <widget class="QToolButton" name="prevCoupon">
@@ -5592,27 +5670,31 @@ background-repeat: none;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#printtable1 {
-background-color: transparent;
-border-image: url(:/img/img/print0001.png);
-background: none;
-border: none;
-background-repeat: none;
-}
+       <string notr="true">
 
+
+
+
+
+#printtable1 {
+color: rgb(255, 255, 255);
+background-color: rgb(120, 63, 4);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
+}
 #printtable1:hover {
-
-	background-color: rgba(255, 255, 255, 0.4);
-  	border-image: url(:/img/img/print0002.png);
-	 border: none;
+background-color: rgb(170, 0, 0);
 }
-#printtable1:pressed
-{
-   border-image: url(:/img/img/print0001.png);
-}</string>
+#printtable1:pressed {
+background-color: rgb(0, 85, 127);
+}
+
+
+
+</string>
       </property>
       <property name="text">
-       <string/>
+       <string>PRINT</string>
       </property>
      </widget>
      <widget class="QPushButton" name="supprimerCoupon">
@@ -5625,27 +5707,33 @@ background-repeat: none;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">#supprimerCoupon {
-background-color: transparent;
-border-image: url(:/img/img/supprimer0001.png);
-background: none;
-border: none;
-background-repeat: none;
-}
+       <string notr="true">
 
+
+
+
+
+
+
+
+
+
+#supprimerCoupon {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
+}
 #supprimerCoupon:hover {
-
-	background-color: rgba(255, 255, 255, 0.4);
-  	border-image: url(:/img/img/supprimer0002.png);
-	 border: none;
+	background-color: rgb(255, 85, 0);
 }
-#supprimerCoupon:pressed
-{
-   border-image: url(:/img/img/supprimer0001.png);
-}</string>
+#supprimerCoupon:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
-       <string/>
+       <string>SUPPRIMER</string>
       </property>
      </widget>
      <widget class="QTableWidget" name="couponsTable">
@@ -6324,14 +6412,35 @@ background-repeat: none;
      <widget class="QPushButton" name="ajoutCoupon">
       <property name="geometry">
        <rect>
-        <x>940</x>
-        <y>190</y>
-        <width>141</width>
-        <height>41</height>
+        <x>910</x>
+        <y>170</y>
+        <width>191</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:white;</string>
+       <string notr="true">
+
+
+
+
+
+#ajoutCoupon {
+color: rgb(255, 255, 255);
+background-color: rgb(120, 63, 4);
+border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
+}
+#ajoutCoupon:hover {
+background-color: rgb(170, 0, 0);
+}
+#ajoutCoupon:pressed {
+background-color: rgb(0, 85, 127);
+}
+
+
+
+</string>
       </property>
       <property name="text">
        <string>Ajouter Coupon</string>
@@ -7305,21 +7414,23 @@ background-color:white;</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#toolButton_delete_6
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+#toolButton_delete_6 {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-#toolButton_delete_6:hover
-{
-background-color: rgb(74, 35, 88);
+#toolButton_delete_6:hover {
+	background-color: rgb(255, 85, 0);
 }
-#toolButton_delete_6:pressed
-{
-background-color: rgb(98, 47, 117);
-}</string>
+#toolButton_delete_6:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>sort : asc</string>
@@ -7347,21 +7458,35 @@ background-color: rgb(98, 47, 117);
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#deleteShiftsFromDB
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+
+
+
+
+
+
+#deleteShiftsFromDB {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+	background-color: rgb(120, 63, 4);
+/*background-color: rgb(230, 145, 56);*/
 border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-#deleteShiftsFromDB:hover
-{
-background-color: rgb(74, 35, 88);
+#deleteShiftsFromDB:hover {
+	/*background-color: rgb(255, 85, 0);*/
+background-color: rgb(170, 0, 0);
+
 }
-#deleteShiftsFromDB:pressed
-{
-background-color: rgb(98, 47, 117);
-}</string>
+#deleteShiftsFromDB:pressed {
+background-color: rgb(0, 85, 127);
+
+	/*background-color: rgb(255, 170, 0);*/
+}
+</string>
       </property>
       <property name="text">
        <string>delete</string>
@@ -7389,21 +7514,32 @@ background-color: rgb(98, 47, 117);
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#toolButton_delete_7
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+
+
+
+#toolButton_delete_7 {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+	background-color: rgb(120, 63, 4);
+/*background-color: rgb(230, 145, 56);*/
 border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-#toolButton_delete_7:hover
-{
-background-color: rgb(74, 35, 88);
+#toolButton_delete_7:hover {
+	/*background-color: rgb(255, 85, 0);*/
+background-color: rgb(170, 0, 0);
+
 }
-#toolButton_delete_7:pressed
-{
-background-color: rgb(98, 47, 117);
-}</string>
+#toolButton_delete_7:pressed {
+background-color: rgb(0, 85, 127);
+
+	/*background-color: rgb(255, 170, 0);*/
+}
+</string>
       </property>
       <property name="text">
        <string>sort : desc</string>
@@ -7468,21 +7604,27 @@ background-color: rgb(98, 47, 117);
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#getShiftsStat
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+
+
+
+#getShiftsStat {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
+font: 15pt &quot;MV Boli&quot;;
 }
-#getShiftsStat:hover
-{
-background-color: rgb(74, 35, 88);
+#getShiftsStat:hover {
+	background-color: rgb(255, 85, 0);
 }
-#getShiftsStat:pressed
-{
-background-color: rgb(98, 47, 117);
-}</string>
+#getShiftsStat:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Stats</string>
@@ -7552,21 +7694,24 @@ background-color: rgb(98, 47, 117);
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#toolButton_delete_5
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+#toolButton_delete_5 {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+	background-color: rgb(230, 145, 56);
 border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-#toolButton_delete_5:hover
-{
-background-color: rgb(74, 35, 88);
+#toolButton_delete_5:hover {
+	background-color: rgb(255, 85, 0);
 }
-#toolButton_delete_5:pressed
-{
-background-color: rgb(98, 47, 117);
-}</string>
+#toolButton_delete_5:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>Search</string>
@@ -7679,21 +7824,33 @@ color: rgb(0, 0, 0);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">#toolButton_edit_6
-{
-background-color: rgb(51, 24, 60);
+       <string notr="true">
+
+
+
+
+
+
+
+
+#toolButton_edit_6 {
 color: rgb(255, 255, 255);
-font: 10pt &quot;Segoe Print&quot;;
+	background-color: rgb(120, 63, 4);
+/*background-color: rgb(230, 145, 56);*/
 border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
 }
-#toolButton_edit_6:hover
-{
-background-color: rgb(74, 35, 88);
+#toolButton_edit_6:hover {
+	/*background-color: rgb(255, 85, 0);*/
+background-color: rgb(170, 0, 0);
+
 }
-#toolButton_edit_6:pressed
-{
-background-color: rgb(98, 47, 117);
-}</string>
+#toolButton_edit_6:pressed {
+background-color: rgb(0, 85, 127);
+
+	/*background-color: rgb(255, 170, 0);*/
+}
+</string>
       </property>
       <property name="text">
        <string>edit</string>
@@ -8571,7 +8728,25 @@ background-color: rgba(255, 255, 255, 200);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/back0001.png) 0 0 0 0 stretch stretch;</string>
+       <string notr="true">
+#returnbtn1_2 {
+background-color: transparent;
+border-image: url(:/img/img/back0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#returnbtn1_2:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
+#returnbtn1_2:pressed
+{
+   border-image: url(:/img/img/back0001.png);
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -8595,14 +8770,32 @@ background-color: rgba(255, 255, 255, 200);</string>
      <widget class="QPushButton" name="returnbtn1">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>150</x>
         <y>20</y>
         <width>111</width>
         <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/back0001.png) 0 0 0 0 stretch stretch;</string>
+       <string notr="true">
+#returnbtn1 {
+background-color: transparent;
+border-image: url(:/img/img/back0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#returnbtn1:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
+#returnbtn1:pressed
+{
+   border-image: url(:/img/img/back0001.png);
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -8827,8 +9020,8 @@ background-color: rgba(255, 255, 255, 200);</string>
      <widget class="QLabel" name="label_108">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>70</y>
+        <x>280</x>
+        <y>50</y>
         <width>151</width>
         <height>21</height>
        </rect>
@@ -8878,18 +9071,23 @@ background-color: rgba(255, 255, 255, 200);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/supprimer0002.png) 0 0 0 0 stretch stretch;
-</string>
+       <string notr="true">
+
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>SUPP</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEditrech1">
       <property name="geometry">
        <rect>
-        <x>420</x>
-        <y>70</y>
+        <x>400</x>
+        <y>50</y>
         <width>113</width>
         <height>21</height>
        </rect>
@@ -8941,10 +9139,16 @@ background-color: rgba(255, 255, 255, 200);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 5.png) 0 0 0 0 stretch stretch;</string>
+       <string notr="true">
+
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>STAT</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_104">
@@ -8973,12 +9177,16 @@ background-color: rgba(255, 255, 255, 200);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 4.png) 0 0 0 0 stretch stretch;
+       <string notr="true">
 
-</string>
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>PDF</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_107">
@@ -9007,11 +9215,16 @@ background-color: rgba(255, 255, 255, 200);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/modifier0002.png) 0 0 0 0 stretch stretch;
-</string>
+       <string notr="true">
+
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>MODIFIER</string>
       </property>
       <property name="checkable">
        <bool>true</bool>
@@ -9147,28 +9360,50 @@ background-color: rgb(255, 255, 255,0%);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/Screenshot_1.png) 0 0 0 0 stretch stretch;
-</string>
+       <string notr="true">
+
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>AJOUTER</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushbuttonback1">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>20</y>
-        <width>91</width>
-        <height>41</height>
+        <x>140</x>
+        <y>30</y>
+        <width>121</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/back0001.png) 0 0 0 0 stretch stretch;
-</string>
+       <string notr="true">
+#pushbuttonback1 {
+background-color: transparent;
+border-image: url(:/img/img/back0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#pushbuttonback1:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
+#pushbuttonback1:pressed
+{
+   border-image: url(:/img/img/back0001.png);
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -9279,12 +9514,26 @@ background-color: rgb(255, 255, 255,0%);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/valider.png) 0 0 0 0 stretch stretch;
+       <string notr="true">
 
+
+
+#pushButtonvalid1 {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
+}
+#pushButtonvalid1:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButtonvalid1:pressed {
+	background-color: rgb(255, 170, 0);
+}
 </string>
       </property>
       <property name="text">
-       <string/>
+       <string>AJOUTER</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEditprod2">
@@ -9347,7 +9596,7 @@ background-color: rgb(255, 255, 255,0%);</string>
        <rect>
         <x>190</x>
         <y>30</y>
-        <width>101</width>
+        <width>111</width>
         <height>41</height>
        </rect>
       </property>
@@ -9355,8 +9604,25 @@ background-color: rgb(255, 255, 255,0%);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/back0001.png) 0 0 0 0 stretch stretch;
-</string>
+       <string notr="true">
+#pushButtonback {
+background-color: transparent;
+border-image: url(:/img/img/back0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#pushButtonback:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
+#pushButtonback:pressed
+{
+   border-image: url(:/img/img/back0001.png);
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -9424,12 +9690,16 @@ background-color: rgb(255, 255, 255,0%);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 4.png) 0 0 0 0 stretch stretch;
+       <string notr="true">
 
-</string>
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>PDF</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButtonaj2">
@@ -9442,11 +9712,16 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/Screenshot_1.png) 0 0 0 0 stretch stretch;
-</string>
+       <string notr="true">
+
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>AJOUTER</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_suppmat">
@@ -9486,12 +9761,16 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/modifier0002.png) 0 0 0 0 stretch stretch;
+       <string notr="true">
 
-</string>
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>MODIFIER</string>
       </property>
       <property name="checkable">
        <bool>true</bool>
@@ -9535,13 +9814,30 @@ background-color: rgb(255, 255, 255,0%);</string>
        <rect>
         <x>140</x>
         <y>30</y>
-        <width>91</width>
+        <width>111</width>
         <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/back0001.png) 0 0 0 0 stretch stretch;
-</string>
+       <string notr="true">
+#pushButton_13 {
+background-color: transparent;
+border-image: url(:/img/img/back0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
+
+#pushButton_13:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
+#pushButton_13:pressed
+{
+   border-image: url(:/img/img/back0001.png);
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -9560,10 +9856,16 @@ background-color: rgb(255, 255, 255,0%);</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/ffqf/Symbol 5.png) 0 0 0 0 stretch stretch;</string>
+       <string notr="true">
+
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>STAT</string>
       </property>
      </widget>
      <widget class="QTableView" name="tableView22">
@@ -9652,12 +9954,16 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/supprimer0002.png) 0 0 0 0 stretch stretch;
+       <string notr="true">
 
-</string>
+
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;</string>
       </property>
       <property name="text">
-       <string/>
+       <string>SUPP</string>
       </property>
      </widget>
      <widget class="QGroupBox" name="groupBox_11">
@@ -9701,7 +10007,24 @@ background-color: rgb(255, 255, 255,0%);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true">
+
+
+
+
+#pushButtonval2 {
+color: rgb(255, 255, 255);
+	background-color: rgb(230, 145, 56);
+border-radius: 30px;
+font: 20pt &quot;MV Boli&quot;;
+}
+#pushButtonval2:hover {
+	background-color: rgb(255, 85, 0);
+}
+#pushButtonval2:pressed {
+	background-color: rgb(255, 170, 0);
+}
+</string>
       </property>
       <property name="text">
        <string>valider</string>
@@ -9788,16 +10111,32 @@ background-color: rgb(255, 255, 255,0%);</string>
      <widget class="QPushButton" name="pushButtonback3">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>20</y>
-        <width>91</width>
-        <height>41</height>
+        <x>200</x>
+        <y>30</y>
+        <width>141</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image:url(:/Desktop/QT/BonApp/img/back0001.png) 0 0 0 0 stretch stretch;
+       <string notr="true">
+#pushButtonback3 {
+background-color: transparent;
+border-image: url(:/img/img/back0001.png);
+background: none;
+border: none;
+background-repeat: none;
+}
 
-</string>
+#pushButtonback3:hover {
+
+	background-color: rgba(255, 255, 255, 0.4);
+  	border-image: url(:/img/img/back0002.png);
+	 border: none;
+}
+#pushButtonback3:pressed
+{
+   border-image: url(:/img/img/back0001.png);
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -9895,7 +10234,7 @@ background-color: rgb(255, 255, 255,0%);</string>
      <x>0</x>
      <y>0</y>
      <width>1128</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
